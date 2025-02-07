@@ -1,4 +1,4 @@
-
+//script.js
 //registration
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js')
@@ -56,14 +56,20 @@ async function fetchXMLData() {
 
         // Call the function to parse XML and update the table
         parseXMLToTable(xmlData1, xmlData2);
-    } catch (error) {
-        console.error('Error fetching XML data:', error);
+    }  catch (error) {
+    console.error('Failed to fetch XML data:', error);
+    // Load from localStorage if fetch fails
+    xmlData = localStorage.getItem('xmlData') || '';
+    if (xmlData) {
+      parseXMLToTable();
     }
+  }
 }
 
 function parseXMLToTable(data1, data2) {
     // Example: Combine or process the data
     const xmlData  = `${data1}\n${data2}`;
+  localStorage.setItem('xmlData', data); // Store XML data in localStorage
 
     // Update the table with the combined data
     console.log('Combined XML Data:', xmlData );
