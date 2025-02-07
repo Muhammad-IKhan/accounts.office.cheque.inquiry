@@ -198,3 +198,8 @@ document.getElementById('search').addEventListener('keypress', (e) => {
         searchAndFilterXML();
     }
 });
+
+
+if (!cachedXMLData) {
+    alert('No data available. Please check your internet connection and refresh the page.');
+}
