@@ -31,6 +31,52 @@ const xmlData = `<CHEQUE_LIST_DATEWISE>
 <!-- Your XML data here -->
 </CHEQUE_LIST_DATEWISE>`;
 
+
+
+
+async function fetchXMLData() {
+    try {
+        // Fetch both files concurrently
+        const [response1, response2] = await Promise.all([
+            fetch('data1.xml'),
+            fetch('data2.xml')
+        ]);
+
+        if (!response1.ok || !response2.ok) {
+            throw new Error('Failed to fetch one or more XML files.');
+        }
+
+        // Extract text content
+        xmlData1 = await response1.text();
+        xmlData2 = await response2.text();
+
+        // Process the fetched data
+        console.log('Fetched data1.xml:', xmlData1);
+        console.log('Fetched data2.xml:', xmlData2);
+
+        // Call the function to parse XML and update the table
+        parseXMLToTable(xmlData1, xmlData2);
+    } catch (error) {
+        console.error('Error fetching XML data:', error);
+    }
+}
+
+function parseXMLToTable(data1, data2) {
+    // Example: Combine or process the data
+    const xmlData  = `${data1}\n${data2}`;
+
+    // Update the table with the combined data
+    console.log('Combined XML Data:', xmlData );
+    // Your logic to update the table goes here
+}
+document.addEventListener('DOMContentLoaded', () => {
+    fetchXMLData();
+    resetTable();
+});
+
+
+
+
 function parseXMLToTable() {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlData, "text/xml");
