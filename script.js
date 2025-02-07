@@ -27,10 +27,6 @@ if (xmlData) {
   console.log('XML data loaded from local storage:', xmlData);
 }
 
-const xmlData = `<CHEQUE_LIST_DATEWISE>
-<!-- Your XML data here -->
-</CHEQUE_LIST_DATEWISE>`;
-
 
 
 
