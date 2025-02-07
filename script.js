@@ -62,6 +62,22 @@ async function fetchXMLData() {
   }
 }
 
+
+// Declare xmlData once
+let xmlData = localStorage.getItem('xmlData'); // Retrieve from localStorage
+
+if (!xmlData) {
+    // If no data in localStorage, initialize with default XML
+    xmlData = `<CHEQUE_LIST_DATEWISE>
+    <!-- Your XML data here -->
+    </CHEQUE_LIST_DATEWISE>`;
+    localStorage.setItem('xmlData', xmlData); // Save to localStorage
+}
+
+console.log('XML data loaded:', xmlData);
+
+
+
 function parseXMLToTable(data1, data2) {
     // Example: Combine or process the data
     const xmlData  = `${data1}\n${data2}`;
