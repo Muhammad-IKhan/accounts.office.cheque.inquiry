@@ -1,3 +1,4 @@
+//service-worker.js
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [
   '/',
