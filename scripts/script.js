@@ -175,7 +175,7 @@ document.getElementById('search').addEventListener('keypress', (e) => {
 // reg servic worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/scripts/service-worker.js', {
+    navigator.serviceWorker.register('scripts/service-worker.js', {
       scope: '/' // This ensures the service worker controls the whole site
     })
       .then(registration => {
