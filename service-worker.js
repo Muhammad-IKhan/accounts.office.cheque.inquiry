@@ -3,9 +3,9 @@ const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/data.xml'
+  '/styles/style.css',
+  '/scripts/script.js',
+  '/public/data/data.xml'
 ];
 
 // Install the service worker and cache resources
