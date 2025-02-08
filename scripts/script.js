@@ -43,7 +43,7 @@ let xmlData = `   <G_PVN>
                             </G_PVN> `;
 /* async function fetchXMLData() {
   try {
-    const response = await fetch(' ../public/data/data.xml');
+    const response = await fetch('/public/data/data.xml');
     const data = await response.text();
     xmlData = data;
     localStorage.setItem('xmlData', data); // Store XML data in localStorage
