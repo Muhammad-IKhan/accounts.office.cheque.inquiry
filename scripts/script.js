@@ -140,7 +140,7 @@ class XMLTableHandler {
         }
     } */
     
-    async fetchXMLData() {
+   /* async fetchXMLData() {
         try {
             console.log('Fetching XML data...');
 
@@ -202,8 +202,63 @@ class XMLTableHandler {
             this.showError('Failed to load XML data');
             return false;
         }
-    }
+    } */
 
+
+
+
+
+    async fetchXMLData() {
+    try {
+        console.log('Fetching XML data...');
+
+        // Fetch the list of XML files from files.json
+        const filesResponse = await fetch('/accounts.office.cheque.inquiry/public/data/files.json');
+        
+        if (!filesResponse.ok) {
+            throw new Error(`HTTP error! Status: ${filesResponse.status}`);
+        }
+
+        const xmlFiles = await filesResponse.json();
+        console.log('Found XML files:', xmlFiles);
+
+        let combinedXMLData = '';
+
+        // Fetch and combine the content of all XML files
+        for (const file of xmlFiles) {
+            const fileUrl = `/accounts.office.cheque.inquiry/public/data/${file}`;
+            console.log(`Fetching file: ${fileUrl}`);
+
+            const fileResponse = await fetch(fileUrl);
+            
+            if (!fileResponse.ok) {
+                throw new Error(`HTTP error! Status: ${fileResponse.status} for file: ${fileUrl}`);
+            }
+            
+            const data = await fileResponse.text();
+            console.log(`Successfully fetched file: ${fileUrl}`);
+            combinedXMLData += data;
+        }
+
+        console.log('XML data fetched successfully');
+        
+        localStorage.setItem('xmlData', combinedXMLData);
+        xmlData = combinedXMLData;
+        
+        return this.parseXMLToTable(combinedXMLData);
+    } catch (error) {
+        console.error('Error fetching XML:', error);
+        
+        const storedXML = localStorage.getItem('xmlData');
+        if (storedXML) {
+            console.log('Loading XML from localStorage');
+            return this.parseXMLToTable(storedXML);
+        }
+        
+        this.showError('Failed to load XML data');
+        return false;
+    }
+}
 
 
     searchAndFilterXML() {
