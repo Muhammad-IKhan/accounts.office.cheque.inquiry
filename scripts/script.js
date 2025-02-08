@@ -106,7 +106,7 @@ class XMLTableHandler {
     async fetchXMLData() {
         try {
             console.log('Fetching XML data...');
-            const xmlFiles = ['file1.xml', 'file2.xml', 'file3.xml']; // Add your XML file names here
+            const xmlFiles = ['file1.xml', 'file2.xml', 'data.xml']; // Add your XML file names here
             let combinedXMLData = '';
 
             for (const file of xmlFiles) {
