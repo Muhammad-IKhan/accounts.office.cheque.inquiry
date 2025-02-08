@@ -58,7 +58,7 @@ let xmlData = `   <G_PVN>
   }
 } */ async function fetchXMLData() {
   try {
-    const response = await fetch('../public/data/data.xml'); // Adjusted path
+    const response = await fetch('/accounts.office.cheque.inquiry/public/data/data.xml'); // Adjusted path
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
