@@ -173,7 +173,7 @@ document.getElementById('search').addEventListener('keypress', (e) => {
 
 
 // reg servic worker
-/* if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js')
     .then((registration) => {
       console.log('Service Worker registered with scope:', registration.scope);
@@ -181,4 +181,4 @@ document.getElementById('search').addEventListener('keypress', (e) => {
     .catch((error) => {
       console.error('Service Worker registration failed:', error);
     });
-} */
+} 
