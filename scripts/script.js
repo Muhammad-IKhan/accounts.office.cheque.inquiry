@@ -174,11 +174,15 @@ document.getElementById('search').addEventListener('keypress', (e) => {
 
 // reg servic worker
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-    .then((registration) => {
-      console.log('Service Worker registered with scope:', registration.scope);
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/scripts/service-worker.js', {
+      scope: '/' // This ensures the service worker controls the whole site
     })
-    .catch((error) => {
-      console.error('Service Worker registration failed:', error);
-    });
-} 
+      .then(registration => {
+        console.log('ServiceWorker registration successful');
+      })
+      .catch(err => {
+        console.error('ServiceWorker registration failed: ', err);
+      });
+  });
+}
