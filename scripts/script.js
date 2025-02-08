@@ -103,7 +103,7 @@ class XMLTableHandler {
         return row;
     }
 
-    async fetchXMLData() {
+    /* async fetchXMLData() {
         try {
             console.log('Fetching XML data...');
             const xmlFiles = ['file1.xml', 'file2.xml', 'data.xml']; // Add your XML file names here
@@ -138,7 +138,73 @@ class XMLTableHandler {
             this.showError('Failed to load XML data');
             return false;
         }
+    } */
+    
+    async fetchXMLData() {
+        try {
+            console.log('Fetching XML data...');
+
+            // Fetch the list of XML files in the directory
+            const dataDirUrl = '/accounts.office.cheque.inquiry/public/data/';
+            const response = await fetch(dataDirUrl);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Parse the directory listing (this is a hack and may not work on all servers)
+            const htmlText = await response.text();
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(htmlText, 'text/html');
+            const links = htmlDoc.querySelectorAll('a');
+
+            // Filter XML files
+            const xmlFiles = Array.from(links)
+                .map(link => link.getAttribute('href'))
+                .filter(href => href.endsWith('.xml'))
+                .map(href => href.split('/').pop()); // Extract file names
+
+            console.log('Found XML files:', xmlFiles);
+
+            let combinedXMLData = '';
+
+            // Fetch and combine the content of all XML files
+            for (const file of xmlFiles) {
+                const fileUrl = `${dataDirUrl}${file}`;
+                console.log(`Fetching file: ${fileUrl}`);
+
+                const fileResponse = await fetch(fileUrl);
+                
+                if (!fileResponse.ok) {
+                    throw new Error(`HTTP error! Status: ${fileResponse.status} for file: ${fileUrl}`);
+                }
+                
+                const data = await fileResponse.text();
+                console.log(`Successfully fetched file: ${fileUrl}`);
+                combinedXMLData += data;
+            }
+
+            console.log('XML data fetched successfully');
+            
+            localStorage.setItem('xmlData', combinedXMLData);
+            xmlData = combinedXMLData;
+            
+            return this.parseXMLToTable(combinedXMLData);
+        } catch (error) {
+            console.error('Error fetching XML:', error);
+            
+            const storedXML = localStorage.getItem('xmlData');
+            if (storedXML) {
+                console.log('Loading XML from localStorage');
+                return this.parseXMLToTable(storedXML);
+            }
+            
+            this.showError('Failed to load XML data');
+            return false;
+        }
     }
+
+
 
     searchAndFilterXML() {
         const searchTerm = this.searchInput.value.toLowerCase();
