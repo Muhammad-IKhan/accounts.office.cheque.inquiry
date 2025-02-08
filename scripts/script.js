@@ -176,7 +176,7 @@ document.getElementById('search').addEventListener('keypress', (e) => {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     // Updated path with your repository name
-    const swPath = '/accounts.office.cheque.inquiry/scripts/service-worker.js';
+    const swPath = '/accounts.office.cheque.inquiry/service-worker.js';
     
     navigator.serviceWorker.register(swPath, {
       // Updated scope with your repository name
