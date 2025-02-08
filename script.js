@@ -25,12 +25,12 @@ function parseXMLToTable() {
     }
 }
 
-//const xmlData = `<CHEQUE_LIST_DATEWISE>
-//<!-- Your XML data here -->
-//</CHEQUE_LIST_DATEWISE>`;
+/*const xmlData = `<CHEQUE_LIST_DATEWISE>
+<!-- Your XML data here -->
+</CHEQUE_LIST_DATEWISE>`; */
 
 //fetch n store xml data t/f file  
-let xmlData = '';
+/* let xmlData = '';
 async function fetchXMLData() {
   try {
     const response = await fetch('data.xml');
@@ -46,7 +46,7 @@ async function fetchXMLData() {
       parseXMLToTable();
     }
   }
-}
+} */
 
 
 function resetTable() {
