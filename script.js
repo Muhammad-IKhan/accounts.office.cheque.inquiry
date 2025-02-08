@@ -1,7 +1,3 @@
-const xmlData = `<CHEQUE_LIST_DATEWISE>
-<!-- Your XML data here -->
-</CHEQUE_LIST_DATEWISE>`;
-
 function parseXMLToTable() {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlData, "text/xml");
@@ -28,6 +24,40 @@ function parseXMLToTable() {
         tableBody.appendChild(row);
     }
 }
+
+//const xmlData = `<CHEQUE_LIST_DATEWISE>
+//<!-- Your XML data here -->
+//</CHEQUE_LIST_DATEWISE>`;
+
+//fetch n store xml data t/f file  
+let xmlData = '';
+async function fetchXMLData() {
+  try {
+    const response = await fetch('data.xml');
+    const data = await response.text();
+    xmlData = data;
+    localStorage.setItem('xmlData', data); // Store XML data in localStorage
+    parseXMLToTable();
+  } catch (error) {
+    console.error('Failed to fetch XML data:', error);
+    // Load from localStorage if fetch fails
+    xmlData = localStorage.getItem('xmlData') || '';
+    if (xmlData) {
+      parseXMLToTable();
+    }
+  }
+}
+
+
+function resetTable() {
+    document.getElementById('search').value = '';
+    document.getElementById('tableContainer').style.display = 'none';
+    document.getElementById('emptyState').style.display = 'block';
+    document.getElementById('result').style.display = 'none';
+}
+
+
+
 
 function searchAndFilterXML() {
     const searchTerm = document.getElementById('search').value.toLowerCase();
@@ -61,12 +91,7 @@ function searchAndFilterXML() {
         : '<i class="fas fa-times-circle"></i> No results found.';
 }
 
-function resetTable() {
-    document.getElementById('search').value = '';
-    document.getElementById('tableContainer').style.display = 'none';
-    document.getElementById('emptyState').style.display = 'block';
-    document.getElementById('result').style.display = 'none';
-}
+
 
 function sortTable(columnName) {
     const table = document.getElementById('chequeTable');
@@ -117,3 +142,16 @@ document.getElementById('search').addEventListener('keypress', (e) => {
         searchAndFilterXML();
     }
 });
+
+
+
+// reg servic worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then((registration) => {
+      console.log('Service Worker registered with scope:', registration.scope);
+    })
+    .catch((error) => {
+      console.error('Service Worker registration failed:', error);
+    });
+}
