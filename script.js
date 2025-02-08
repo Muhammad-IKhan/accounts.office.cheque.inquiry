@@ -48,6 +48,17 @@ async function fetchXMLData() {
   }
 } */
 
+let xmlData = localStorage.getItem('xmlData'); // Retrieve from localStorage
+if (!xmlData) {
+    // If no data in localStorage, initialize with default XML
+    xmlData = `<CHEQUE_LIST_DATEWISE>
+    <!-- Your XML data here -->
+    </CHEQUE_LIST_DATEWISE>`;
+    localStorage.setItem('xmlData', xmlData); // Save to localStorage
+}
+console.log('XML data loaded:', xmlData);
+
+
 
 function resetTable() {
     document.getElementById('search').value = '';
