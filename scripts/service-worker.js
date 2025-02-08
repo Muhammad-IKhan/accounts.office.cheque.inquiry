@@ -1,12 +1,14 @@
 //scripts/service-worker.js
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles/style.css',
-  '/scripts/script.js',
-  '/public/data/data.xml'
+  '/accounts.office.cheque.inquiry/',  // Root path
+  '/accounts.office.cheque.inquiry/index.html',
+  '/accounts.office.cheque.inquiry/styles/style.css',
+  '/accounts.office.cheque.inquiry/scripts/script.js',
+  '/accounts.office.cheque.inquiry/public/data/data.xml'
 ];
+
+// Rest of your service worker code...
 
 // Install the service worker and cache resources
 self.addEventListener('install', (event) => {
