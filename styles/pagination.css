@@ -1,0 +1,123 @@
+/* General container styling for pagination controls */
+.pagination-controls {
+    /* Use Flexbox to align the items horizontally and space them out */
+    display: flex;
+    align-items: center; /* Vertically align the items */
+    justify-content: space-between; /* Distribute space evenly between elements */
+    
+    padding: 10px; /* Add padding around the container */
+    background-color: #f4f6f9; /* Light background color for the container */
+    
+    /* Rounded corners for a modern look */
+    border-radius: 8px;
+    
+    /* Add subtle shadow around the container to give a floating effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    /* Set a clean font family for better readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style for pagination buttons */
+.pagination-btn {
+    /* Set the background color of the button (blue) */
+    background-color: #007bff;
+    
+    /* Set text color to white */
+    color: white;
+    
+    /* Remove the default border and add padding to make the button larger */
+    border: none;
+    padding: 8px 16px; /* Horizontal and vertical padding */
+    
+    /* Rounded corners on buttons for a smoother look */
+    border-radius: 4px;
+    
+    /* Add a pointer cursor to indicate that it's clickable */
+    cursor: pointer;
+
+    /* Add smooth transition for hover and scaling effects */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Button hover effect */
+.pagination-btn:hover {
+    /* Change the background color when hovered */
+    background-color: #0056b3;
+    
+    /* Slight scaling effect to emphasize interaction */
+    transform: scale(1.05);
+}
+
+/* Disable button styling (grayed out) */
+.pagination-btn:disabled {
+    /* Lighter background color when disabled */
+    background-color: #d6d6d6;
+    
+    /* Cursor changes to not-allowed to indicate non-interactive state */
+    cursor: not-allowed;
+}
+
+/* Styling for the page information text (e.g., "Page 1 of 10") */
+.page-info {
+    /* Set a clear and readable font size */
+    font-size: 16px;
+
+    /* Make the text slightly bold for emphasis */
+    font-weight: 600;
+
+    /* Set text color to dark gray for visibility */
+    color: #333;
+}
+
+/* Style for the 'Rows per page' dropdown select element */
+.rows-per-page {
+    /* Add padding to the select element for better readability */
+    padding: 8px 12px;
+    
+    /* Set the font size slightly smaller than the default text */
+    font-size: 14px;
+    
+    /* Add a light border around the dropdown */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    
+    /* Set the background color to white */
+    background-color: #fff;
+    
+    /* Add pointer cursor to indicate it's clickable */
+    cursor: pointer;
+    
+    /* Smooth transitions for border color and box-shadow on focus */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* On hover over the dropdown, change the border color to blue */
+.rows-per-page:hover {
+    border-color: #007bff;
+}
+
+/* When the dropdown is focused (clicked), add a highlight border and shadow */
+.rows-per-page:focus {
+    /* Remove default outline */
+    outline: none;
+    
+    /* Add a subtle shadow effect for better focus indication */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    /* Stack the pagination controls vertically on small screens */
+    .pagination-controls {
+        flex-direction: column;
+        align-items: flex-start; /* Align the items to the left */
+    }
+
+    /* Make buttons and dropdown full-width for easier access on mobile */
+    .pagination-btn,
+    .rows-per-page {
+        width: 100%;
+        margin: 5px 0; /* Add vertical margin to space out elements */
+    }
+}
