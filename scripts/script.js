@@ -1,240 +1,266 @@
- function parseXMLToTable() {
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlData, "text/xml");
-    const gPvnElements = xmlDoc.getElementsByTagName('G_PVN');
-    const tableBody = document.getElementById('checksTable');
-   // tableBody.innerHTML = '';
-                
-
-    for (let i = 0; i < gPvnElements.length; i++) {
-        const row = document.createElement('tr');
-        const fields = ['SNO', 'NARRATION', 'AMOUNT', 'CHEQ_NO', 'NAR', 'BNO', 'PVN', 'DD'];
+class XMLTableHandler {
+    constructor() {
+        // Initialize DOM elements
+        this.tableBody = document.getElementById('checksTable');
+        this.searchInput = document.getElementById('search');
+        this.tableContainer = document.getElementById('tableContainer');
+        this.emptyState = document.getElementById('emptyState');
+        this.resultContainer = document.getElementById('result');
         
-        fields.forEach(field => {
-            const cell = document.createElement('td');
-            let value = gPvnElements[i].getElementsByTagName(field)[0]?.textContent.trim() || '';
+        // Column configuration
+        this.columns = {
+            SNO: { index: 0, type: 'number' },
+            NARRATION: { index: 1, type: 'string' },
+            AMOUNT: { index: 2, type: 'number' },
+            CHEQ_NO: { index: 3, type: 'number' },
+            NAR: { index: 4, type: 'string' },
+            BNO: { index: 5, type: 'number' },
+            PVN: { index: 6, type: 'number' },
+            DD: { index: 7, type: 'string' }
+        };
+
+        // Initialize event listeners
+        this.initializeEventListeners();
+    }
+
+    initializeEventListeners() {
+        // Search input handler for Enter key
+        this.searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.searchAndFilterXML();
+            }
+        });
+
+        // Initialize sorting handlers for each column
+        Object.keys(this.columns).forEach(columnName => {
+            const header = document.querySelector(`th[data-column="${columnName}"]`);
+            if (header) {
+                header.addEventListener('click', () => this.sortTable(columnName));
+            }
+        });
+    }
+
+    parseXMLToTable(xmlString = null) {
+        try {
+            console.log('Starting XML parsing...');
+            const parser = new DOMParser();
             
+            // Use the provided xmlString or fallback to the stored xmlData
+            const xmlDoc = parser.parseFromString(xmlString || this.xmlData, "text/xml");
+            
+            // Check for parsing errors
+            const parserError = xmlDoc.querySelector('parsererror');
+            if (parserError) {
+                throw new Error('XML parsing error: ' + parserError.textContent);
+            }
+
+            // Get all G_PVN elements from the XML document
+            const gPvnElements = xmlDoc.getElementsByTagName('G_PVN');
+            console.log(`Found ${gPvnElements.length} G_PVN elements`);
+
+            // Ensure the table body element exists
+            if (!this.tableBody) {
+                throw new Error('Table body element not found');
+            }
+
+            // Clear existing table content
+            this.tableBody.innerHTML = '';
+
+            // Create and append table rows for each G_PVN element
+            Array.from(gPvnElements).forEach((element, index) => {
+                const row = this.createTableRow(element);
+                this.tableBody.appendChild(row);
+            });
+
+            console.log('Table population complete');
+            return true;
+        } catch (error) {
+            console.error('Error in parseXMLToTable:', error);
+            this.showError('Failed to parse XML data');
+            return false;
+        }
+    }
+
+    createTableRow(element) {
+        const row = document.createElement('tr');
+        
+        // Create and populate table cells for each column
+        Object.keys(this.columns).forEach(field => {
+            const cell = document.createElement('td');
+            let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '';
+            
+            // Format the AMOUNT field as a number
             if (field === 'AMOUNT') {
-                value = parseFloat(value).toLocaleString('en-US');
+                try {
+                    value = parseFloat(value).toLocaleString('en-US');
+                } catch (error) {
+                    console.warn(`Invalid amount value: ${value}`);
+                    value = '0';
+                }
             }
             
             cell.textContent = value;
+            cell.setAttribute('data-field', field);
             row.appendChild(cell);
         });
 
-        tableBody.appendChild(row);
-    }
-}
-
-
-//fetch n store xml data f/t file  
-let xmlData = `   <G_PVN>
-                            <BNO>1</BNO>
-                            <HEAD>2207</HEAD>
-                            <PVN>1</PVN>
-                            <NARRATION> RAHAM DARAZ DRIVER BISE BANNU q</NARRATION>
-                            <AMOUNT>28680000</AMOUNT>
-                            <ENT_DAT>01-FEB-25</ENT_DAT>
-                            <CHEQ_NO>4498455646</CHEQ_NO>
-                            <CHEQ_DATE>03-FEB-25</CHEQ_DATE>
-                            <SNO>1</SNO>
-                            <DD> </DD>
-                            <NAR> TA/DA GENERAL</NAR>
-                            </G_PVN> <G_PVN>
-                            <BNO>1</BNO>
-                            <HEAD>2207</HEAD>
-                            <PVN>1</PVN>
-                            <NARRATION> RAHAM hgj DARAZ DRIVER BISE BANNU</NARRATION>
-                            <AMOUNT>286242480</AMOUNT>
-                            <ENT_DAT>01-FEB-25</ENT_DAT>
-                            <CHEQ_NO>44982424646</CHEQ_NO>
-                            <CHEQ_DATE>03-FEB-25</CHEQ_DATE>
-                            <SNO>1</SNO>
-                            <DD> </DD>
-                            <NAR> TA/DA GENERAL</NAR>
-                            </G_PVN> <G_PVN>
-                            <BNO>1</BNO>
-                            <HEAD>22424207</HEAD>
-                            <PVN>1</PVN>
-                            <NARRATION> RAHAM DAghghgRAZ DRIVER BISE BANNU</NARRATION>
-                            <AMOUNT>2868523530</AMOUNT>
-                            <ENT_DAT>01-FEB-25</ENT_DAT>
-                            <CHEQ_NO>444535345398646</CHEQ_NO>
-                            <CHEQ_DATE>03-FEB-25</CHEQ_DATE>
-                            <SNO>1</SNO>
-                            <DD> </DD>
-                            <NAR> TA/DA GENERAL</NAR>
-                            </G_PVN> <G_PVN>
-                            <BNO>1</BNO>
-                            <HEAD>2207</HEAD>
-                            <PVN>1</PVN>
-                            <NARRATION> RAHAM DARAZ DRIVER BISE BANNU</NARRATION>
-                            <AMOUNT>28680</AMOUNT>
-                            <ENT_DAT>01-FEB-25</ENT_DAT>
-                            <CHEQ_NO>4498646</CHEQ_NO>
-                            <CHEQ_DATE>03-FEB-25</CHEQ_DATE>
-                            <SNO>1</SNO>
-                            <DD> </DD>
-                            <NAR> TA/DA GENERAL</NAR>
-                            </G_PVN> <G_PVN>
-                            <BNO>1</BNO>
-                            <HEAD>2207</HEAD>
-                            <PVN>1</PVN>
-                            <NARRATION> RAHAM DARAZ DRIVER BISE BANNU</NARRATION>
-                            <AMOUNT>28680</AMOUNT>
-                            <ENT_DAT>01-FEB-25</ENT_DAT>
-                            <CHEQ_NO>4498646</CHEQ_NO>
-                            <CHEQ_DATE>03-FEB-25</CHEQ_DATE>
-                            <SNO>1</SNO>
-                            <DD> </DD>
-                            <NAR> TA/DA GENERAL</NAR>
-                            </G_PVN> `;
-/* async function fetchXMLData() {
-  try {
-    const response = await fetch('/public/data/data.xml');
-    const data = await response.text();
-    xmlData = data;
-    localStorage.setItem('xmlData', data); // Store XML data in localStorage
-    parseXMLToTable();
-  } catch (error) {
-    console.error('Failed to fetch fresh data:', error);
-    // Load from localStorage if fetch fails
-    xmlData = localStorage.getItem('xmlData') || '';
-    if (xmlData) {
-      parseXMLToTable();
-    }
-  }
-} */ async function fetchXMLData() {
-  try {
-    const response = await fetch('/accounts.office.cheque.inquiry/public/data/data.xml'); // Adjusted path
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.text();
-    localStorage.setItem('xmlData', data); // Store XML data
-    console.log('Fetched XML:', data); // Debugging
-    parseXMLToTable(data);
-  } catch (error) {
-    console.error('Error fetching XML:', error);
-    const storedXML = localStorage.getItem('xmlData');
-    if (storedXML) {
-      console.log('Loading XML from localStorage');
-      parseXMLToTable(storedXML);
-    }
-  }
-}
-
-function resetTable() {
-    document.getElementById('search').value = '';
-    document.getElementById('tableContainer').style.display = 'none';
-    document.getElementById('emptyState').style.display = 'block';
-    document.getElementById('result').style.display = 'none';
-}
-
-
-
-
-function searchAndFilterXML() {
-    const searchTerm = document.getElementById('search').value.toLowerCase();
-    if (!searchTerm) {
-        document.getElementById('tableContainer').style.display = 'none';
-        document.getElementById('emptyState').style.display = 'block';
-        document.getElementById('result').style.display = 'none';
-        return;
+        return row;
     }
 
-    document.getElementById('tableContainer').style.display = 'block';
-    document.getElementById('emptyState').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
+    async fetchXMLData() {
+        try {
+            console.log('Fetching XML data...');
 
-    const rows = document.querySelectorAll('#checksTable tr');
-    let found = false;
+            // Fetch the list of XML files from files.json
+            const filesResponse = await fetch('/accounts.office.cheque.inquiry/public/data/files.json');
+            
+            if (!filesResponse.ok) {
+                throw new Error(`HTTP error! Status: ${filesResponse.status}`);
+            }
 
-    rows.forEach(row => {
-        const cells = row.getElementsByTagName('td');
-        const matchesSearch = Array.from(cells).some(cell => 
-            cell.textContent.toLowerCase().includes(searchTerm)
-        );
+            const xmlFiles = await filesResponse.json();
+            console.log('Found XML files:', xmlFiles);
 
-        row.style.display = matchesSearch ? '' : 'none';
-        if (matchesSearch) found = true;
-    });
+            let combinedXMLData = '<root>'; // Wrap combined XML data in a root element
 
-    const resultContainer = document.getElementById('result');
-    resultContainer.innerHTML = found 
-        ? `<i class="fas fa-check-circle"></i> Found results for "${searchTerm}"` 
-        : '<i class="fas fa-times-circle"></i> No results found.';
-}
+            // Fetch and combine the content of all XML files
+            for (const file of xmlFiles) {
+                const fileUrl = `/accounts.office.cheque.inquiry/public/data/${file}`;
+                console.log(`Fetching file: ${fileUrl}`);
 
+                const fileResponse = await fetch(fileUrl);
+                
+                if (!fileResponse.ok) {
+                    throw new Error(`HTTP error! Status: ${fileResponse.status} for file: ${fileUrl}`);
+                }
+                
+                const data = await fileResponse.text();
+                console.log(`Successfully fetched file: ${fileUrl}`);
+                combinedXMLData += data;
+            }
 
+            combinedXMLData += '</root>'; // Close the root element
+            console.log('XML data fetched successfully');
+            
+            // Store the combined XML data in localStorage and as a class property
+            localStorage.setItem('xmlData', combinedXMLData);
+            this.xmlData = combinedXMLData;
+            
+            return this.parseXMLToTable(combinedXMLData);
+        } catch (error) {
+            console.error('Error fetching XML:', error);
+            
+            // Fallback to stored XML data in localStorage if available
+            const storedXML = localStorage.getItem('xmlData');
+            if (storedXML) {
+                console.log('Loading XML from localStorage');
+                return this.parseXMLToTable(storedXML);
+            }
+            
+            this.showError('Failed to load XML data');
+            return false;
+        }
+    }
 
-function sortTable(columnName) {
-    const table = document.getElementById('chequeTable');
-    const tbody = table.querySelector('tbody');
-    const rows = Array.from(tbody.querySelectorAll('tr'));
-    const columnIndex = {
-        'SNO': 0, 'NARRATION': 1, 'AMOUNT': 2, 'CHEQ_NO': 3, 
-        'NAR': 4, 'BNO': 5, 'PVN': 6, 'DD': 7
-    }[columnName];
-
-    const currentHeader = table.querySelector(`th:nth-child(${columnIndex + 1})`);
-    const isAscending = !currentHeader.classList.contains('sort-asc');
-
-    table.querySelectorAll('th').forEach(th => {
-        th.classList.remove('sort-asc', 'sort-desc');
-    });
-
-    currentHeader.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
-
-    rows.sort((a, b) => {
-        const aValue = a.getElementsByTagName('td')[columnIndex].textContent.trim();
-        const bValue = b.getElementsByTagName('td')[columnIndex].textContent.trim();
-
-        const isNumeric = ['AMOUNT', 'SNO', 'CHEQ_NO', 'PVN', 'BNO'].includes(columnName);
-
-        if (isNumeric) {
-            const aNum = parseFloat(aValue.replace(/,/g, ''));
-            const bNum = parseFloat(bValue.replace(/,/g, ''));
-            return isAscending ? aNum - bNum : bNum - aNum;
+    searchAndFilterXML() {
+        const searchTerm = this.searchInput.value.toLowerCase();
+        
+        if (!searchTerm) {
+            this.resetTable();
+            return;
         }
 
-        return isAscending
-            ? aValue.localeCompare(bValue, undefined, { numeric: true })
-            : bValue.localeCompare(aValue, undefined, { numeric: true });
-    });
+        this.tableContainer.style.display = 'block';
+        this.emptyState.style.display = 'none';
+        this.resultContainer.style.display = 'block';
 
-    rows.forEach(row => tbody.appendChild(row));
+        const rows = this.tableBody.querySelectorAll('tr');
+        let matchCount = 0;
+
+        rows.forEach(row => {
+            const cells = row.getElementsByTagName('td');
+            const matchesSearch = Array.from(cells).some(cell => 
+                cell.textContent.toLowerCase().includes(searchTerm)
+            );
+
+            row.style.display = matchesSearch ? '' : 'none';
+            if (matchesSearch) matchCount++;
+        });
+
+        this.updateSearchResults(searchTerm, matchCount);
+    }
+
+    updateSearchResults(searchTerm, matchCount) {
+        this.resultContainer.innerHTML = matchCount > 0
+            ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
+            : '<i class="fas fa-times-circle"></i> No results found.';
+    }
+
+    // Simplified Sorting Functionality
+    sortTable(columnName) {
+        const column = this.columns[columnName];
+        if (!column) {
+            console.error('Column not found:', columnName);
+            return;
+        }
+
+        const rows = Array.from(this.tableBody.querySelectorAll('tr'));
+
+        // Determine if the column is numeric or string
+        const isNumeric = column.type === 'number';
+
+        // Sort rows based on column values
+        rows.sort((a, b) => {
+            const aValue = a.cells[column.index].textContent.trim();
+            const bValue = b.cells[column.index].textContent.trim();
+
+            if (isNumeric) {
+                const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
+                const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
+                return aNum - bNum;
+            } else {
+                return aValue.localeCompare(bValue, undefined, { numeric: true });
+            }
+        });
+
+        // Re-append sorted rows to the table
+        rows.forEach(row => this.tableBody.appendChild(row));
+    }
+
+    resetTable() {
+        this.searchInput.value = '';
+        this.tableContainer.style.display = 'none';
+        this.emptyState.style.display = 'block';
+        this.resultContainer.style.display = 'none';
+    }
+
+    showError(message) {
+        this.resultContainer.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        this.resultContainer.style.display = 'block';
+    }
 }
 
+// Initialize the handler when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    parseXMLToTable();
-    resetTable();
+    const handler = new XMLTableHandler();
+    handler.fetchXMLData().then(() => {
+        handler.resetTable();
+    });
 });
 
-// Add keyboard support for search
-document.getElementById('search').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        searchAndFilterXML();
-    }
-});
-
-
-
-// reg servic worker
+// Service Worker registration
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    // Updated path with your repository name
-    const swPath = '/accounts.office.cheque.inquiry/service-worker.js';
-    
-    navigator.serviceWorker.register(swPath, {
-      // Updated scope with your repository name
-      scope: '/accounts.office.cheque.inquiry/'
-    })
-      .then(registration => {
-        console.log('ServiceWorker registration successful with scope:', registration.scope);
-      })
-      .catch(err => {
-        console.error('ServiceWorker registration failed:', err);
-      });
-  });
+    window.addEventListener('load', () => {
+        const swPath = '/accounts.office.cheque.inquiry/service-worker.js';
+        
+        navigator.serviceWorker.register(swPath, {
+            scope: '/accounts.office.cheque.inquiry/'
+        })
+        .then(registration => {
+            console.log('ServiceWorker registration successful with scope:', registration.scope);
+        })
+        .catch(err => {
+            console.error('ServiceWorker registration failed:', err);
+        });
+    });
 }
