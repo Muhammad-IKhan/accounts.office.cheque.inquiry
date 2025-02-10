@@ -241,41 +241,7 @@ function updateSearchResults(searchTerm, matchCount) {
         : '<i class="fas fa-times-circle"></i> No results found.';
 }
 
-/**
- * Sorts the table by specified column
- * @param {string} columnName - Name of the column to sort by
- */
-/*function sortTable(columnName) {
-    console.log(`Initiating table sort by column: ${columnName}`);
-    const column = columns[columnName];
-    
-    if (!column) {
-        console.error(`Invalid column name provided: ${columnName}`);
-        return;
-    }
-    
-    const rows = Array.from(tableBody.querySelectorAll('tr'));
-    const isNumeric = column.type === 'number';
-    
-    console.log(`Sorting ${rows.length} rows as ${isNumeric ? 'numeric' : 'string'} values`);
-    
-    rows.sort((a, b) => {
-        const aValue = a.cells[column.index].textContent.trim();
-        const bValue = b.cells[column.index].textContent.trim();
-        
-        if (isNumeric) {
-            const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
-            const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
-            return aNum - bNum;
-        }
-        
-        return aValue.localeCompare(bValue, undefined, { numeric: true });
-    });
-    
-    // Reappend sorted rows
-    rows.forEach(row => tableBody.appendChild(row));
-    console.log('Table sort complete');
-}*/
+
 // Track current sort state for columns
 let sortState = {
     currentColumn: null,
