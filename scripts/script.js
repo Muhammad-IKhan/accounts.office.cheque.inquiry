@@ -1,6 +1,6 @@
+//111
 class XMLTableHandler {
     constructor() {
-        // Initialize DOM elements
         this.tableBody = document.getElementById('checksTable');
         this.searchInput = document.getElementById('search');
         this.tableContainer = document.getElementById('tableContainer');
@@ -19,24 +19,23 @@ class XMLTableHandler {
             DD: { index: 7, type: 'string' }
         };
 
-        // Initialize event listeners
         this.initializeEventListeners();
     }
 
     initializeEventListeners() {
-        // Search input handler for Enter key
+        // Search input handler
         this.searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 this.searchAndFilterXML();
             }
         });
 
-        // Search input handler for live updates
+        // Search input live update
         this.searchInput.addEventListener('input', () => {
             this.searchAndFilterXML();
         });
 
-        // Initialize sorting handlers for each column
+        // Initialize sorting handlers
         Object.keys(this.columns).forEach(columnName => {
             const header = document.querySelector(`th[data-column="${columnName}"]`);
             if (header) {
@@ -49,9 +48,7 @@ class XMLTableHandler {
         try {
             console.log('Starting XML parsing...');
             const parser = new DOMParser();
-            
-            // Use the provided xmlString or fallback to the stored xmlData
-            const xmlDoc = parser.parseFromString(xmlString || this.xmlData, "text/xml");
+            const xmlDoc = parser.parseFromString(xmlString || xmlData, "text/xml");
             
             // Check for parsing errors
             const parserError = xmlDoc.querySelector('parsererror');
@@ -59,11 +56,9 @@ class XMLTableHandler {
                 throw new Error('XML parsing error: ' + parserError.textContent);
             }
 
-            // Get all G_PVN elements from the XML document
             const gPvnElements = xmlDoc.getElementsByTagName('G_PVN');
             console.log(`Found ${gPvnElements.length} G_PVN elements`);
 
-            // Ensure the table body element exists
             if (!this.tableBody) {
                 throw new Error('Table body element not found');
             }
@@ -71,7 +66,6 @@ class XMLTableHandler {
             // Clear existing table content
             this.tableBody.innerHTML = '';
 
-            // Create and append table rows for each G_PVN element
             Array.from(gPvnElements).forEach((element, index) => {
                 const row = this.createTableRow(element);
                 this.tableBody.appendChild(row);
@@ -89,12 +83,10 @@ class XMLTableHandler {
     createTableRow(element) {
         const row = document.createElement('tr');
         
-        // Create and populate table cells for each column
         Object.keys(this.columns).forEach(field => {
             const cell = document.createElement('td');
             let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '';
             
-            // Format the AMOUNT field as a number
             if (field === 'AMOUNT') {
                 try {
                     value = parseFloat(value).toLocaleString('en-US');
@@ -112,25 +104,74 @@ class XMLTableHandler {
         return row;
     }
 
-    async fetchXMLData() {
+    /* async fetchXMLData() {
+        try {
+            console.log('Fetching XML data...');
+            const xmlFiles = ['file1.xml', 'file2.xml', 'data.xml']; // Add your XML file names here
+            let combinedXMLData = '';
+
+            for (const file of xmlFiles) {
+                const response = await fetch(`/public/data/${file}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const data = await response.text();
+                combinedXMLData += data;
+            }
+
+            console.log('XML data fetched successfully');
+            
+            localStorage.setItem('xmlData', combinedXMLData);
+            xmlData = combinedXMLData;
+            
+            return this.parseXMLToTable(combinedXMLData);
+        } catch (error) {
+            console.error('Error fetching XML:', error);
+            
+            const storedXML = localStorage.getItem('xmlData');
+            if (storedXML) {
+                console.log('Loading XML from localStorage');
+                return this.parseXMLToTable(storedXML);
+            }
+            
+            this.showError('Failed to load XML data');
+            return false;
+        }
+    } */
+    
+   /* async fetchXMLData() {
         try {
             console.log('Fetching XML data...');
 
-            // Fetch the list of XML files from files.json
-            const filesResponse = await fetch('/accounts.office.cheque.inquiry/public/data/files.json');
+            // Fetch the list of XML files in the directory
+            const dataDirUrl = '/accounts.office.cheque.inquiry/public/data/';
+            const response = await fetch(dataDirUrl);
             
-            if (!filesResponse.ok) {
-                throw new Error(`HTTP error! Status: ${filesResponse.status}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const xmlFiles = await filesResponse.json();
+            // Parse the directory listing (this is a hack and may not work on all servers)
+            const htmlText = await response.text();
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(htmlText, 'text/html');
+            const links = htmlDoc.querySelectorAll('a');
+
+            // Filter XML files
+            const xmlFiles = Array.from(links)
+                .map(link => link.getAttribute('href'))
+                .filter(href => href.endsWith('.xml'))
+                .map(href => href.split('/').pop()); // Extract file names
+
             console.log('Found XML files:', xmlFiles);
 
-            let combinedXMLData = '<root>'; // Wrap combined XML data in a root element
+            let combinedXMLData = '';
 
             // Fetch and combine the content of all XML files
             for (const file of xmlFiles) {
-                const fileUrl = `/accounts.office.cheque.inquiry/public/data/${file}`;
+                const fileUrl = `${dataDirUrl}${file}`;
                 console.log(`Fetching file: ${fileUrl}`);
 
                 const fileResponse = await fetch(fileUrl);
@@ -144,18 +185,15 @@ class XMLTableHandler {
                 combinedXMLData += data;
             }
 
-            combinedXMLData += '</root>'; // Close the root element
             console.log('XML data fetched successfully');
             
-            // Store the combined XML data in localStorage and as a class property
             localStorage.setItem('xmlData', combinedXMLData);
-            this.xmlData = combinedXMLData;
+            xmlData = combinedXMLData;
             
             return this.parseXMLToTable(combinedXMLData);
         } catch (error) {
             console.error('Error fetching XML:', error);
             
-            // Fallback to stored XML data in localStorage if available
             const storedXML = localStorage.getItem('xmlData');
             if (storedXML) {
                 console.log('Loading XML from localStorage');
@@ -165,7 +203,64 @@ class XMLTableHandler {
             this.showError('Failed to load XML data');
             return false;
         }
+    } */
+
+
+
+
+
+    async fetchXMLData() {
+    try {
+        console.log('Fetching XML data...');
+
+        // Fetch the list of XML files from files.json
+        const filesResponse = await fetch('/accounts.office.cheque.inquiry/public/data/files.json');
+        
+        if (!filesResponse.ok) {
+            throw new Error(`HTTP error! Status: ${filesResponse.status}`);
+        }
+
+        const xmlFiles = await filesResponse.json();
+        console.log('Found XML files:', xmlFiles);
+
+        let combinedXMLData = '';
+
+        // Fetch and combine the content of all XML files
+        for (const file of xmlFiles) {
+            const fileUrl = `/accounts.office.cheque.inquiry/public/data/${file}`;
+            console.log(`Fetching file: ${fileUrl}`);
+
+            const fileResponse = await fetch(fileUrl);
+            
+            if (!fileResponse.ok) {
+                throw new Error(`HTTP error! Status: ${fileResponse.status} for file: ${fileUrl}`);
+            }
+            
+            const data = await fileResponse.text();
+            console.log(`Successfully fetched file: ${fileUrl}`);
+            combinedXMLData += data;
+        }
+
+        console.log('XML data fetched successfully');
+        
+        localStorage.setItem('xmlData', combinedXMLData);
+        xmlData = combinedXMLData;
+        
+        return this.parseXMLToTable(combinedXMLData);
+    } catch (error) {
+        console.error('Error fetching XML:', error);
+        
+        const storedXML = localStorage.getItem('xmlData');
+        if (storedXML) {
+            console.log('Loading XML from localStorage');
+            return this.parseXMLToTable(storedXML);
+        }
+        
+        this.showError('Failed to load XML data');
+        return false;
     }
+}
+
 
     searchAndFilterXML() {
         const searchTerm = this.searchInput.value.toLowerCase();
