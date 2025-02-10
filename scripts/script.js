@@ -34,6 +34,14 @@ class XMLTableHandler {
             }
         });
 
+            // Search button click handler
+                const searchButton = document.getElementById('searchButton');
+                if (searchButton) {
+                    searchButton.addEventListener('click', () => {
+                        this.searchAndFilterXML();
+                    });
+                }
+
         // Initialize sorting handlers for each column
         Object.keys(this.columns).forEach(columnName => {
             const header = document.querySelector(`th[data-column="${columnName}"]`);
