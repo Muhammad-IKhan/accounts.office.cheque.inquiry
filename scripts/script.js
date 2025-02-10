@@ -200,8 +200,7 @@ class XMLTableHandler {
             ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
             : '<i class="fas fa-times-circle"></i> No results found.';
     }
-
-    sortTable(columnName) {
+/*  sortTable(columnName) {
         const column = this.columns[columnName];
         if (!column) return;
 
@@ -232,7 +231,46 @@ class XMLTableHandler {
         });
 
         rows.forEach(row => this.tableBody.appendChild(row));
-    }
+    } */
+
+    function sortTable(columnName) {
+    const table = document.getElementById('chequeTable');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const columnIndex = {
+        'SNO': 0, 'NARRATION': 1, 'AMOUNT': 2, 'CHEQ_NO': 3, 
+        'NAR': 4, 'BNO': 5, 'PVN': 6, 'DD': 7
+    }[columnName];
+
+    const currentHeader = table.querySelector(`th:nth-child(${columnIndex + 1})`);
+    const isAscending = !currentHeader.classList.contains('sort-asc');
+
+    table.querySelectorAll('th').forEach(th => {
+        th.classList.remove('sort-asc', 'sort-desc');
+    });
+
+    currentHeader.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
+
+    rows.sort((a, b) => {
+        const aValue = a.getElementsByTagName('td')[columnIndex].textContent.trim();
+        const bValue = b.getElementsByTagName('td')[columnIndex].textContent.trim();
+
+        const isNumeric = ['AMOUNT', 'SNO', 'CHEQ_NO', 'PVN', 'BNO'].includes(columnName);
+
+        if (isNumeric) {
+            const aNum = parseFloat(aValue.replace(/,/g, ''));
+            const bNum = parseFloat(bValue.replace(/,/g, ''));
+            return isAscending ? aNum - bNum : bNum - aNum;
+        }
+
+        return isAscending
+            ? aValue.localeCompare(bValue, undefined, { numeric: true })
+            : bValue.localeCompare(aValue, undefined, { numeric: true });
+    });
+
+    rows.forEach(row => tbody.appendChild(row));
+}
+
 
     resetTable() {
         this.searchInput.value = '';
