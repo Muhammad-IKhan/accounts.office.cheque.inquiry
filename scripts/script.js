@@ -1,240 +1,320 @@
-// This class handles everything related to the XML table, including parsing XML, rendering the table, searching, and sorting.
-class XMLTableHandler {
-    constructor() {
-        // Initialize references to important DOM elements.
-        // These elements are used to interact with the table, search input, and display messages.
-        this.tableBody = document.getElementById('checksTable'); // The table body where rows will be added.
-        this.searchInput = document.getElementById('search'); // The input field for searching.
-        this.tableContainer = document.getElementById('tableContainer'); // The container for the table.
-        this.emptyState = document.getElementById('emptyState'); // A message shown when no data is displayed.
-        this.resultContainer = document.getElementById('result'); // A message shown for search results.
+// Global variables to store DOM elements and data
+let tableBody, searchInput, tableContainer, emptyState, resultContainer;
+let xmlData;
 
-        // Define the columns in the table and their properties.
-        // Each column has an index (its position in the table) and a type (number or string).
-        this.columns = {
-            SNO: { index: 0, type: 'number' }, // Serial Number (numeric).
-            NARRATION: { index: 1, type: 'string' }, // Description (text).
-            AMOUNT: { index: 2, type: 'number' }, // Amount (numeric).
-            CHEQ_NO: { index: 3, type: 'number' }, // Cheque Number (numeric).
-            NAR: { index: 4, type: 'string' }, // Narration (text).
-            BNO: { index: 5, type: 'number' }, // Batch Number (numeric).
-            PVN: { index: 6, type: 'number' }, // Payment Voucher Number (numeric).
-            DD: { index: 7, type: 'string' } // Demand Draft (text).
-        };
+// Column configuration object defining the structure and data types for table columns
+const columns = {
+    SNO: { index: 0, type: 'number' },
+    NARRATION: { index: 1, type: 'string' },
+    AMOUNT: { index: 2, type: 'number' },
+    CHEQ_NO: { index: 3, type: 'number' },
+    NAR: { index: 4, type: 'string' },
+    BNO: { index: 5, type: 'number' },
+    PVN: { index: 6, type: 'number' },
+    DD: { index: 7, type: 'string' }
+};
 
-        // Set up event listeners for search and sorting.
-        this.initializeEventListeners();
-    }
+/**
+ * Initializes the application by setting up DOM elements and event listeners
+ * This function runs when the DOM content is fully loaded
+ */
+function initializeApplication() {
+    console.log('Initializing application and setting up DOM elements...');
+    
+    // Get references to DOM elements
+    tableBody = document.getElementById('checksTable');
+    searchInput = document.getElementById('search');
+    tableContainer = document.getElementById('tableContainer');
+    emptyState = document.getElementById('emptyState');
+    resultContainer = document.getElementById('result');
+    
+    // Set up event listeners for search and sorting
+    initializeEventListeners();
+    
+    // Start fetching XML data
+    fetchXMLData().then(() => {
+        console.log('Initial data fetch complete, resetting table to default state');
+        resetTable();
+    });
+}
 
-    // This method sets up event listeners for the search input and column headers.
-    initializeEventListeners() {
-        // Listen for the "Enter" key in the search input to trigger the search.
-        this.searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                this.searchAndFilterXML();
-            }
-        });
-
-        // Add click listeners to each column header for sorting.
-        Object.keys(this.columns).forEach(columnName => {
-            const header = document.querySelector(`th[data-column="${columnName}"]`);
-            if (header) {
-                header.addEventListener('click', () => this.sortTable(columnName));
-            }
-        });
-    }
-
-    // This method parses the XML data and populates the table with rows.
-    parseXMLToTable(xmlString = null) {
-        try {
-            // Use the DOMParser to convert the XML string into a document object.
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlString || this.xmlData, "text/xml");
-
-            // Check for errors in the XML parsing process.
-            const parserError = xmlDoc.querySelector('parsererror');
-            if (parserError) {
-                throw new Error('XML parsing error: ' + parserError.textContent);
-            }
-
-            // Get all <G_PVN> elements from the XML document.
-            const gPvnElements = xmlDoc.getElementsByTagName('G_PVN');
-
-            // Clear the existing table content.
-            this.tableBody.innerHTML = '';
-
-            // Loop through each <G_PVN> element and create a table row for it.
-            Array.from(gPvnElements).forEach((element) => {
-                const row = this.createTableRow(element);
-                this.tableBody.appendChild(row);
+/**
+ * Sets up all necessary event listeners for the application
+ * Includes search functionality and column sorting
+ */
+function initializeEventListeners() {
+    console.log('Setting up event listeners for search and sorting functionality');
+    
+    // Add Enter key listener for search input
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            console.log('Enter key pressed in search input, initiating search...');
+            searchAndFilterXML();
+        }
+    });
+    
+    // Add click listeners for column sorting
+    Object.keys(columns).forEach(columnName => {
+        const header = document.querySelector(`th[data-column="${columnName}"]`);
+        if (header) {
+            header.addEventListener('click', () => {
+                console.log(`Column header clicked: ${columnName}, initiating sort...`);
+                sortTable(columnName);
             });
-
-            console.log('Table populated successfully.');
-            return true;
-        } catch (error) {
-            console.error('Error in parseXMLToTable:', error);
-            this.showError('Failed to parse XML data.');
-            return false;
         }
-    }
+    });
+}
 
-    // This method creates a table row from an XML element.
-    createTableRow(element) {
-        const row = document.createElement('tr'); // Create a new table row.
-
-        // Loop through each column and create a table cell for it.
-        Object.keys(this.columns).forEach(field => {
-            const cell = document.createElement('td'); // Create a new table cell.
-            let value = element.getElementsByTagName(field)[0]?.textContent.trim() || ''; // Get the value from the XML.
-
-            // Format the AMOUNT column as a number with commas.
-            if (field === 'AMOUNT') {
-                value = parseFloat(value).toLocaleString('en-US');
-            }
-
-            cell.textContent = value; // Set the cell's text content.
-            row.appendChild(cell); // Add the cell to the row.
+/**
+ * Parses XML string data and populates the table
+ * @param {string} xmlString - The XML data to parse (optional)
+ * @returns {boolean} - Success status of parsing operation
+ */
+function parseXMLToTable(xmlString = null) {
+    console.log('Beginning XML parsing process...');
+    try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlString || xmlData, "text/xml");
+        
+        // Validate XML parsing
+        const parserError = xmlDoc.querySelector('parsererror');
+        if (parserError) {
+            throw new Error(`XML parsing error detected: ${parserError.textContent}`);
+        }
+        
+        // Get all relevant elements
+        const gPvnElements = xmlDoc.getElementsByTagName('G_PVN');
+        console.log(`Successfully found ${gPvnElements.length} G_PVN elements in XML`);
+        
+        // Clear existing table content for fresh data
+        tableBody.innerHTML = '';
+        
+        // Create table rows for each element
+        Array.from(gPvnElements).forEach((element, index) => {
+            console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
+            const row = createTableRow(element);
+            tableBody.appendChild(row);
         });
-
-        return row; // Return the completed row.
-    }
-
-    // This method fetches XML data from a file or uses cached data from localStorage.
-    async fetchXMLData() {
-        try {
-            // Fetch the XML data from the server.
-            const response = await fetch('/accounts.office.cheque.inquiry/public/data/data.xml');
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const data = await response.text(); // Get the XML data as text.
-            localStorage.setItem('xmlData', data); // Store the data in localStorage for offline use.
-            this.xmlData = data; // Save the data in the class property.
-
-            // Parse the XML data and populate the table.
-            return this.parseXMLToTable(data);
-        } catch (error) {
-            console.error('Error fetching XML:', error);
-
-            // If fetching fails, try to load the data from localStorage.
-            const storedXML = localStorage.getItem('xmlData');
-            if (storedXML) {
-                console.log('Loading XML from localStorage.');
-                return this.parseXMLToTable(storedXML);
-            }
-
-            this.showError('Failed to load XML data.');
-            return false;
-        }
-    }
-
-    // This method filters the table rows based on the search term.
-    searchAndFilterXML() {
-        const searchTerm = this.searchInput.value.toLowerCase(); // Get the search term in lowercase.
-
-        // If the search term is empty, reset the table.
-        if (!searchTerm) {
-            this.resetTable();
-            return;
-        }
-
-        // Show the table and hide the empty state message.
-        this.tableContainer.style.display = 'block';
-        this.emptyState.style.display = 'none';
-        this.resultContainer.style.display = 'block';
-
-        const rows = this.tableBody.querySelectorAll('tr'); // Get all table rows.
-        let matchCount = 0; // Count how many rows match the search term.
-
-        // Loop through each row and check if it matches the search term.
-        rows.forEach(row => {
-            const cells = row.getElementsByTagName('td'); // Get all cells in the row.
-            const matchesSearch = Array.from(cells).some(cell => 
-                cell.textContent.toLowerCase().includes(searchTerm) // Check if any cell contains the search term.
-            );
-
-            // Show or hide the row based on whether it matches the search term.
-            row.style.display = matchesSearch ? '' : 'none';
-            if (matchesSearch) matchCount++; // Increment the match count.
-        });
-
-        // Update the search results message.
-        this.updateSearchResults(searchTerm, matchCount);
-    }
-
-    // This method updates the search results message.
-    updateSearchResults(searchTerm, matchCount) {
-        this.resultContainer.innerHTML = matchCount > 0
-            ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
-            : '<i class="fas fa-times-circle"></i> No results found.';
-    }
-
-    // This method sorts the table by a specific column.
-    sortTable(columnName) {
-        const column = this.columns[columnName]; // Get the column configuration.
-        if (!column) {
-            console.error('Column not found:', columnName);
-            return;
-        }
-
-        const rows = Array.from(this.tableBody.querySelectorAll('tr')); // Get all table rows.
-
-        // Sort the rows based on the column's type (number or string).
-        rows.sort((a, b) => {
-            const aValue = a.cells[column.index].textContent.trim(); // Get the value from the first row.
-            const bValue = b.cells[column.index].textContent.trim(); // Get the value from the second row.
-
-            if (column.type === 'number') {
-                // For numeric columns, convert the values to numbers and compare them.
-                const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
-                const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
-                return aNum - bNum;
-            } else {
-                // For string columns, use localeCompare to compare the values.
-                return aValue.localeCompare(bValue, undefined, { numeric: true });
-            }
-        });
-
-        // Re-append the sorted rows to the table.
-        rows.forEach(row => this.tableBody.appendChild(row));
-    }
-
-    // This method resets the table to its initial state.
-    resetTable() {
-        this.searchInput.value = ''; // Clear the search input.
-        this.tableContainer.style.display = 'none'; // Hide the table.
-        this.emptyState.style.display = 'block'; // Show the empty state message.
-        this.resultContainer.style.display = 'none'; // Hide the search results message.
-    }
-
-    // This method displays an error message.
-    showError(message) {
-        this.resultContainer.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-        this.resultContainer.style.display = 'block';
+        
+        console.log('Table population completed successfully');
+        return true;
+    } catch (error) {
+        console.error('Error encountered during XML parsing:', error);
+        showError('Failed to parse XML data. Please check the data format.');
+        return false;
     }
 }
 
-// When the page loads, initialize the XMLTableHandler and fetch the XML data.
-document.addEventListener('DOMContentLoaded', () => {
-    const handler = new XMLTableHandler();
-    handler.fetchXMLData().then(() => {
-        handler.resetTable();
+/**
+ * Creates a table row from an XML element
+ * @param {Element} element - The XML element to convert
+ * @returns {HTMLTableRowElement} - The created table row
+ */
+function createTableRow(element) {
+    console.log('Creating new table row from XML element');
+    const row = document.createElement('tr');
+    
+    Object.keys(columns).forEach(field => {
+        const cell = document.createElement('td');
+        let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '';
+        
+        // Special handling for AMOUNT field
+        if (field === 'AMOUNT') {
+            console.log(`Formatting amount value: ${value}`);
+            try {
+                value = parseFloat(value).toLocaleString('en-US');
+            } catch (error) {
+                console.warn(`Invalid amount value detected: ${value}, defaulting to 0`);
+                value = '0';
+            }
+        }
+        
+        cell.textContent = value;
+        cell.setAttribute('data-field', field);
+        row.appendChild(cell);
     });
-});
+    
+    return row;
+}
 
-// Register a service worker for offline functionality.
+/**
+ * Fetches XML data from server and processes it
+ * @returns {Promise<boolean>} - Success status of fetch operation
+ */
+async function fetchXMLData() {
+    console.log('Starting XML data fetch process...');
+    try {
+        const filesResponse = await fetch('/accounts.office.cheque.inquiry/public/data/files.json');
+        
+        if (!filesResponse.ok) {
+            throw new Error(`HTTP error during files fetch: ${filesResponse.status}`);
+        }
+        
+        const xmlFiles = await filesResponse.json();
+        console.log(`Found ${xmlFiles.length} XML files to process`);
+        
+        let combinedXMLData = '<root>';
+        
+        // Process each XML file
+        for (const file of xmlFiles) {
+            console.log(`Fetching file: ${file}`);
+            const fileUrl = `/accounts.office.cheque.inquiry/public/data/${file}`;
+            const fileResponse = await fetch(fileUrl);
+            
+            if (!fileResponse.ok) {
+                throw new Error(`Failed to fetch file ${file}: ${fileResponse.status}`);
+            }
+            
+            const data = await fileResponse.text();
+            combinedXMLData += data;
+            console.log(`Successfully appended data from ${file}`);
+        }
+        
+        combinedXMLData += '</root>';
+        
+        // Store data for future use
+        localStorage.setItem('xmlData', combinedXMLData);
+        xmlData = combinedXMLData;
+        
+        console.log('XML data fetch and combination complete');
+        return parseXMLToTable(combinedXMLData);
+    } catch (error) {
+        console.error('Error in XML data fetch:', error);
+        
+        // Attempt to load from localStorage
+        const storedXML = localStorage.getItem('xmlData');
+        if (storedXML) {
+            console.log('Falling back to stored XML data from localStorage');
+            return parseXMLToTable(storedXML);
+        }
+        
+        showError('Failed to load XML data. Please check your connection.');
+        return false;
+    }
+}
+
+/**
+ * Performs search and filtering on the table data
+ */
+function searchAndFilterXML() {
+    const searchTerm = searchInput.value.toLowerCase();
+    console.log(`Performing search with term: "${searchTerm}"`);
+    
+    if (!searchTerm) {
+        console.log('Empty search term, resetting table');
+        resetTable();
+        return;
+    }
+    
+    // Show relevant containers
+    tableContainer.style.display = 'block';
+    emptyState.style.display = 'none';
+    resultContainer.style.display = 'block';
+    
+    const rows = tableBody.querySelectorAll('tr');
+    let matchCount = 0;
+    
+    // Filter rows based on search term
+    rows.forEach(row => {
+        const cells = row.getElementsByTagName('td');
+        const matchesSearch = Array.from(cells).some(cell => 
+            cell.textContent.toLowerCase().includes(searchTerm)
+        );
+        
+        row.style.display = matchesSearch ? '' : 'none';
+        if (matchesSearch) matchCount++;
+    });
+    
+    console.log(`Search complete. Found ${matchCount} matches`);
+    updateSearchResults(searchTerm, matchCount);
+}
+
+/**
+ * Updates the search results display
+ * @param {string} searchTerm - The search term used
+ * @param {number} matchCount - Number of matches found
+ */
+function updateSearchResults(searchTerm, matchCount) {
+    console.log(`Updating search results display for "${searchTerm}" with ${matchCount} matches`);
+    resultContainer.innerHTML = matchCount > 0
+        ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
+        : '<i class="fas fa-times-circle"></i> No results found.';
+}
+
+/**
+ * Sorts the table by specified column
+ * @param {string} columnName - Name of the column to sort by
+ */
+function sortTable(columnName) {
+    console.log(`Initiating table sort by column: ${columnName}`);
+    const column = columns[columnName];
+    
+    if (!column) {
+        console.error(`Invalid column name provided: ${columnName}`);
+        return;
+    }
+    
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    const isNumeric = column.type === 'number';
+    
+    console.log(`Sorting ${rows.length} rows as ${isNumeric ? 'numeric' : 'string'} values`);
+    
+    rows.sort((a, b) => {
+        const aValue = a.cells[column.index].textContent.trim();
+        const bValue = b.cells[column.index].textContent.trim();
+        
+        if (isNumeric) {
+            const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
+            const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
+            return aNum - bNum;
+        }
+        
+        return aValue.localeCompare(bValue, undefined, { numeric: true });
+    });
+    
+    // Reappend sorted rows
+    rows.forEach(row => tableBody.appendChild(row));
+    console.log('Table sort complete');
+}
+
+/**
+ * Resets the table to its initial state
+ */
+function resetTable() {
+    console.log('Resetting table to initial state');
+    searchInput.value = '';
+    tableContainer.style.display = 'none';
+    emptyState.style.display = 'block';
+    resultContainer.style.display = 'none';
+}
+
+/**
+ * Displays error messages to the user
+ * @param {string} message - Error message to display
+ */
+function showError(message) {
+    console.error(`Displaying error message: ${message}`);
+    resultContainer.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+    resultContainer.style.display = 'block';
+}
+
+// Initialize the application when DOM is ready
+document.addEventListener('DOMContentLoaded', initializeApplication);
+
+// Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         const swPath = '/accounts.office.cheque.inquiry/service-worker.js';
+        console.log('Attempting to register Service Worker...');
+        
         navigator.serviceWorker.register(swPath, {
             scope: '/accounts.office.cheque.inquiry/'
         })
         .then(registration => {
-            console.log('ServiceWorker registered with scope:', registration.scope);
+            console.log('Service Worker successfully registered with scope:', registration.scope);
         })
         .catch(err => {
-            console.error('ServiceWorker registration failed:', err);
+            console.error('Service Worker registration failed:', err);
         });
     });
 }
