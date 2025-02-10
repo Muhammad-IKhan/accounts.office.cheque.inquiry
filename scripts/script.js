@@ -200,66 +200,45 @@ class XMLTableHandler {
             ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
             : '<i class="fas fa-times-circle"></i> No results found.';
     }
-/*  sortTable(columnName) {
-        const column = this.columns[columnName];
-        if (!column) return;
+    
+  
+     sortTable(columnName) {
+    const column = this.columns[columnName];
+    if (!column) {
+        console.error('Column not found:', columnName);
+        return;
+    }
 
-        const header = document.querySelector(`th[data-column="${columnName}"]`);
-        const isAscending = !header.classList.contains('sort-asc');
+    const header = document.querySelector(`th[data-column="${columnName}"]`);
+    if (!header) {
+        console.error('Header not found for column:', columnName);
+        return;
+    }
 
-        // Update sort indicators
-        document.querySelectorAll('th').forEach(th => {
-            th.classList.remove('sort-asc', 'sort-desc');
-        });
-        header.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
+    const isAscending = !header.classList.contains('sort-asc');
 
-        const rows = Array.from(this.tableBody.querySelectorAll('tr'));
-        
-        rows.sort((a, b) => {
-            const aValue = a.cells[column.index].textContent.trim();
-            const bValue = b.cells[column.index].textContent.trim();
-
-            if (column.type === 'number') {
-                const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
-                const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
-                return isAscending ? aNum - bNum : bNum - aNum;
-            }
-
-            return isAscending
-                ? aValue.localeCompare(bValue, undefined, { numeric: true })
-                : bValue.localeCompare(aValue, undefined, { numeric: true });
-        });
-
-        rows.forEach(row => this.tableBody.appendChild(row));
-    } */
-
-    function sortTable(columnName) {
-    const table = document.getElementById('chequeTable');
-    const tbody = table.querySelector('tbody');
-    const rows = Array.from(tbody.querySelectorAll('tr'));
-    const columnIndex = {
-        'SNO': 0, 'NARRATION': 1, 'AMOUNT': 2, 'CHEQ_NO': 3, 
-        'NAR': 4, 'BNO': 5, 'PVN': 6, 'DD': 7
-    }[columnName];
-
-    const currentHeader = table.querySelector(`th:nth-child(${columnIndex + 1})`);
-    const isAscending = !currentHeader.classList.contains('sort-asc');
-
-    table.querySelectorAll('th').forEach(th => {
+    // Update sort indicators
+    document.querySelectorAll('th').forEach(th => {
         th.classList.remove('sort-asc', 'sort-desc');
     });
+    header.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
 
-    currentHeader.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
+    const rows = Array.from(this.tableBody.querySelectorAll('tr'));
+
+    // Debugging logs
+    console.log('Sorting by column:', columnName);
+    console.log('Column index:', column.index);
+    console.log('Is ascending:', isAscending);
 
     rows.sort((a, b) => {
-        const aValue = a.getElementsByTagName('td')[columnIndex].textContent.trim();
-        const bValue = b.getElementsByTagName('td')[columnIndex].textContent.trim();
+        const aValue = a.cells[column.index].textContent.trim();
+        const bValue = b.cells[column.index].textContent.trim();
 
-        const isNumeric = ['AMOUNT', 'SNO', 'CHEQ_NO', 'PVN', 'BNO'].includes(columnName);
+        console.log('A value:', aValue, 'B value:', bValue);
 
-        if (isNumeric) {
-            const aNum = parseFloat(aValue.replace(/,/g, ''));
-            const bNum = parseFloat(bValue.replace(/,/g, ''));
+        if (column.type === 'number') {
+            const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
+            const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
             return isAscending ? aNum - bNum : bNum - aNum;
         }
 
@@ -268,8 +247,12 @@ class XMLTableHandler {
             : bValue.localeCompare(aValue, undefined, { numeric: true });
     });
 
-    rows.forEach(row => tbody.appendChild(row));
+    // Re-render rows
+    rows.forEach(row => this.tableBody.appendChild(row));
+    console.log('Sorting complete');
 }
+
+
 
 
     resetTable() {
