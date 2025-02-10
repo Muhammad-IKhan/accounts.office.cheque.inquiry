@@ -245,7 +245,7 @@ function updateSearchResults(searchTerm, matchCount) {
  * Sorts the table by specified column
  * @param {string} columnName - Name of the column to sort by
  */
-function sortTable(columnName) {
+/*function sortTable(columnName) {
     console.log(`Initiating table sort by column: ${columnName}`);
     const column = columns[columnName];
     
@@ -275,6 +275,79 @@ function sortTable(columnName) {
     // Reappend sorted rows
     rows.forEach(row => tableBody.appendChild(row));
     console.log('Table sort complete');
+}*/
+// Track current sort state for columns
+let sortState = {
+    currentColumn: null,
+    direction: 'asc'
+};
+
+/**
+ * Sorts the table by specified column with toggle functionality
+ * @param {string} columnName - Name of the column to sort by
+ */
+function sortTable(columnName) {
+    console.log(`Initiating table sort by column: ${columnName}`);
+    const column = columns[columnName];
+    
+    if (!column) {
+        console.error(`Invalid column name provided: ${columnName}`);
+        return;
+    }
+    
+    // Update sort direction
+    if (sortState.currentColumn === columnName) {
+        sortState.direction = sortState.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+        sortState.currentColumn = columnName;
+        sortState.direction = 'asc';
+    }
+    
+    // Update visual indicators
+    updateSortIndicators(columnName);
+    
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    const isNumeric = column.type === 'number';
+    
+    console.log(`Sorting ${rows.length} rows as ${isNumeric ? 'numeric' : 'string'} values in ${sortState.direction} order`);
+    
+    rows.sort((a, b) => {
+        const aValue = a.cells[column.index].textContent.trim();
+        const bValue = b.cells[column.index].textContent.trim();
+        
+        let comparison;
+        if (isNumeric) {
+            const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
+            const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
+            comparison = aNum - bNum;
+        } else {
+            comparison = aValue.localeCompare(bValue, undefined, { numeric: true });
+        }
+        
+        return sortState.direction === 'asc' ? comparison : -comparison;
+    });
+    
+    // Reappend sorted rows
+    rows.forEach(row => tableBody.appendChild(row));
+    console.log(`Table sort complete in ${sortState.direction} order`);
+}
+
+/**
+ * Updates the visual sort indicators in column headers
+ * @param {string} activeColumn - Currently sorted column name
+ */
+function updateSortIndicators(activeColumn) {
+    // Remove existing indicators
+    document.querySelectorAll('th[data-column] .sort-indicator').forEach(indicator => indicator.remove());
+    
+    // Add indicator to active column
+    const activeHeader = document.querySelector(`th[data-column="${activeColumn}"]`);
+    if (activeHeader) {
+        const indicator = document.createElement('span');
+        indicator.className = 'sort-indicator';
+        indicator.innerHTML = sortState.direction === 'asc' ? ' ↑' : ' ↓';
+        activeHeader.appendChild(indicator);
+    }
 }
 
 /**
