@@ -203,53 +203,54 @@ class XMLTableHandler {
     
   
      sortTable(columnName) {
-    const column = this.columns[columnName];
-    if (!column) {
-        console.error('Column not found:', columnName);
-        return;
-    }
-
-    const header = document.querySelector(`th[data-column="${columnName}"]`);
-    if (!header) {
-        console.error('Header not found for column:', columnName);
-        return;
-    }
-
-    const isAscending = !header.classList.contains('sort-asc');
-
-    // Update sort indicators
-    document.querySelectorAll('th').forEach(th => {
-        th.classList.remove('sort-asc', 'sort-desc');
-    });
-    header.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
-
-    const rows = Array.from(this.tableBody.querySelectorAll('tr'));
-
-    // Debugging logs
-    console.log('Sorting by column:', columnName);
-    console.log('Column index:', column.index);
-    console.log('Is ascending:', isAscending);
-
-    rows.sort((a, b) => {
-        const aValue = a.cells[column.index].textContent.trim();
-        const bValue = b.cells[column.index].textContent.trim();
-
-        console.log('A value:', aValue, 'B value:', bValue);
-
-        if (column.type === 'number') {
-            const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
-            const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
-            return isAscending ? aNum - bNum : bNum - aNum;
+        const column = this.columns[columnName];
+        if (!column) {
+            console.error('Column not found t4sting:', columnName);
+            return;
         }
 
-        return isAscending
-            ? aValue.localeCompare(bValue, undefined, { numeric: true })
-            : bValue.localeCompare(aValue, undefined, { numeric: true });
-    });
+        const header = document.querySelector(`th[data-column="${columnName}"]`);
+        if (!header) {
+            console.error('Header not found for column:', columnName);
+            return;
+        }
 
-    // Re-render rows
-    rows.forEach(row => this.tableBody.appendChild(row));
-    console.log('Sorting complete');
+        const isAscending = !header.classList.contains('sort-asc');
+
+        // Update sort indicators
+        document.querySelectorAll('th').forEach(th => {
+            th.classList.remove('sort-asc', 'sort-desc');
+        });
+        header.classList.add(isAscending ? 'sort-asc' : 'sort-desc');
+
+        const rows = Array.from(this.tableBody.querySelectorAll('tr'));
+
+        // Debugging logs
+        console.log('Sorting by column:', columnName);
+        console.log('Column index:', column.index);
+        console.log('Is ascending:', isAscending);
+
+        rows.sort((a, b) => {
+            const aValue = a.cells[column.index].textContent.trim();
+            const bValue = b.cells[column.index].textContent.trim();
+
+            console.log('A value:', aValue, 'B value:', bValue);
+
+            if (column.type === 'number') {
+                const aNum = parseFloat(aValue.replace(/,/g, '')) || 0;
+                const bNum = parseFloat(bValue.replace(/,/g, '')) || 0;
+                return isAscending ? aNum - bNum : bNum - aNum;
+            }
+
+            return isAscending
+                ? aValue.localeCompare(bValue, undefined, { numeric: true })
+                : bValue.localeCompare(aValue, undefined, { numeric: true });
+        });
+
+        // Re-render rows
+        rows.forEach(row => this.tableBody.appendChild(row));
+        console.log('Sorting complete');
+    }
 }
 
 
