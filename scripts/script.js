@@ -39,6 +39,16 @@ class XMLTableHandler {
                 this.log('Search triggered by Enter key');
                 this.searchAndFilterXML();
             }
+
+            // In constructor or bindEvents method
+Object.keys(this.columns).forEach(columnName => {
+    const header = document.querySelector(`th[data-column="${columnName}"]`);
+    if (header) {
+        header.addEventListener('click', () => {
+            this.handleSort(columnName);
+        });
+    }
+});
         });
 
         // Column sorting
