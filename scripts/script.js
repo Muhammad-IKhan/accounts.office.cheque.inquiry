@@ -31,10 +31,10 @@ class XMLTableHandler {
             }
         });
 
-        // Search input handler for live updates
-        this.searchInput.addEventListener('input', () => {
+        // Search input handler for live updates for office applications internaly
+        /* this.searchInput.addEventListener('input', () => {
             this.searchAndFilterXML();
-        });
+        }); */
 
         // Initialize sorting handlers for each column
         Object.keys(this.columns).forEach(columnName => {
