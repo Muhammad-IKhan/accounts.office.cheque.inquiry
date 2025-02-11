@@ -19,7 +19,7 @@ const columns = {
  * This function runs when the DOM content is fully loaded
  */
 function initializeApplication() {
-    console.log('Initializing application and setting up DOM elements...');
+    console.log('Initializing...');
     
     // Get references to DOM elements
     tableBody = document.getElementById('checksTable');
@@ -33,7 +33,7 @@ function initializeApplication() {
     
     // Start fetching XML data
     fetchXMLData().then(() => {
-        console.log('Initial data fetch complete, resetting table to default state');
+        console.log('Init df complete, resetting tb to default state');
         resetTable();
     });
 }
@@ -43,12 +43,12 @@ function initializeApplication() {
  * Includes search functionality and column sorting
  */
 function initializeEventListeners() {
-    console.log('Setting up event listeners for search and sorting functionality');
+    console.log('Setting up event listeners for sa and so');
     
     // Add Enter key listener for search input
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            console.log('Enter key pressed in search input, initiating search...');
+          //  console.log('Enter key pressed in search input, initiating search...');
             searchAndFilterXML();
         }
     });
@@ -58,7 +58,7 @@ function initializeEventListeners() {
         const header = document.querySelector(`th[data-column="${columnName}"]`);
         if (header) {
             header.addEventListener('click', () => {
-                console.log(`Column header clicked: ${columnName}, initiating sort...`);
+              //  console.log(`Column header clicked: ${columnName}, initiating sort...`);
                 sortTable(columnName);
             });
         }
@@ -91,12 +91,12 @@ function parseXMLToTable(xmlString = null) {
         
         // Create table rows for each element
         Array.from(gPvnElements).forEach((element, index) => {
-            console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
+        // console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
             const row = createTableRow(element);
             tableBody.appendChild(row);
         });
         
-        console.log('Table population completed successfully');
+      // console.log('Table population completed successfully');
         return true;
     } catch (error) {
         console.error('Error encountered during XML parsing:', error);
@@ -111,7 +111,7 @@ function parseXMLToTable(xmlString = null) {
  * @returns {HTMLTableRowElement} - The created table row
  */
 function createTableRow(element) {
-    console.log('Creating new table row from XML element');
+   // console.log('Creating new table row from XML element');
     const row = document.createElement('tr');
     
     Object.keys(columns).forEach(field => {
@@ -120,7 +120,7 @@ function createTableRow(element) {
         
         // Special handling for AMOUNT field
         if (field === 'AMOUNT') {
-            console.log(`Formatting amount value: ${value}`);
+           // console.log(`Formatting amount value: ${value}`);
             try {
                 value = parseFloat(value).toLocaleString('en-US');
             } catch (error) {
@@ -142,7 +142,7 @@ function createTableRow(element) {
  * @returns {Promise<boolean>} - Success status of fetch operation
  */
 async function fetchXMLData() {
-    console.log('Starting XML data fetch process...');
+  //  console.log('Starting XML data fetch process...');
     try {
         const filesResponse = await fetch('/accounts.office.cheque.inquiry/public/data/files.json');
         
@@ -151,13 +151,13 @@ async function fetchXMLData() {
         }
         
         const xmlFiles = await filesResponse.json();
-        console.log(`Found ${xmlFiles.length} XML files to process`);
+       // console.log(`Found ${xmlFiles.length} XML files to process`);
         
         let combinedXMLData = '<root>';
         
         // Process each XML file
         for (const file of xmlFiles) {
-            console.log(`Fetching file: ${file}`);
+          //  console.log(`Fetching file: ${file}`);
             const fileUrl = `/accounts.office.cheque.inquiry/public/data/${file}`;
             const fileResponse = await fetch(fileUrl);
             
@@ -199,11 +199,11 @@ async function fetchXMLData() {
 function searchAndFilterXML() {
     // Get the search term from the input and convert it to lowercase
     const searchTerm = searchInput.value.toLowerCase();
-    console.log(`Performing search with term: "${searchTerm}"`);
+   // console.log(`Performing search with term: "${searchTerm}"`);
     
     // If the search term is empty, reset the table and exit the function
     if (!searchTerm) {
-        console.log('Empty search term, resetting table');
+      //  console.log('Empty search term, resetting table');
         resetTable();
         return;
     }
@@ -227,7 +227,7 @@ function searchAndFilterXML() {
          Array.from(cells).forEach(cell => {
         // Get the text content of the cell, or replace it with '-' if it's empty
         const cellText = cell.textContent.trim().toLowerCase() || '-';
-        console.log(`Cell content: "${cellText}"`);
+       // console.log(`Cell content: "${cellText}"`);
         
         // Check if the cell content includes the search term
         if (cellText.includes(searchTerm)) {
@@ -237,13 +237,13 @@ function searchAndFilterXML() {
         // Update the cell content to display '-' if it's empty
         if (!cell.textContent.trim()) {
             cell.textContent = '-';
-            console.log(`Empty cell detected, replaced with "-"`);
+         //   console.log(`Empty cell detected, replaced with "-"`);
         }
         
         // Handle empty or NaN values specifically for the "Amount" cell
         if (cell.classList.contains('amount') && (isNaN(cell.textContent.trim()) || cell.textContent.trim() === '-')) {
             cell.textContent = '-';
-            console.log(`Empty or NaN amount cell detected, replaced with "-"`);
+           // console.log(`Empty or NaN amount cell detected, replaced with "-"`);
         }
     });
                          
@@ -251,14 +251,14 @@ function searchAndFilterXML() {
         row.style.display = matchesSearch ? '' : 'none';
         if (matchesSearch) {
             matchCount++;
-            console.log(`Row matches search term: "${searchTerm}"`);
+          //  console.log(`Row matches search term: "${searchTerm}"`);
         } else {
-            console.log(`Row does not match search term: "${searchTerm}"`);
+          //  console.log(`Row does not match search term: "${searchTerm}"`);
         }
     });
     
     // Log the total number of matches found
-    console.log(`Search complete. Found ${matchCount} matches`);
+   // console.log(`Search complete. Found ${matchCount} matches`);
     
     // Update the search results and initialize pagination
     updateSearchResults(searchTerm, matchCount);
@@ -271,13 +271,13 @@ function resetTable() {
     rows.forEach(row => {
         row.style.display = '';
     });
-    console.log('Table reset complete');
+  //  console.log('Table reset complete');
 }
 
 // Helper function to update search results (assuming this function exists)
 function updateSearchResults(searchTerm, matchCount) {
     resultContainer.textContent = `Found ${matchCount} results for "${searchTerm}"`;
-    console.log(`Updated search results with term: "${searchTerm}" and match count: ${matchCount}`);
+ //   console.log(`Updated search results with term: "${searchTerm}" and match count: ${matchCount}`);
 }
 
 // Helper function to initialize pagination (assuming this function exists)
@@ -294,7 +294,7 @@ function initializePagination() {
  * @param {number} matchCount - Number of matches found
  */
 function updateSearchResults(searchTerm, matchCount) {
-    console.log(`Updating search results display for "${searchTerm}" with ${matchCount} matches`);
+   // console.log(`Updating search results display for "${searchTerm}" with ${matchCount} matches`);
     resultContainer.innerHTML = matchCount > 0
         ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
         : '<i class="fas fa-times-circle"></i> No results found.';
@@ -488,6 +488,7 @@ function updatePagination() {
     // Calculate start and end indices
     const startIndex = (paginationState.currentPage - 1) * paginationState.rowsPerPage;
     const endIndex = Math.min(startIndex + paginationState.rowsPerPage, totalRows);
+    
     
     // Show/hide rows based on current page
     rows.forEach((row, index) => {
