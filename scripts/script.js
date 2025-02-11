@@ -73,34 +73,37 @@ function initializeEventListeners() {
 function parseXMLToTable(xmlString = null) {
     console.log('Beginning XML parsing process...');
     try {
+        // Use the provided XML string or fall back to the global xmlData
+        const xmlToParse = xmlString || xmlData;
 
-        // Replace newline character (&#10;) with <br /> tag
-        let xmlData1 = xmlData.replace(/&#10;/g, '<br />');
+        // Replace newline character (&#10;) with <br /> tag in the entire XML
+        const xmlWithBreaks = xmlToParse.replace(/&#10;/g, '<br />');
 
+        // Parse the modified XML string
         const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlString || xmlData1, "text/xml");
-        
+        const xmlDoc = parser.parseFromString(xmlWithBreaks, "text/xml");
+
         // Validate XML parsing
         const parserError = xmlDoc.querySelector('parsererror');
         if (parserError) {
             throw new Error(`XML parsing error detected: ${parserError.textContent}`);
         }
-        
+
         // Get all relevant elements
         const gPvnElements = xmlDoc.getElementsByTagName('G_PVN');
-       // console.log(`Successfully found ${gPvnElements.length} G_PVN elements in XML`);
-        
+        console.log(`Successfully found ${gPvnElements.length} G_PVN elements in XML`);
+
         // Clear existing table content for fresh data
         tableBody.innerHTML = '';
-        
+
         // Create table rows for each element
         Array.from(gPvnElements).forEach((element, index) => {
-        // console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
+            console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
             const row = createTableRow(element);
             tableBody.appendChild(row);
         });
-        
-      // console.log('Table population completed successfully');
+
+        console.log('Table population completed successfully');
         return true;
     } catch (error) {
         console.error('Error encountered during XML parsing:', error);
@@ -115,16 +118,16 @@ function parseXMLToTable(xmlString = null) {
  * @returns {HTMLTableRowElement} - The created table row
  */
 function createTableRow(element) {
-   // console.log('Creating new table row from XML element');
+    console.log('Creating new table row from XML element');
     const row = document.createElement('tr');
-    
+
     Object.keys(columns).forEach(field => {
         const cell = document.createElement('td');
         let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '-';
-        
+
         // Special handling for AMOUNT field
         if (field === 'AMOUNT') {
-           // console.log(`Formatting amount value: ${value}`);
+            console.log(`Formatting amount value: ${value}`);
             try {
                 value = parseFloat(value).toLocaleString('en-US');
             } catch (error) {
@@ -132,14 +135,21 @@ function createTableRow(element) {
                 value = '0';
             }
         }
-        
-        cell.textContent = value;
+
+        // Replace newline characters with <br> tags for display
+        if (value.includes('<br />')) {
+            cell.innerHTML = value; // Use innerHTML to render <br> tags
+        } else {
+            cell.textContent = value; // Use textContent for plain text
+        }
+
         cell.setAttribute('data-field', field);
         row.appendChild(cell);
     });
-    
+
     return row;
 }
+
 
 /**
  * Fetches XML data from server and processes it
@@ -174,7 +184,7 @@ async function fetchXMLData() {
             //console.log(`Successfully appended data from ${file}`);
         }
         
-        combinedXMLData += '</root>';
+        combinedXMLData += '</root style="white-space: pre-line;" id="dd-content">';
         
         // Store data for future use
         localStorage.setItem('xmlData', combinedXMLData);
