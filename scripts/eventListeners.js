@@ -1,6 +1,6 @@
 // eventListeners.js
 // Import the objects
-import { searchAndFilterXML, sortTable } from './tableFunctions.js';
+import { searchAndFilterXML, sortTable, resetTable } from './tableFunctions.js';
 import { initializeDOMElements } from './domElements.js';
 import { columns } from './tableFunctions.js'; 
 
