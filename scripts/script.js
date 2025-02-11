@@ -243,7 +243,7 @@ function searchAndFilterXML() {
         // Handle empty or NaN values specifically for the "Amount" cell
         if (cell.classList.contains('amount') && (isNaN(cell.textContent.trim()) || cell.textContent.trim() === '-')) {
             cell.textContent = '-';
-           // console.log(`Empty or NaN amount cell detected, replaced with "-"`);
+            console.log(`Empty or NaN amount cell detected, replaced with "-"`);
         }
     });
                          
