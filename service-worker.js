@@ -32,25 +32,32 @@ const ASSETS_TO_CACHE  = [
 
 // Install the service worker and cache resources
 self.addEventListener('install', (event) => {
-  console.log('Service Worker installing...');
-  event.waitUntil(
-    caches.open(CACHE_NAME)
+    console.log('Service Worker installing...');
+    event.waitUntil(
+        caches.open(CACHE_NAME)
             .then((cache) => {
                 console.log('Caching assets...');
-                return cache.addAll(ASSETS_TO_CACHE);
+                return Promise.all(
+                    ASSETS_TO_CACHE.map((asset) => {
+                        return cache.add(asset).catch((err) => {
+                            console.error(`Failed to cache ${asset}:`, err);
+                        });
+                    })
+                );
             })
             .catch((err) => {
                 console.error('Failed to cache assets:', err);
             })
-     );
+    );
 });
 
-// Serve cached resources when offline
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => response || fetch(event.request))
-  );
+    event.respondWith(
+        caches.match(event.request)
+            .then((response) => {
+                return response || fetch(event.request);
+            })
+    );
 });
 
 // Clean up old caches
