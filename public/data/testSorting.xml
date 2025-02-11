@@ -3,25 +3,25 @@
                 <BNO>3</BNO>
                 <HEAD>2209</HEAD>
                 <PVN>3</PVN>
-                <NARRATION>JANE SMITH OFFICE SUPPLIES abc</NARRATION>
+                <NARRATION>abc JANE SMITH OFFICE SUPPLIES test   </NARRATION>
                 <AMOUNT>7500</AMOUNT>
                 <ENT_DAT>03-FEB-25</ENT_DAT>
                 <CHEQ_NO>4498648</CHEQ_NO>
                 <CHEQ_DATE>05-FEB-25</CHEQ_DATE>
                 <SNO>3</SNO>
-                <DD></DD>
-                <NAR>OFFICE EXPENSES</NAR>
+                <DD>deleiverd by PO</DD>
+                <NAR>ta da to practical exam a-ii 2025</NAR>
             </G_PVN>
             <G_PVN>
                 <BNO>4</BNO>
                 <HEAD>2210</HEAD>
                 <PVN>4</PVN>
-                <NARRATION>ALICE JOHNSON MEETING COSTS abc</NARRATION>
+                <NARRATION>bce ALICE JOHNSON MEETING COSTS abc</NARRATION>
                 <AMOUNT>12000</AMOUNT>
                 <ENT_DAT>04-FEB-25</ENT_DAT>
                 <CHEQ_NO>4498649</CHEQ_NO>
                 <CHEQ_DATE>06-FEB-25</CHEQ_DATE>
                 <SNO>4</SNO>
                 <DD></DD>
-                <NAR>MEETING EXPENSES</NAR>
+                <NAR>ta da to supervisory staff exam a-ii 2025</NAR>
             </G_PVN>
