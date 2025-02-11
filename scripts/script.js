@@ -73,6 +73,10 @@ function initializeEventListeners() {
 function parseXMLToTable(xmlString = null) {
     console.log('Beginning XML parsing process...');
     try {
+
+        // Replace newline character (&#10;) with <br /> tag
+        let xmlData.replace(/&#10;/g, '<br />');
+
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlString || xmlData, "text/xml");
         
