@@ -75,7 +75,8 @@ function parseXMLToTable(xmlString = null) {
     try {
 
         // Replace newline character (&#10;) with <br /> tag
-        let xmlData.replace(/&#10;/g, '<br />');
+        let xmlData;
+        xmlData.replace(/&#10;/g, '<br />');
 
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlString || xmlData, "text/xml");
