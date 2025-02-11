@@ -5,7 +5,8 @@ export let tableBody, searchInput, tableContainer, emptyState, resultContainer;
 export let xmlData;
 
 /**
- * Initializes DOM elements
+ * Initializes DOM elements and returns them
+ * @returns {Object} - An object containing references to DOM elements
  */
 export function initializeDOMElements() {
     console.log('Initializing DOM elements...');
@@ -15,4 +16,13 @@ export function initializeDOMElements() {
     tableContainer = document.getElementById('tableContainer');
     emptyState = document.getElementById('emptyState');
     resultContainer = document.getElementById('result');
+    
+    // Return the DOM elements as an object
+    return {
+        tableBody,
+        searchInput,
+        tableContainer,
+        emptyState,
+        resultContainer
+    };
 }
