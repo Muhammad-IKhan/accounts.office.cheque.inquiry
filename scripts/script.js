@@ -116,7 +116,7 @@ function createTableRow(element) {
     
     Object.keys(columns).forEach(field => {
         const cell = document.createElement('td');
-        let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '';
+        let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '-';
         
         // Special handling for AMOUNT field
         if (field === 'AMOUNT') {
