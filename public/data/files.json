@@ -1,1 +1,1 @@
-["testMerging.xml", "testSorting.xml" , "testReceivedFromAuditToday.xml" , "testIsinProcess.xml", "testIsNotInProcess.xml"]
+["testMerging.xml", "testSorting.xml" , "testReceivedFromAuditToday.xml" , "testIsinProcess.xml", "testIsNotInProcess.xml", "testIsSigning.xml", "testGpoBannuReg.xml", "testGpolakkiReg.xml"]
