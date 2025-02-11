@@ -214,79 +214,121 @@ async function fetchXMLData() {
 function searchAndFilterXML() {
     // Get the search term from the input and convert it to lowercase
     const searchTerm = searchInput.value.toLowerCase();
-   // console.log(`Performing search with term: "${searchTerm}"`);
-    
-    // If the search term is empty, reset the table and exit the function
+    console.log(`Performing search with term: "${searchTerm}"`);
+
+    // If the search term is empty, reset the table and hide pagination
     if (!searchTerm) {
-      //  console.log('Empty search term, resetting table');
+        console.log('Empty search term, resetting table and hiding pagination');
         resetTable();
+        hidePagination(); // Hide pagination controls
         return;
     }
-    
+
     // Show the relevant containers (table, result container) and hide the empty state
     tableContainer.style.display = 'block';
     emptyState.style.display = 'none';
     resultContainer.style.display = 'block';
-    
+
     // Get all the rows in the table body
     const rows = tableBody.querySelectorAll('tr');
     let matchCount = 0;
-    
+
     // Iterate over each row to filter based on the search term
     rows.forEach(row => {
         // Get all the cells in the current row
         const cells = row.getElementsByTagName('td');
         let matchesSearch = false;
-        
+
         // Iterate over each cell in the row
-         Array.from(cells).forEach(cell => {
-        // Get the text content of the cell, or replace it with '-' if it's empty
-        const cellText = cell.textContent.trim().toLowerCase() || '-';
-       // console.log(`Cell content: "${cellText}"`);
-        
-        // Check if the cell content includes the search term
-        if (cellText.includes(searchTerm)) {
-            matchesSearch = true;
-        }
-        
-        // Update the cell content to display '-' if it's empty
-        if (!cell.textContent.trim()) {
-            cell.textContent = '-';
-         //   console.log(`Empty cell detected, replaced with "-"`);
-        }
-        
-        // Handle empty or NaN values specifically for the "Amount" cell
-        if (cell.classList.contains('amount') && (isNaN(cell.textContent.trim()) || cell.textContent.trim() === '-')) {
-            cell.textContent = '-';
-            console.log(`Empty or NaN amount cell detected, replaced with "-"`);
-        }
-    });
-                         
+        Array.from(cells).forEach(cell => {
+            // Get the text content of the cell, or replace it with '-' if it's empty
+            const cellText = cell.textContent.trim().toLowerCase() || '-';
+            console.log(`Cell content: "${cellText}"`);
+
+            // Check if the cell content includes the search term
+            if (cellText.includes(searchTerm)) {
+                matchesSearch = true;
+            }
+
+            // Update the cell content to display '-' if it's empty
+            if (!cell.textContent.trim()) {
+                cell.textContent = '-';
+                console.log(`Empty cell detected, replaced with "-"`);
+            }
+
+            // Handle empty or NaN values specifically for the "Amount" cell
+            if (cell.classList.contains('amount') && (isNaN(cell.textContent.trim()) || cell.textContent.trim() === '-')) {
+                cell.textContent = '-';
+                console.log(`Empty or NaN amount cell detected, replaced with "-"`);
+            }
+        });
+
         // Show or hide the row based on whether it matches the search term
         row.style.display = matchesSearch ? '' : 'none';
         if (matchesSearch) {
             matchCount++;
-          //  console.log(`Row matches search term: "${searchTerm}"`);
+            console.log(`Row matches search term: "${searchTerm}"`);
         } else {
-          //  console.log(`Row does not match search term: "${searchTerm}"`);
+            console.log(`Row does not match search term: "${searchTerm}"`);
         }
     });
-    
+
     // Log the total number of matches found
-   // console.log(`Search complete. Found ${matchCount} matches`);
-    
+    console.log(`Search complete. Found ${matchCount} matches`);
+
     // Update the search results and initialize pagination
     updateSearchResults(searchTerm, matchCount);
-    initializePagination();
+
+    // Show or hide pagination based on the number of matches
+    if (matchCount > 0) {
+        initializePagination(); // Show pagination controls
+    } else {
+        hidePagination(); // Hide pagination controls if no results
+    }
 }
 
+/**
+ * Shows the pagination controls
+ */
+function showPagination() {
+    const paginationContainer = document.querySelector('.pagination-controls');
+    if (paginationContainer) {
+        paginationContainer.style.display = 'block';
+        console.log('Pagination controls shown');
+    }
+}
+
+/**
+ * Hides the pagination controls
+ */
+function hidePagination() {
+    const paginationContainer = document.querySelector('.pagination-controls');
+    if (paginationContainer) {
+        paginationContainer.style.display = 'none';
+        console.log('Pagination controls hidden');
+    }
+}
+
+
 // Helper function to reset the table (assuming this function exists)
-function resetTable() {
-    const rows = tableBody.querySelectorAll('tr');
-    rows.forEach(row => {
-        row.style.display = '';
-    });
+//function resetTable() {
+  //  const rows = tableBody.querySelectorAll('tr');
+ //   rows.forEach(row => {
+//        row.style.display = '';
+  //  });
   //  console.log('Table reset complete');
+//}
+
+/**
+ * Resets the table to its initial state
+ */
+function resetTable() {
+    console.log('Resetting table to initial state');
+    searchInput.value = '';
+    tableContainer.style.display = 'none';
+    emptyState.style.display = 'block';
+    resultContainer.style.display = 'none';
+    hidePagination(); // Hide pagination controls
 }
 
 // Helper function to update search results (assuming this function exists)
@@ -423,10 +465,16 @@ let paginationState = {
 function initializePagination(itemsPerPage = 10) {
     console.log('Initializing pagination system...');
     paginationState.rowsPerPage = itemsPerPage;
-    
-    // Create pagination controls
-    createPaginationControls();
-    
+
+    // Create pagination controls if they don't already exist
+    const paginationContainer = document.querySelector('.pagination-controls');
+    if (!paginationContainer) {
+        createPaginationControls();
+    }
+
+    // Show pagination controls
+    showPagination();
+
     // Initial pagination render
     updatePagination();
 }
