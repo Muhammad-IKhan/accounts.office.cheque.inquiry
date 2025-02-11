@@ -4,6 +4,7 @@ import { initializeDOMElements } from './domElements.js';
 import { initializeEventListeners } from './eventListeners.js';
 import { fetchXMLData } from './xmlHandling.js';
 import { initializePagination } from './pagination.js';
+import { resetTable  } from './tableFunctions.js';
 
 /**
  * Initializes the application
