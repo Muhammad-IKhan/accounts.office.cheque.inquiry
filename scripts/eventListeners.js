@@ -12,6 +12,8 @@ export function initializeEventListeners() {
     console.log('Setting up event listeners...');
     
     const { searchInput } = initializeDOMElements();
+    const searchButton = document.getElementById('searchButton'); // Add this line
+
     
     // Add Enter key listener for search input
     searchInput.addEventListener('keypress', (e) => {
@@ -19,6 +21,12 @@ export function initializeEventListeners() {
             console.log('Enter key pressed in search input, initiating search...');
             searchAndFilterXML();
         }
+    });
+
+    // Add click listener for search button
+    searchButton.addEventListener('click', () => {
+        console.log('Search button clicked, initiating search...');
+        searchAndFilterXML();
     });
     
     // Add click listeners for column sorting
