@@ -126,6 +126,19 @@ export function searchAndFilterXML() {
 }
 
 /**
+ * Updates the search results display
+ * @param {string} searchTerm - The search term used
+ * @param {number} matchCount - Number of matches found
+ */
+function updateSearchResults(searchTerm, matchCount) {
+    console.log(`Updating search results display for "${searchTerm}" with ${matchCount} matches`);
+    resultContainer.innerHTML = matchCount > 0
+        ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
+        : '<i class="fas fa-times-circle"></i> No results found.';
+}
+
+
+/**
  * Sorts the table by specified column with toggle functionality
  * @param {string} columnName - Name of the column to sort by
  */
