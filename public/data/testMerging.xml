@@ -3,7 +3,7 @@
                 <BNO>1</BNO>
                 <HEAD>2207</HEAD>
                 <PVN>1</PVN>
-                <NARRATION>muhammad ismail khan j/c BISE BANNU test</NARRATION>
+                <NARRATION>MUHAMMAD ISMAIL KHAN BISE BANNU test</NARRATION>
                 <AMOUNT>0000.00</AMOUNT>
                 <ENT_DAT>01-FEB-25</ENT_DAT>
                 <CHEQ_NO>987654321000</CHEQ_NO>
@@ -22,5 +22,5 @@
                 <CHEQ_NO>4498647</CHEQ_NO>
                 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
                 <DD>test</DD>
-                <NAR>res: inspector hssc a-1 2024</NAR>
+                <NAR>RES INSPECTER SSC A-I 20024</NAR>
             </G_PVN>
