@@ -23,7 +23,7 @@ export const columns = {
  * @returns {HTMLTableRowElement} - The created table row
  */
 export function createTableRow(element) {
-    console.log('Creating new table row from XML element');
+    //console.log('Creating new table row from XML element');
     const row = document.createElement('tr');
     
     Object.keys(columns).forEach(field => {
@@ -32,7 +32,7 @@ export function createTableRow(element) {
         
         // Special handling for AMOUNT field
         if (field === 'AMOUNT') {
-            console.log(`Formatting amount value: ${value}`);
+            //console.log(`Formatting amount value: ${value}`);
             try {
                 value = parseFloat(value).toLocaleString('en-US');
             } catch (error) {
@@ -76,7 +76,7 @@ export function parseXMLToTable(xmlString = null) {
         
         // Create table rows for each element
         Array.from(gPvnElements).forEach((element, index) => {
-            console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
+           // console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
             const row = createTableRow(element);
             tableBody.appendChild(row);
         });
