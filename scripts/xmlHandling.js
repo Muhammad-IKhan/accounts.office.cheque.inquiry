@@ -1,5 +1,6 @@
 // xmlHandling.js
 
+import { xmlData } from './domElements.js';
 import { parseXMLToTable } from './tableFunctions.js';
 
 /**
