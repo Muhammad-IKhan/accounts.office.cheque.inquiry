@@ -1,4 +1,5 @@
-<G_PVN>
+            <G_PVN>
+             <SNO>1</SNO>
                 <BNO>1</BNO>
                 <HEAD>2207</HEAD>
                 <PVN>1</PVN>
@@ -7,11 +8,11 @@
                 <ENT_DAT>01-FEB-25</ENT_DAT>
                 <CHEQ_NO>987654321000</CHEQ_NO>
                 <CHEQ_DATE>03-FEB-25</CHEQ_DATE>
-                <SNO>1</SNO>
                 <DD>received by Anwer a/p gdc test</DD>
                 <NAR>TA/DA GENERAL</NAR>
             </G_PVN>
             <G_PVN>
+            <SNO>1</SNO>
                 <BNO>2</BNO>
                 <HEAD>2208</HEAD>
                 <PVN>2</PVN>
@@ -20,7 +21,6 @@
                 <ENT_DAT>02-FEB-25</ENT_DAT>
                 <CHEQ_NO>4498647</CHEQ_NO>
                 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-                <SNO>2</SNO>
                 <DD>send to gpo bannu for delevery on 01082025</DD>
                 <NAR>res: inspector hssc a-1 2024</NAR>
             </G_PVN>
