@@ -242,7 +242,7 @@ function searchAndFilterXML() {
         // Iterate over each cell in the row
         Array.from(cells).forEach(cell => {
             // Get the text content of the cell, or replace it with '-' if it's empty
-            const cellText = (isNaN(cell.textContent.trim()) || !cell.textContent.trim() || cell.textContent.trim() === 'NaN') ? '-' : cell.textContent.trim().toLowerCase();
+            const cellText = (isNaN(Number(cell.textContent.trim())) || cell.textContent.trim() === '') ? '-' : cell.textContent.trim().toLowerCase();
             console.log(`Cell content: "${cellText}"`);
 
             // Check if the cell content includes the search term
