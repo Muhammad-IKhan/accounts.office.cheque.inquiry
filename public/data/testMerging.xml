@@ -3,12 +3,12 @@
                 <BNO>1</BNO>
                 <HEAD>2207</HEAD>
                 <PVN>1</PVN>
-                <NARRATION>cde muhammad ismail khan j/c BISE BANNU test</NARRATION>
+                <NARRATION>muhammad ismail khan j/c BISE BANNU test</NARRATION>
                 <AMOUNT>0000.00</AMOUNT>
                 <ENT_DAT>01-FEB-25</ENT_DAT>
                 <CHEQ_NO>987654321000</CHEQ_NO>
                 <CHEQ_DATE>03-FEB-25</CHEQ_DATE>
-                <DD>received by Anwer a/p gdc test</DD>
+                <DD></DD>
                 <NAR>TA/DA GENERAL</NAR>
             </G_PVN>
             <G_PVN>
@@ -16,11 +16,11 @@
                 <BNO>2</BNO>
                 <HEAD>2208</HEAD>
                 <PVN>2</PVN>
-                <NARRATION>def JOHN DOE TRAVEL EXPENSES test</NARRATION>
+                <NARRATION>JOHN DOE TRAVEL EXPENSES test</NARRATION>
                 <AMOUNT>15000</AMOUNT>
                 <ENT_DAT>02-FEB-25</ENT_DAT>
                 <CHEQ_NO>4498647</CHEQ_NO>
                 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-                <DD>send to gpo bannu for delevery on 01082025</DD>
+                <DD></DD>
                 <NAR>res: inspector hssc a-1 2024</NAR>
             </G_PVN>
