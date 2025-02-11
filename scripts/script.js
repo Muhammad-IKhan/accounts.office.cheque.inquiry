@@ -444,15 +444,14 @@ function createPaginationControls() {
         <span id="pageInfo" class="page-info"></span>
         <button id="nextPage" class="pagination-btn">Next &gt;</button>
         <select id="rowsPerPageSelect" class="rows-per-page">
-            <option value="5">5 per page</option>
-            <option value="10" selected>10 per page</option>
-            <option value="25">25 per page</option>
-            <option value="50">50 per page</option>
+            <option value="7">5 per page</option>
+            <option value="14" selected>Mobile user</option>
+            <option value="25">Desktop user</option>
         </select>
     `;
     
     // Add controls after the table
-    tableBody.parentNode.after(paginationContainer);
+    tableBody.parentNode.before(paginationContainer);
     
     // Set up event listeners
     setupPaginationEventListeners();
