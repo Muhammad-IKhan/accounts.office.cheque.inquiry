@@ -1,4 +1,4 @@
-E// Global variables to store DOM elements and data
+// Global variables to store DOM elements and data
 let tableBody, searchInput, tableContainer, emptyState, resultContainer;
 let xmlData;
 
