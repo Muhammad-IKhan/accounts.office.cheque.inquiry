@@ -22,7 +22,7 @@ export async function fetchXMLData() {
         let combinedXMLData = '<root>';
         
         for (const file of xmlFiles) {
-            console.log(`Fetching file: ${file}`);
+            // console.log(`Fetching file: ${file}`);
             const fileUrl = `/accounts.office.cheque.inquiry/public/data/${file}`;
             const fileResponse = await fetch(fileUrl);
             
@@ -32,7 +32,7 @@ export async function fetchXMLData() {
             
             const data = await fileResponse.text();
             combinedXMLData += data;
-            console.log(`Successfully appended data from ${file}`);
+            // console.log(`Successfully appended data from ${file}`);
         }
         
         combinedXMLData += '</root>';
