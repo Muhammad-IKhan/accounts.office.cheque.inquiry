@@ -98,7 +98,7 @@ function parseXMLToTable(xmlString = null) {
 
         // Create table rows for each element
         Array.from(gPvnElements).forEach((element, index) => {
-            console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
+            //console.log(`Processing element ${index + 1} of ${gPvnElements.length}`);
             const row = createTableRow(element);
             tableBody.appendChild(row);
         });
