@@ -1,4 +1,3 @@
-let xmlString = ` 
 <G_PVN>
     <BNO></BNO>
     <HEAD>2207</HEAD>
@@ -12,17 +11,4 @@ let xmlString = `
     <DD>CONTACT GPO BANNU : &#10; regeistery and given to General Post office for delevery at you address on 01-05-2024 GPO</DD>
     <NAR>TA/DA GENERAL</NAR>
 </G_PVN>
-`;
 
-let parser = new DOMParser();
-let xmlDoc = parser.parseFromString(xmlString, "text/xml");
-
-// Find the <DD> element
-let ddElement = xmlDoc.getElementsByTagName("DD")[0];
-
-// Modify its text content to add a newline
-ddElement.textContent = ddElement.textContent.replace("regeistery and given to", "\nregeistery and given to");
-
-// You can now extract the XML as a string again if needed
-let xmlStringModified = new XMLSerializer().serializeToString(xmlDoc);
-console.log(xmlStringModified);
