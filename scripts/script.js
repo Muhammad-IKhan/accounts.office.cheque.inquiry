@@ -450,7 +450,7 @@ let paginationState = {
  * Initializes pagination for the table
  * @param {number} itemsPerPage - Number of rows to display per page (default: 10)
  */
-function initializePagination(itemsPerPage = 2) {
+function initializePagination(itemsPerPage = 5) {
     console.log('Initializing pagination system...');
     paginationState.rowsPerPage = itemsPerPage;
 
@@ -480,8 +480,8 @@ function createPaginationControls() {
         <span id="pageInfo" class="page-info"></span>
         <button id="nextPage" class="pagination-btn">Next &gt;</button>
         <select id="rowsPerPageSelect" class="rows-per-page">
-            <option value="4">Mobile user</option>
-            <option value="7" selected>Desktop user</option>
+            <option value="5" selected>Mobile user</option>
+            <option value="7" >Desktop user</option>
         </select>
     `;
     
