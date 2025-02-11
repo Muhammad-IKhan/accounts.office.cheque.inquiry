@@ -184,7 +184,7 @@ async function fetchXMLData() {
             //console.log(`Successfully appended data from ${file}`);
         }
         
-        combinedXMLData += '</root style="white-space: pre-line;" id="dd-content">';
+        combinedXMLData += '</root">';
         
         // Store data for future use
         localStorage.setItem('xmlData', combinedXMLData);
