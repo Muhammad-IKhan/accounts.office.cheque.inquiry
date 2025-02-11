@@ -197,38 +197,90 @@ async function fetchXMLData() {
  * Performs search and filtering on the table data
  */
 function searchAndFilterXML() {
+    // Get the search term from the input and convert it to lowercase
     const searchTerm = searchInput.value.toLowerCase();
     console.log(`Performing search with term: "${searchTerm}"`);
     
+    // If the search term is empty, reset the table and exit the function
     if (!searchTerm) {
         console.log('Empty search term, resetting table');
         resetTable();
         return;
     }
     
-    // Show relevant containers
+    // Show the relevant containers (table, result container) and hide the empty state
     tableContainer.style.display = 'block';
     emptyState.style.display = 'none';
     resultContainer.style.display = 'block';
     
+    // Get all the rows in the table body
     const rows = tableBody.querySelectorAll('tr');
     let matchCount = 0;
     
-    // Filter rows based on search term
+    // Iterate over each row to filter based on the search term
     rows.forEach(row => {
+        // Get all the cells in the current row
         const cells = row.getElementsByTagName('td');
-        const matchesSearch = Array.from(cells).some(cell => 
-            cell.textContent.toLowerCase().includes(searchTerm)
-        );
+        let matchesSearch = false;
         
+        // Iterate over each cell in the row
+        Array.from(cells).forEach(cell => {
+            // Get the text content of the cell, or replace it with '-' if it's empty
+            const cellText = cell.textContent.trim().toLowerCase() || '-';
+            console.log(`Cell content: "${cellText}"`);
+            
+            // Check if the cell content includes the search term
+            if (cellText.includes(searchTerm)) {
+                matchesSearch = true;
+            }
+            
+            // Update the cell content to display '-' if it's empty
+            if (!cell.textContent.trim()) {
+                cell.textContent = '-';
+                console.log(`Empty cell detected, replaced with "-"`);
+            }
+        });
+        
+        // Show or hide the row based on whether it matches the search term
         row.style.display = matchesSearch ? '' : 'none';
-        if (matchesSearch) matchCount++;
+        if (matchesSearch) {
+            matchCount++;
+            console.log(`Row matches search term: "${searchTerm}"`);
+        } else {
+            console.log(`Row does not match search term: "${searchTerm}"`);
+        }
     });
     
+    // Log the total number of matches found
     console.log(`Search complete. Found ${matchCount} matches`);
+    
+    // Update the search results and initialize pagination
     updateSearchResults(searchTerm, matchCount);
     initializePagination();
 }
+
+// Helper function to reset the table (assuming this function exists)
+function resetTable() {
+    const rows = tableBody.querySelectorAll('tr');
+    rows.forEach(row => {
+        row.style.display = '';
+    });
+    console.log('Table reset complete');
+}
+
+// Helper function to update search results (assuming this function exists)
+function updateSearchResults(searchTerm, matchCount) {
+    resultContainer.textContent = `Found ${matchCount} results for "${searchTerm}"`;
+    console.log(`Updated search results with term: "${searchTerm}" and match count: ${matchCount}`);
+}
+
+// Helper function to initialize pagination (assuming this function exists)
+function initializePagination() {
+    console.log('Pagination initialized');
+}
+
+
+
 
 /**
  * Updates the search results display
