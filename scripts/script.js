@@ -1,4 +1,4 @@
-// Global variables to store DOM elements and data
+E// Global variables to store DOM elements and data
 let tableBody, searchInput, tableContainer, emptyState, resultContainer;
 let xmlData;
 
@@ -224,23 +224,29 @@ function searchAndFilterXML() {
         let matchesSearch = false;
         
         // Iterate over each cell in the row
-        Array.from(cells).forEach(cell => {
-            // Get the text content of the cell, or replace it with '-' if it's empty
-            const cellText = cell.textContent.trim().toLowerCase() || '-';
-            console.log(`Cell content: "${cellText}"`);
-            
-            // Check if the cell content includes the search term
-            if (cellText.includes(searchTerm)) {
-                matchesSearch = true;
-            }
-            
-            // Update the cell content to display '-' if it's empty
-            if (!cell.textContent.trim()) {
-                cell.textContent = '-';
-                console.log(`Empty cell detected, replaced with "-"`);
-            }
-        });
+         Array.from(cells).forEach(cell => {
+        // Get the text content of the cell, or replace it with '-' if it's empty
+        const cellText = cell.textContent.trim().toLowerCase() || '-';
+        console.log(`Cell content: "${cellText}"`);
         
+        // Check if the cell content includes the search term
+        if (cellText.includes(searchTerm)) {
+            matchesSearch = true;
+        }
+        
+        // Update the cell content to display '-' if it's empty
+        if (!cell.textContent.trim()) {
+            cell.textContent = '-';
+            console.log(`Empty cell detected, replaced with "-"`);
+        }
+        
+        // Handle empty or NaN values specifically for the "Amount" cell
+        if (cell.classList.contains('amount') && (isNaN(cell.textContent.trim()) || cell.textContent.trim() === '')) {
+            cell.textContent = '-';
+            console.log(`Empty or NaN amount cell detected, replaced with "-"`);
+        }
+    });
+                         
         // Show or hide the row based on whether it matches the search term
         row.style.display = matchesSearch ? '' : 'none';
         if (matchesSearch) {
