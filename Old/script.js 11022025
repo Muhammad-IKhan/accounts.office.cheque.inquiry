@@ -1,4 +1,4 @@
-update and correct it by yourself dont change the other code only change the empty data to - for Nan for amount and every column ```// Global variables to store DOM elements and data
+// Global variables to store DOM elements and data
 let tableBody, searchInput, tableContainer, emptyState, resultContainer;
 let xmlData;
 
@@ -129,16 +129,10 @@ function createTableRow(element) {
         if (field === 'AMOUNT') {
             console.log(`Formatting amount value: ${value}`);
             try {
-                // If the value is empty or NaN, replace it with '-'
-                if (value === '-' || isNaN(parseFloat(value))) {
-                    value = '-';
-                } else {
-                    // Format the amount value if it's valid
-                    value = parseFloat(value).toLocaleString('en-US');
-                }
+                value = parseFloat(value).toLocaleString('en-US');
             } catch (error) {
-                console.warn(`Invalid amount value detected: ${value}, defaulting to "-"`);
-                value = '-';
+                console.warn(`Invalid amount value detected: ${value}, defaulting to 0`);
+                value = '0';
             }
         }
 
@@ -248,7 +242,7 @@ function searchAndFilterXML() {
         // Iterate over each cell in the row
         Array.from(cells).forEach(cell => {
             // Get the text content of the cell, or replace it with '-' if it's empty
-            const cellText = cell.textContent.trim().toLowerCase() || '-';
+            const cellText = (isNaN(Number(cell.textContent.trim())) || cell.textContent.trim() === '') ? '-' : cell.textContent.trim().toLowerCase();
             console.log(`Cell content: "${cellText}"`);
 
             // Check if the cell content includes the search term
@@ -624,4 +618,3 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
-```
