@@ -1,5 +1,6 @@
 // tableFunctions.js
 
+import { showError } from './errorHandling.js'; // Import showError function
 import { tableBody, searchInput, tableContainer, emptyState, resultContainer } from './domElements.js';
 import { updatePagination, resetPagination } from './pagination.js';
 
@@ -14,6 +15,40 @@ export const columns = {
     PVN: { index: 6, type: 'number' },
     DD: { index: 7, type: 'string' }
 };
+
+
+/**
+ * Creates a table row from an XML element
+ * @param {Element} element - The XML element to convert
+ * @returns {HTMLTableRowElement} - The created table row
+ */
+export function createTableRow(element) {
+    console.log('Creating new table row from XML element');
+    const row = document.createElement('tr');
+    
+    Object.keys(columns).forEach(field => {
+        const cell = document.createElement('td');
+        let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '';
+        
+        // Special handling for AMOUNT field
+        if (field === 'AMOUNT') {
+            console.log(`Formatting amount value: ${value}`);
+            try {
+                value = parseFloat(value).toLocaleString('en-US');
+            } catch (error) {
+                console.warn(`Invalid amount value detected: ${value}, defaulting to 0`);
+                value = '0';
+            }
+        }
+        
+        cell.textContent = value;
+        cell.setAttribute('data-field', field);
+        row.appendChild(cell);
+    });
+    
+    return row;
+}
+
 
 /**
  * Parses XML string data and populates the table
