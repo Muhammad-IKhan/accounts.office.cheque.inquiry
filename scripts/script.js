@@ -310,18 +310,6 @@ function hidePagination() {
 }
 
 
-// Helper function to reset the table (assuming this function exists)
-//function resetTable() {
-  //  const rows = tableBody.querySelectorAll('tr');
- //   rows.forEach(row => {
-//        row.style.display = '';
-  //  });
-  //  console.log('Table reset complete');
-//}
-
-/**
- * Resets the table to its initial state
- */
 function resetTable() {
     console.log('Resetting table to initial state');
     searchInput.value = '';
