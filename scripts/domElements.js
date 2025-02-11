@@ -2,7 +2,6 @@
 
 // Global variables to store DOM elements
 export let xmlData, tableBody, searchInput, tableContainer, emptyState, resultContainer;
-export let xmlData;
 
 /**
  * Initializes DOM elements and returns them
