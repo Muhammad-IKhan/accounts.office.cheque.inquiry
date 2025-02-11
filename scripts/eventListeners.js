@@ -13,6 +13,8 @@ export function initializeEventListeners() {
     
     const { searchInput } = initializeDOMElements();
     const searchButton = document.getElementById('searchButton'); // Add this line
+    const resetButton = document.getElementById('resetButton');
+
 
     
     // Add Enter key listener for search input
@@ -28,6 +30,38 @@ export function initializeEventListeners() {
         console.log('Search button clicked, initiating search...');
         searchAndFilterXML();
     });
+
+
+    // Check if elements exist before adding event listeners
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                console.log('Enter key pressed in search input, initiating search...');
+                searchAndFilterXML();
+            }
+        });
+    } else {
+        console.error('Search input not found');
+    }
+
+    if (searchButton) {
+        searchButton.addEventListener('click', () => {
+            console.log('Search button clicked, initiating search...');
+            searchAndFilterXML();
+        });
+    } else {
+        console.error('Search button not found');
+    }
+
+    if (resetButton) {
+        resetButton.addEventListener('click', () => {
+            console.log('Reset button clicked, resetting table...');
+            resetTable();
+        });
+    } else {
+        console.error('Reset button not found');
+    }
+
     
     // Add click listeners for column sorting
     Object.keys(columns).forEach(columnName => {
