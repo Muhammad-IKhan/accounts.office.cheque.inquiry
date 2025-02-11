@@ -173,3 +173,10 @@ export function sortTable(columnName) {
     console.log(`Table sort complete in ${sortState.direction} order`);
     resetPagination();
 }
+
+export function resetTable() {
+    console.log('Resetting table to initial state');
+    tableContainer.style.display = 'none';
+    emptyState.style.display = 'block';
+    resultContainer.style.display = 'none';
+}
