@@ -136,8 +136,9 @@ function createTableRow(element) {
             }
         }
 
-        // Replace newline characters with <br> tags for display
-        if (value.includes('<br />')) {
+        // Replace &#10; with <br> for the DD tag (or any other tag with newlines)
+        if (field === 'DD') {
+            value = value.replace(/&#10;/g, '<br>'); // Replace newline characters with <br>
             cell.innerHTML = value; // Use innerHTML to render <br> tags
         } else {
             cell.textContent = value; // Use textContent for plain text
