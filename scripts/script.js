@@ -450,7 +450,7 @@ let paginationState = {
  * Initializes pagination for the table
  * @param {number} itemsPerPage - Number of rows to display per page (default: 10)
  */
-function initializePagination(itemsPerPage = 10) {
+function initializePagination(itemsPerPage = 0) {
     console.log('Initializing pagination system...');
     paginationState.rowsPerPage = itemsPerPage;
 
