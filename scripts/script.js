@@ -84,7 +84,7 @@ function parseXMLToTable(xmlString = null) {
         
         // Get all relevant elements
         const gPvnElements = xmlDoc.getElementsByTagName('G_PVN');
-        console.log(`Successfully found ${gPvnElements.length} G_PVN elements in XML`);
+       // console.log(`Successfully found ${gPvnElements.length} G_PVN elements in XML`);
         
         // Clear existing table content for fresh data
         tableBody.innerHTML = '';
@@ -167,7 +167,7 @@ async function fetchXMLData() {
             
             const data = await fileResponse.text();
             combinedXMLData += data;
-            console.log(`Successfully appended data from ${file}`);
+            //console.log(`Successfully appended data from ${file}`);
         }
         
         combinedXMLData += '</root>';
