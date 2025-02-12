@@ -23,6 +23,7 @@ export function initializeDOMElements() {
         searchInput,
         tableContainer,
         emptyState,
-        resultContainer
+        resultContainer,
+         xmlData,
     };
 }
