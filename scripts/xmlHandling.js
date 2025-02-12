@@ -51,20 +51,20 @@ export async function fetchXMLData() {
         xmlData = combinedXMLData;
         console.log('XML data fetch and combination complete');
         return parseXMLToTable(combinedXMLData);
-    } catch (error) {
-        console.error('Error in XML data fetch:', error);
+        } catch (error) {
+            console.error('Error in XML data fetch:', error);
 
-        try {
-            
-        const storedXML = localStorage.getItem('xmlData');
-        if (storedXML) {
-            console.log('Falling back to stored XML data from localStorage');
-            xmlData = storedXML;
-            return parseXMLToTable(storedXML);
+        try {    
+            const storedXML = localStorage.getItem('xmlData');
+            if (storedXML) {
+                console.log('Falling back to stored XML data from localStorage');
+                xmlData = storedXML;
+                return parseXMLToTable(storedXML);
+            }
         }catch (storageError) {
-            console.error('Failed to retrieve from localStorage:', storageError);
-        
-        showError('Failed to load XML data. Please check your connection.');
-        return false;
+                console.error('Failed to retrieve from localStorage:', storageError);
+            
+            showError('Failed to load XML data. Please check your connection.');
+            return false;
     }
 }
