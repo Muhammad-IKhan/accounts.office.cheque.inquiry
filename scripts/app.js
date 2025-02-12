@@ -1,4 +1,3 @@
-// app.js
 import { DOMManager } from './domManager.js';
 import { XMLService } from './xmlService.js';
 import { TableService } from './tableService.js';
