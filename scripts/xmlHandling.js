@@ -63,7 +63,6 @@ export async function fetchXMLData() {
             return parseXMLToTable(storedXML);
         }catch (storageError) {
             console.error('Failed to retrieve from localStorage:', storageError);
-        }
         
         showError('Failed to load XML data. Please check your connection.');
         return false;
