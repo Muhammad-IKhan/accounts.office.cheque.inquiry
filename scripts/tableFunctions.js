@@ -16,6 +16,12 @@ export const columns = {
     DD: { index: 7, type: 'string' }
 };
 
+// Export sortState so it's accessible throughout the module
+export const sortState = {
+    currentColumn: null,
+    direction: 'asc'
+};
+
 
 /**
  * Creates a table row from an XML element
@@ -135,6 +141,8 @@ function updateSearchResults(searchTerm, matchCount) {
     resultContainer.innerHTML = matchCount > 0
         ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
         : '<i class="fas fa-times-circle"></i> No results found.';
+        resultContainer.style.display = matchCount > 0 ? 'block' : 'none';
+        emptyState.style.display = matchCount > 0 ? 'none' : 'block';
 }
 
 
@@ -181,10 +189,29 @@ export function sortTable(columnName) {
         
         return sortState.direction === 'asc' ? comparison : -comparison;
     });
+
+    // Clear and re-append sorted rows
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
     
     rows.forEach(row => tableBody.appendChild(row));
     console.log(`Table sort complete in ${sortState.direction} order`);
     resetPagination();
+}
+
+function updateSortIndicators(columnName) {
+    const headers = document.querySelectorAll('th[data-column]');
+    headers.forEach(header => {
+        const icon = header.querySelector('.sort-icon');
+        if (icon) {
+            if (header.getAttribute('data-column') === columnName) {
+                icon.textContent = sortState.direction === 'asc' ? '↑' : '↓';
+            } else {
+                icon.textContent = '↓';
+            }
+        }
+    });
 }
 
 export function resetTable() {
