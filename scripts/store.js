@@ -1,4 +1,7 @@
 // store.js
+
+import { PAGINATION_CONFIG } from './constants.js';
+
 export const store = {
     xmlData: null,
     sortState: {
