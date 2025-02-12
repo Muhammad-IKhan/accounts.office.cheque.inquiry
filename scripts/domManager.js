@@ -1,4 +1,3 @@
-// domManager.js
 import { PAGINATION_CONFIG } from './constants.js';
 import { store } from './store.js';
 
@@ -26,7 +25,8 @@ export class DOMManager {
 
     validateElements() {
         return Object.values(this.elements).every(element => 
-            element !== null || element === this.elements.paginationControls);
+            element !== null || element === this.elements.paginationControls
+        );
     }
 
     createPaginationControls() {
