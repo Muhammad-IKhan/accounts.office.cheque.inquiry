@@ -1,4 +1,5 @@
 // searchService.js
+
 export class SearchService {
     constructor(domManager) {
         this.domManager = domManager;
