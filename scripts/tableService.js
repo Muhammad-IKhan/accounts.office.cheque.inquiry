@@ -1,4 +1,9 @@
 // tableService.js
+
+import { TABLE_CONFIG } from './constants.js';
+import { store } from './store.js';
+
+
 export class TableService {
     constructor(domManager) {
         this.domManager = domManager;
