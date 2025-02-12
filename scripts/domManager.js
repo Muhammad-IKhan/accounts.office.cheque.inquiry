@@ -1,4 +1,7 @@
-// domElements.js
+// domManager.js
+import { PAGINATION_CONFIG } from './constants.js';
+import { store } from './store.js';
+
 export class DOMManager {
     constructor() {
         this.elements = {};
