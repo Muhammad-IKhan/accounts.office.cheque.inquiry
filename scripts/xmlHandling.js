@@ -31,24 +31,38 @@ export async function fetchXMLData() {
             }
             
             const data = await fileResponse.text();
-            combinedXMLData += data;
             // console.log(`Successfully appended data from ${file}`);
+            // Remove <?xml version="1.0"?> if present to avoid multiple declarations
+            const cleanData = data.replace(/<\?xml.*?\?>/g, '');
+            combinedXMLData += cleanData;
+            console.log(`Successfully appended data from ${file}`);
         }
         
         combinedXMLData += '</root>';
         
-        localStorage.setItem('xmlData', combinedXMLData);
+        // Store in localStorage
+        try {
+            localStorage.setItem('xmlData', combinedXMLData);
+        } catch (storageError) {
+            console.warn('Failed to store XML in localStorage:', storageError);
+        }
+
+        // Update xmlData variable
         xmlData = combinedXMLData;
-        
         console.log('XML data fetch and combination complete');
         return parseXMLToTable(combinedXMLData);
     } catch (error) {
         console.error('Error in XML data fetch:', error);
-        
+
+        try {
+            
         const storedXML = localStorage.getItem('xmlData');
         if (storedXML) {
             console.log('Falling back to stored XML data from localStorage');
+            xmlData = storedXML;
             return parseXMLToTable(storedXML);
+        }catch (storageError) {
+            console.error('Failed to retrieve from localStorage:', storageError);
         }
         
         showError('Failed to load XML data. Please check your connection.');
