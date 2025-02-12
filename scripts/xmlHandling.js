@@ -49,7 +49,7 @@ export async function fetchXMLData() {
         }
 
         // Update xmlData variable
-        xmlData = combinedXMLData;
+        xmlData += combinedXMLData;
         console.log('XML data fetch and combination complete');
         return parseXMLToTable(combinedXMLData);
         } catch (error) {
