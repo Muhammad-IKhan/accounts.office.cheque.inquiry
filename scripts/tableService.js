@@ -2,7 +2,7 @@
 
 import { TABLE_CONFIG } from './constants.js';
 import { store } from './store.js';
-
+import { formatAmount } from './utils.js';
 
 export class TableService {
     constructor(domManager) {
@@ -23,7 +23,7 @@ export class TableService {
             
             return true;
         } catch (error) {
-            console.error('XML parsing error:', error);
+            handleError(error, 'XML parsing');
             return false;
         }
     }
@@ -44,7 +44,7 @@ export class TableService {
             let value = element.getElementsByTagName(field)[0]?.textContent.trim() || '';
             
             if (field === 'AMOUNT') {
-                value = this.formatAmount(value);
+                value = formatAmount(value);
             }
             
             cell.textContent = value;
@@ -53,14 +53,6 @@ export class TableService {
         });
         
         return row;
-    }
-
-    formatAmount(value) {
-        try {
-            return parseFloat(value).toLocaleString('en-US');
-        } catch {
-            return '0';
-        }
     }
 
     sortTable(columnName) {
