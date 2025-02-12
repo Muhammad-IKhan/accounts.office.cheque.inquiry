@@ -25,26 +25,47 @@ export class DOMManager {
 
     validateElements() {
         return Object.values(this.elements).every(element => 
-            element !== null || element === this.elements.paginationControls
+            element !== null && element !== this.elements.paginationControls
         );
     }
 
     createPaginationControls() {
         const container = document.createElement('div');
         container.className = 'pagination-controls';
-        container.innerHTML = `
-            <button id="prevPage" class="pagination-btn">&lt; Previous</button>
-            <span id="pageInfo" class="page-info"></span>
-            <button id="nextPage" class="pagination-btn">Next &gt;</button>
-            <select id="rowsPerPageSelect" class="rows-per-page">
-                ${PAGINATION_CONFIG.PAGE_SIZE_OPTIONS.map(size => 
-                    `<option value="${size}"${size === store.paginationState.rowsPerPage ? ' selected' : ''}>
-                        ${size} per page
-                    </option>`
-                ).join('')}
-            </select>
-        `;
-        
+
+        const prevButton = document.createElement('button');
+        prevButton.id = 'prevPage';
+        prevButton.className = 'pagination-btn';
+        prevButton.textContent = '< Previous';
+
+        const pageInfo = document.createElement('span');
+        pageInfo.id = 'pageInfo';
+        pageInfo.className = 'page-info';
+
+        const nextButton = document.createElement('button');
+        nextButton.id = 'nextPage';
+        nextButton.className = 'pagination-btn';
+        nextButton.textContent = 'Next >';
+
+        const rowsPerPageSelect = document.createElement('select');
+        rowsPerPageSelect.id = 'rowsPerPageSelect';
+        rowsPerPageSelect.className = 'rows-per-page';
+
+        PAGINATION_CONFIG.PAGE_SIZE_OPTIONS.forEach(size => {
+            const option = document.createElement('option');
+            option.value = size;
+            option.textContent = `${size} per page`;
+            if (size === store.paginationState.rowsPerPage) {
+                option.selected = true;
+            }
+            rowsPerPageSelect.appendChild(option);
+        });
+
+        container.appendChild(prevButton);
+        container.appendChild(pageInfo);
+        container.appendChild(nextButton);
+        container.appendChild(rowsPerPageSelect);
+
         this.elements.tableBody.parentNode.after(container);
         this.elements.paginationControls = container;
         return container;
