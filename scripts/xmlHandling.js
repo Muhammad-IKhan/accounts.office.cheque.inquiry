@@ -64,9 +64,9 @@ export async function fetchXMLData() {
             }
         }catch (storageError) {
                 console.error('Failed to retrieve from localStorage:', storageError);
-            
+           } 
+        
             showError('Failed to load XML data. Please check your connection.');
             return false;
-        }
     }
 }
