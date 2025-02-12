@@ -42,7 +42,7 @@ function attachEventListeners() {
     }
 
     if (searchButton) {
-        searchButton.addEventListener('Enter', searchAndFilterXML);
+        searchInput.addEventListener('Enter', searchAndFilterXML);
           console.log('Enter clicked, initiating search...');
     } else {
         console.error('Search button not found');
@@ -91,17 +91,4 @@ function debounce(func, wait) {
 window.searchAndFilterXML = searchAndFilterXML;
 window.resetTable = resetTable;
 window.sortTable = sortTable;
-
-
-        // // Add click listeners for column sorting
-        // Object.keys(columns).forEach(columnName => {
-        //     const header = document.querySelector(`th[data-column="${columnName}"]`);
-        //     if (header) {
-        //         header.addEventListener('click', () => {
-        //             console.log(`Column header clicked: ${columnName}, initiating sort...`);
-        //             sortTable(columnName);
-        //         });
-        //     }
-        // });
-
 
