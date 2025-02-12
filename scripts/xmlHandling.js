@@ -1,5 +1,6 @@
 // xmlHandling.js
 
+import { showError } from './errorHandling.js'; // Import showError function
 import { xmlData } from './domElements.js';
 import { parseXMLToTable } from './tableFunctions.js';
 
