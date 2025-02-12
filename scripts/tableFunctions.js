@@ -221,11 +221,4 @@ export function resetTable() {
     resultContainer.style.display = 'none';
 }
 
-export function showError(message) {
-    console.error(message);
-    const resultDiv = document.getElementById('result');
-    if (resultDiv) {
-        resultDiv.innerHTML = `<div class="error-message">${message}</div>`;
-        resultDiv.style.display = 'block';
-    }
-}
+
