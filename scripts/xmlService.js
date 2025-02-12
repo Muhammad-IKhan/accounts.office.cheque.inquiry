@@ -27,11 +27,15 @@ export class XMLService {
         let combinedData = '<root>';
         
         for (const file of files) {
-            const response = await fetch(`/accounts.office.cheque.inquiry/public/data/${file}`);
-            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
-            
-            const data = await response.text();
-            combinedData += data.replace(/<\?xml.*?\?>/g, '');
+            try {
+                const response = await fetch(`/accounts.office.cheque.inquiry/public/data/${file}`);
+                if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+                
+                const data = await response.text();
+                combinedData += data.replace(/<\?xml.*?\?>/g, '');
+            } catch (error) {
+                console.error(`Error fetching ${file}:`, error);
+            }
         }
         
         return combinedData + '</root>';
