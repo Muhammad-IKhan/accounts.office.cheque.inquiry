@@ -1,4 +1,7 @@
+// xmlService.js
+
 import { store } from './store.js';
+import { handleError } from './errorHandler.js';
 
 export class XMLService {
     constructor(domManager) {
@@ -18,7 +21,7 @@ export class XMLService {
             
             return true;
         } catch (error) {
-            console.error('XML fetch error:', error);
+            handleError(error, 'XML fetch');
             return this.fallbackToStoredXML();
         }
     }
@@ -27,15 +30,11 @@ export class XMLService {
         let combinedData = '<root>';
         
         for (const file of files) {
-            try {
-                const response = await fetch(`/accounts.office.cheque.inquiry/public/data/${file}`);
-                if (!response.ok) throw new Error(`Failed to fetch ${file}`);
-                
-                const data = await response.text();
-                combinedData += data.replace(/<\?xml.*?\?>/g, '');
-            } catch (error) {
-                console.error(`Error fetching ${file}:`, error);
-            }
+            const response = await fetch(`/accounts.office.cheque.inquiry/public/data/${file}`);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            
+            const data = await response.text();
+            combinedData += data.replace(/<\?xml.*?\?>/g, '');
         }
         
         return combinedData + '</root>';
@@ -45,7 +44,7 @@ export class XMLService {
         try {
             localStorage.setItem('xmlData', data);
         } catch (error) {
-            console.warn('localStorage storage failed:', error);
+            handleError(error, 'localStorage storage');
         }
     }
 
@@ -57,7 +56,7 @@ export class XMLService {
                 return true;
             }
         } catch (error) {
-            console.error('localStorage retrieval failed:', error);
+            handleError(error, 'localStorage retrieval');
         }
         return false;
     }
