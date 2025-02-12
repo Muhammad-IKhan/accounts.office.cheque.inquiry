@@ -56,6 +56,13 @@ function attachEventListeners() {
     });
 }
 
+
+/**
+ * Debounce function to limit the rate of function execution
+ * @param {Function} func - The function to debounce
+ * @param {number} wait - The delay in milliseconds
+ * @returns {Function} - The debounced function
+ */
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
