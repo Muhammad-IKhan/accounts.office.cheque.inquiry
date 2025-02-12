@@ -1,7 +1,7 @@
 // domElements.js
 
-export let xmlData;
 // Global variables to store DOM elements
+export let xmlData;
 export let tableBody, searchInput, tableContainer, emptyState, resultContainer;
 
 /**
