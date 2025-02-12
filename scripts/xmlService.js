@@ -1,5 +1,3 @@
-// xmlService.js
-
 import { store } from './store.js';
 
 export class XMLService {
