@@ -1,4 +1,9 @@
 // app.js
+import { DOMManager } from './domManager.js';
+import { XMLService } from './xmlService.js';
+import { TableService } from './tableService.js';
+import { SearchService } from './searchService.js';
+
 export class App {
     constructor() {
         this.domManager = new DOMManager();
@@ -56,9 +61,3 @@ export class App {
         };
     }
 }
-
-// Initialize application
-document.addEventListener('DOMContentLoaded', () => {
-    const app = new App();
-    app.initialize();
-});
