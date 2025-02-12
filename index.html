@@ -27,10 +27,20 @@
                     aria-label="Search transactions"
                 >
             </div>
+
+            <!-- 
             <button onclick="searchAndFilterXML()" class="btn btn-primary" aria-label="Perform search">
                 <i class="fas fa-search"></i> Search
             </button>
             <button onclick="resetTable()" class="btn btn-secondary" aria-label="Reset table">
+                <i class="fas fa-redo"></i> Reset
+            </button>
+              -->
+
+            <button type="button" class="btn btn-primary" onclick="window.searchAndFilterXML()">
+                <i class="fas fa-search"></i> Search
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="window.resetTable()">
                 <i class="fas fa-redo"></i> Reset
             </button>
         </div>
@@ -48,8 +58,6 @@
                         <th data-column="PVN">PON <span class="sort-icon">↓</span></th>
                         <th data-column="DD">Status <span class="sort-icon">↓</span></th>
                     </tr> -->
-
-                    <!-- 
                     <tr>
                         <th data-column="SNO" onclick="window.sortTable('SNO')">S.No <span class="sort-icon">↓</span></th>
                         <th data-column="NARRATION" onclick="window.sortTable('NARRATION')">Payee(s) <span class="sort-icon">↓</span></th>
@@ -60,7 +68,8 @@
                         <th data-column="PVN" onclick="window.sortTable('PVN')">PON <span class="sort-icon">↓</span></th>
                         <th data-column="DD" onclick="window.sortTable('DD')">Status <span class="sort-icon">↓</span></th>
                     </tr>
-                    -->
+                    
+                   <!-- 
                     <tr>
                         <th onclick="sortTable('SNO')">S.No <span class="sort-icon">↓</span></th>
                         <th onclick="sortTable('NARRATION')">Payee(s) <span class="sort-icon">↓</span></th>
@@ -71,6 +80,7 @@
                         <th onclick="sortTable('PVN')">PON <span class="sort-icon">↓</span></th>
                         <th onclick="sortTable('DD')">Status <span class="sort-icon">↓</span></th>
                     </tr>
+                      -->
                 </thead>
                 <tbody id="checksTable"></tbody>
             </table>
