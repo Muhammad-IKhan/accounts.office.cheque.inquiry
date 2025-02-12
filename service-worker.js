@@ -21,9 +21,9 @@ const ASSETS_TO_CACHE  = [
   '/accounts.office.cheque.inquiry/scripts/eventListeners.js',
   '/accounts.office.cheque.inquiry/scripts/tableFunctions.js',
   '/accounts.office.cheque.inquiry/scripts/pagination.js',
-  '/accounts.office.cheque.inquiry/scripts/utilities.js',
   '/accounts.office.cheque.inquiry/scripts/errorHandling.js',
-  '/accounts.office.cheque.inquiry/public/data/data.xml',
+  // '/accounts.office.cheque.inquiry/scripts/utilities.js',
+  // '/accounts.office.cheque.inquiry/public/data/data.xml',
   '/accounts.office.cheque.inquiry/public/data/files.json',
   '/accounts.office.cheque.inquiry/scripts/xmlHandling.js'
 ];
