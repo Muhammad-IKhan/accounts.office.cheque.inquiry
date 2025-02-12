@@ -27,6 +27,8 @@ export class App {
         if (success) {
             this.tableService.parseXMLToTable();
             this.searchService.resetSearch();
+        } else {
+            console.error('Failed to initialize data.');
         }
     }
 
