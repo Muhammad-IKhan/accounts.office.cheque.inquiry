@@ -1,4 +1,7 @@
 // xmlService.js
+
+import { store } from './store.js';
+
 export class XMLService {
     constructor(domManager) {
         this.domManager = domManager;
