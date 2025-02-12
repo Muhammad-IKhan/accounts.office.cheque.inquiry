@@ -67,5 +67,6 @@ export async function fetchXMLData() {
             
             showError('Failed to load XML data. Please check your connection.');
             return false;
+        }
     }
 }
