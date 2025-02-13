@@ -6,7 +6,9 @@ export class SearchService {
     }
 
     searchAndFilter() {
-        const searchTerm = this.domManager.elements.searchInput.value.toLowerCase();
+        const { searchInput, tableBody, resultContainer, emptyState, tableContainer } = this.domManager.elements;
+        const searchTerm = searchInput.val().toLowerCase();
+
         if (!searchTerm) {
             this.resetSearch();
             return;
@@ -17,14 +19,14 @@ export class SearchService {
     }
 
     filterRows(searchTerm) {
-        const rows = this.domManager.elements.tableBody.querySelectorAll('tr');
+        const rows = tableBody.find('tr');
         let matchCount = 0;
 
-        rows.forEach(row => {
-            const matches = Array.from(row.cells).some(cell => 
-                cell.textContent.toLowerCase().includes(searchTerm)
+        rows.each((index, row) => {
+            const matches = $(row).find('td').toArray().some(cell => 
+                $(cell).text().toLowerCase().includes(searchTerm)
             );
-            row.style.display = matches ? '' : 'none';
+            $(row).toggle(matches);
             if (matches) matchCount++;
         });
 
@@ -33,20 +35,20 @@ export class SearchService {
 
     updateUIWithResults(searchTerm, matchCount) {
         const { resultContainer, emptyState, tableContainer } = this.domManager.elements;
-        
-        resultContainer.innerHTML = matchCount > 0
+
+        resultContainer.html(matchCount > 0
             ? `<i class="fas fa-check-circle"></i> Found ${matchCount} results for "${searchTerm}"`
-            : '<i class="fas fa-times-circle"></i> No results found.';
-            
-        resultContainer.style.display = 'block';
-        emptyState.style.display = matchCount > 0 ? 'none' : 'block';
-        tableContainer.style.display = matchCount > 0 ? 'block' : 'none';
+            : '<i class="fas fa-times-circle"></i> No results found.'
+        ).show();
+
+        emptyState.toggle(matchCount === 0);
+        tableContainer.toggle(matchCount > 0);
     }
 
     resetSearch() {
         const { tableContainer, emptyState, resultContainer } = this.domManager.elements;
-        tableContainer.style.display = 'none';
-        emptyState.style.display = 'block';
-        resultContainer.style.display = 'none';
+        tableContainer.hide();
+        emptyState.show();
+        resultContainer.hide();
     }
 }
