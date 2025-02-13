@@ -9,12 +9,12 @@ export class DOMManager {
 
     initialize() {
         this.elements = {
-            tableBody: document.getElementById('checksTable'),
-            searchInput: document.getElementById('search'),
-            tableContainer: document.getElementById('tableContainer'),
-            emptyState: document.getElementById('emptyState'),
-            resultContainer: document.getElementById('result'),
-            paginationControls: null
+            tableBody: $('#checksTable'),
+            searchInput: $('#search'),
+            tableContainer: $('.table-responsive'),
+            emptyState: $('#emptyState'),
+            resultContainer: $('#result'),
+            paginationControls: $('#paginationControls')
         };
 
         if (!this.validateElements()) {
@@ -25,7 +25,6 @@ export class DOMManager {
     }
 
     validateElements() {
-        return Object.values(this.elements).every(element => 
-            element !== null || element === this.elements.paginationControls);
+        return Object.values(this.elements).every(element => element.length > 0);
     }
 }
