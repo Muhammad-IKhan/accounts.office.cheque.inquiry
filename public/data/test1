@@ -1,0 +1,27 @@
+
+            <G_PVN>
+                <BNO></BNO>
+                <HEAD></HEAD>
+                <PVN></PVN>
+                <NARRATION></NARRATION>
+                <AMOUNT></AMOUNT>
+                <ENT_DAT></ENT_DAT>
+                <CHEQ_NO></CHEQ_NO>
+                <CHEQ_DATE></CHEQ_DATE>
+                <SNO></SNO>
+                <DD></DD>
+                <NAR></NAR>
+            </G_PVN>
+            <G_PVN>
+                <BNO></BNO>
+                <HEAD></HEAD>
+                <PVN>4</PVN>
+                <NARRATION></NARRATION>
+                <AMOUNT></AMOUNT>
+                <ENT_DAT></ENT_DAT>
+                <CHEQ_NO></CHEQ_NO>
+                <CHEQ_DATE></CHEQ_DATE>
+                <SNO></SNO>
+                <DD></DD>
+                <NAR></NAR>
+            </G_PVN>
