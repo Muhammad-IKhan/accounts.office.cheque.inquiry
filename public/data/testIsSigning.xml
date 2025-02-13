@@ -1,17 +1,4 @@
-<!--             <G_PVN>
-                <BNO></BNO>
-                <HEAD>2207</HEAD>
-                <PVN></PVN>
-                <NARRATION>MATI ULLAH SET GGPS LANDI NWTD test</NARRATION>
-                <AMOUNT></AMOUNT>
-                <ENT_DAT>01-FEB-25</ENT_DAT>
-                <CHEQ_NO></CHEQ_NO>
-                <CHEQ_DATE></CHEQ_DATE>
-                <SNO>1</SNO>
-                <DD> Wait a bit for : &#10;will be sign soon estimated to today receiveng today in a/c section office...</DD>
-                <NAR>TA/DA GENERAL</NAR>
-            </G_PVN> -->
-
+<!--<DD> Wait a bit for : &#10;will be sign soon estimated to today receiveng today in a/c section office...</DD>-->
 
 <CHEQUE_LIST_DATEWISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <LIST_G_PVN>
