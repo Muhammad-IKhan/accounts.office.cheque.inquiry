@@ -42,9 +42,11 @@ class XMLTableHandler {
         });
 
         // Live search handler with debounce
-        this.$searchInput.on('input', $.debounce(300, () => {
-            this.searchAndFilterXML();
-        }));
+        let searchTimeout;
+        this.$searchInput.on('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => this.searchAndFilterXML(), 300);
+        });
 
         // Button click handlers
         this.$searchBtn.on('click', () => this.searchAndFilterXML());
@@ -269,4 +271,36 @@ class XMLTableHandler {
      * Shows error message
      * @param {string} message - Error message to display
      */
-    showError
+    showError(message) {
+        this.$result
+            .removeClass('alert-success alert-warning')
+            .addClass('alert-danger')
+            .html(`<i class="fas fa-exclamation-circle"></i> ${message}`)
+            .show();
+    }
+}
+
+// Initialize the handler when the DOM is ready
+$(document).ready(() => {
+    const handler = new XMLTableHandler();
+    handler.fetchXMLData().then(() => {
+        handler.resetTable();
+    });
+});
+
+// Service Worker registration
+if ('serviceWorker' in navigator) {
+    $(window).on('load', () => {
+        const swPath = '/accounts.office.cheque.inquiry/service-worker.js';
+        
+        navigator.serviceWorker.register(swPath, {
+            scope: '/accounts.office.cheque.inquiry/'
+        })
+        .then(registration => {
+            console.log('ServiceWorker registration successful with scope:', registration.scope);
+        })
+        .catch(err => {
+            console.error('ServiceWorker registration failed:', err);
+        });
+    });
+}
