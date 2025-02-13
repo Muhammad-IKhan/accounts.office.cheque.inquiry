@@ -9,14 +9,15 @@ class XMLTableHandler {
         
         // Column configuration
         this.columns = {
-            SNO: { index: 0, type: 'number' },
+            // SNO: { index: 0, type: 'number' },
             NARRATION: { index: 1, type: 'string' },
             AMOUNT: { index: 2, type: 'number' },
-            CHEQ_NO: { index: 3, type: 'number' },
-            NAR: { index: 4, type: 'string' },
-            BNO: { index: 5, type: 'number' },
-            PVN: { index: 6, type: 'number' },
-            DD: { index: 7, type: 'string' }
+            NAR: { index: 3, type: 'string' },
+            CHEQ_NO: { index: 4, type: 'number' },
+            DD: { index: 5, type: 'string' },
+            BNO: { index: 6, type: 'number' },
+            PVN: { index: 7, type: 'number' },
+          // XYZ: { index: 0, type: 'number' },
         };
 
         // Initialize event listeners
