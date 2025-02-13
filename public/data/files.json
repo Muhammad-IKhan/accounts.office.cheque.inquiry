@@ -1,10 +1,9 @@
 [
   "testIsInProcess.xml",
-  "testInProcess.xml" ,
-  
   "testInWork.xml", 
-  
-  "testIsSigning.xml",
+  "testSigning.xml",
+
+  "test1.xml",
   
   "testIsReceived.xml" ,
   "testGpoBannuReg.xml", 
