@@ -15,8 +15,8 @@ class XMLTableHandler {
             CHEQ_NO: { index: 2, type: 'number' },
             NAR: { index: 3, type: 'string' },
             DD: { index: 4, type: 'string' },
-            BNO: { index: 5, type: 'number' },
-            PVN: { index: 6, type: 'number' },
+            // BNO: { index: 5, type: 'number' },
+            // PVN: { index: 6, type: 'number' },
             // XYZ: { index: 0, type: 'number' },
         
         };
