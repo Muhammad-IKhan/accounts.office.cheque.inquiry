@@ -1,6 +1,7 @@
 [
   "testSigningBoth.xml",
   "testSigningChair.xml",
-  "readyChecks.xml"
+  "readyChecks.xml",
+  "testGpoBannuReg.xml"
 
 ]
