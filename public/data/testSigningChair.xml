@@ -1,18 +1,19 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
 <CHEQUE_LIST_DATEWISE>
-  <LIST_G_PVN>
-    <G_PVN>
-      <ENO>22</ENO>
-      <BNO/>
-      <HEAD>1716</HEAD>
-      <PVN>1</PVN>
-      <NARRATION>IRFAN ULLAH SST GHSS DOMEL BANNU</NARRATION>
-      <AMOUNT>160865</AMOUNT>
-      <ENT_DAT>01-FEB-25</ENT_DAT>
-      <CHEQ_NO>4498745</CHEQ_NO>
-      <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-      <DD>Delevierd to Chairman Sb. for Sign </DD>
-    <NAR>MARKING SSC</NAR>
-    </G_PVN>
+<LIST_G_PVN>
+<G_PVN>
+<ENO>22</ENO>
+<BNO/>
+<HEAD>1716</HEAD>
+<PVN>1</PVN>
+<NARRATION>IRFAN ULLAH SST GHSS DOMEL BANNU</NARRATION>
+<AMOUNT>160865</AMOUNT>
+<ENT_DAT>01-FEB-25</ENT_DAT>
+<CHEQ_NO>4498745</CHEQ_NO>
+<CHEQ_DATE>04-FEB-25</CHEQ_DATE>
+<DD>Sent to Chairman Sb. for Sign </DD>
+<NAR>MARKING SSC</NAR>
+</G_PVN>
 <G_PVN>
 <ENO>23</ENO>
 <BNO/>
@@ -23,7 +24,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498746</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -36,7 +37,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498747</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -49,7 +50,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498748</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -62,7 +63,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498749</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -75,7 +76,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498750</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -88,7 +89,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498751</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -101,7 +102,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498752</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -114,7 +115,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498753</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -127,7 +128,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498755</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -140,7 +141,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498756</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -153,7 +154,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498759</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -166,7 +167,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498760</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -179,7 +180,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498761</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -192,7 +193,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498762</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -205,7 +206,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498763</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -218,7 +219,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498765</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -231,7 +232,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498771</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -244,7 +245,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498772</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -257,7 +258,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498773</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -270,7 +271,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498774</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -283,7 +284,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498776</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -296,7 +297,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498777</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -309,7 +310,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498778</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -322,7 +323,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498779</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -335,7 +336,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498780</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -348,7 +349,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498795</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -361,7 +362,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498796</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -374,7 +375,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498797</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -387,7 +388,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498798</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -400,7 +401,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498807</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -413,7 +414,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498808</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -426,7 +427,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498809</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -439,7 +440,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498810</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -452,7 +453,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498812</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -465,7 +466,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498813</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -478,7 +479,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498814</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -491,7 +492,7 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498815</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 <G_PVN>
@@ -504,9 +505,8 @@
 <ENT_DAT>01-FEB-25</ENT_DAT>
 <CHEQ_NO>4498831</CHEQ_NO>
 <CHEQ_DATE>04-FEB-25</CHEQ_DATE>
-<DD>Delevierd to Chairman Sb. for Sign </DD>
+<DD>Sent to Chairman Sb. for Sign </DD>
 <NAR>MARKING SSC</NAR>
 </G_PVN>
 </LIST_G_PVN>
 </CHEQUE_LIST_DATEWISE>
-
