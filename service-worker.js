@@ -13,19 +13,19 @@ const ASSETS_TO_CACHE  = [
   // '/scripts/errorHandling.js',
   // '/scripts/tableUtilities.js',
   // '/favicon.ico',
-  '/accounts.office.cheque.inquiry/',
-  '/accounts.office.cheque.inquiry/index.html',
-  '/accounts.office.cheque.inquiry/styles/style.css',
-  '/accounts.office.cheque.inquiry/scripts/main.js',
-  '/accounts.office.cheque.inquiry/scripts/domElements.js',
-  '/accounts.office.cheque.inquiry/scripts/eventListeners.js',
-  '/accounts.office.cheque.inquiry/scripts/tableFunctions.js',
-  '/accounts.office.cheque.inquiry/scripts/pagination.js',
-  '/accounts.office.cheque.inquiry/scripts/errorHandling.js',
+  // '/accounts.office.cheque.inquiry/',
+  // '/accounts.office.cheque.inquiry/index.html',
+  // '/accounts.office.cheque.inquiry/styles/style.css',
+  // '/accounts.office.cheque.inquiry/scripts/main.js',
+  // '/accounts.office.cheque.inquiry/scripts/domElements.js',
+  // '/accounts.office.cheque.inquiry/scripts/eventListeners.js',
+  // '/accounts.office.cheque.inquiry/scripts/tableFunctions.js',
+  // '/accounts.office.cheque.inquiry/scripts/pagination.js',
+  // '/accounts.office.cheque.inquiry/scripts/errorHandling.js',
   // '/accounts.office.cheque.inquiry/scripts/utilities.js',
   // '/accounts.office.cheque.inquiry/public/data/data.xml',
   '/accounts.office.cheque.inquiry/public/data/files.json',
-  '/accounts.office.cheque.inquiry/scripts/xmlHandling.js'
+  // '/accounts.office.cheque.inquiry/scripts/xmlHandling.js'
 ];
 
 // Rest of your service worker code...
