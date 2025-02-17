@@ -1,7 +1,7 @@
 //  PAGINATION remains
 class XMLTableHandler {
     constructor() {
-        console.log('🚀 Initializing XMLTableHandler...');
+        // console.log('🚀 Initializing XMLTableHandler...');
         
         try {
             this.defineColumns();
@@ -365,7 +365,7 @@ class XMLTableHandler {
 
 // Initialize handler
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🌟 DOM Content Loaded - Starting initialization');
+    // console.log('🌟 DOM Content Loaded - Starting initialization');
     
     try {
         window.tableHandler = new XMLTableHandler();
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/accounts.office.cheque.inquiry/service-worker.js', { scope: '/accounts.office.cheque.inquiry/' })
-            .then(registration => console.log('ServiceWorker registered:', registration.scope))
+            // .then(registration => console.log('ServiceWorker registered:', registration.scope))
             .catch(err => console.error('ServiceWorker registration failed:', err));
     });
 }
