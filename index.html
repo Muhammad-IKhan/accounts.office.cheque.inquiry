@@ -199,46 +199,45 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Cheque Inquiry System</h1>
-            <h2>Board of Intermediate & Secondary Education Bannu</h2>
+            <h1>Cheque Inquiry System Board of Intermediate & Secondary Education Bannu</h1>
         </div>
 
         <!-- Controls -->
         <div class="controls">
+            
+
+            <div class="filter-box">
+                <label for="narCategory">Bill Category (Select a Category to Narrow Down)</label>
+                <select id="narCategory">
+                   <option value="all" selected>Search in All</option>
+                    <option value="TA/DA TO SUPERVISORY STAFF SSC EXAM:">Supervisory Staff SSC</option>
+                    <option value="TA/DA TO PRACTICAL EXMR: SSC">Practical Staff SSC</option>
+                    <option value="REMUNERATION RES: INSPECTORS">Resedent Inspectors</option>
+                    <option value="LABORATORY CHARGES">Laboratory Charges</option>
+                    <option value="MARKING SSC">Secrecy Bills</option>
+                    <option value="TA/DA TO SUPERVISORY STAFF HSSC EXAM:">Supervisory Staff HSSC</option>
+                    <option value="TA/DA TO PRACTICAL EXMR: HSSC">Practical Staff HSSC</option>
+                    <option value="TA/DA TO INSEPCTORS SSC">Inspections Staff SSC</option>
+                    <option value="TA/DA TO INSEPCTORS HSSC">Inspections Staf HSSC</option>
+                    <option value="TA/DA GENERAL">TA/DA General</option>
+                    <option value="REFUND OF FEE">Refund Fee</option>
+                    <option value="EXPIRED CHECK RENEWED">Check Renewal</option>    
+                    <option value="HONORARIA">Honoraria & Others</option>
+                </select>
+            </div>
+
             <div class="search-box">
                 <label for="search">Search</label>
                 <input type="text" id="search" placeholder="Enter your name or school name...">
             </div>
 
-            <div class="filter-box">
-                <label for="narCategory">NAR Category</label>
-                <select id="narCategory">
-                   <option value="all" selected>Search All Bills</option>
-                    <option value="TA/DA TO SUPERVISORY STAFF SSC EXAM:">Supervisory Staff SSC</option>
-                    <option value="TA/DA TO PRACTICAL EXMR: SSC">Practical Staff SSC</option>
-                    <option value="REMUNERATION RES: INSPECTORS">Resedent Inspectors</option>
-                    <option value="LABORATORY CHARGES">Laboratory Charges</option>
-                    <option value="TA/DA TO SUPERVISORY STAFF HSSC EXAM:">Supervisory Staff HSSC</option>
-                    <option value="TA/DA TO PRACTICAL EXMR: HSSC">Practical Staff HSSC</option>
-<!--                     <option value="TA/DA TO INSEPCTORS SSC">Inspections Staff SSC</option>
-                    <option value="TA/DA TO INSEPCTORS HSSC">Inspections Staf HSSC</option> -->
-                    <option value="EXPIRED CHECK RENEWED">Expired Check Renewed</option>
-                    <option value="TA/DA GENERAL">TA/DA General</option>
-                    <option value="HONORARIA">Honoraria</option>
-<!--                     <option value="MARKING SSC">Marking SSC</option>
-                    <option value="MARKING HSSC">Marking HSSC</option> -->
-<!--                     <option value="REMUNERATION TO PAPER SETTER HSSC">Remuneration to Paper Setter HSSC</option>
-<!--                     <option value="REMUNERATION TO UFM MEMEBERS">Remuneration to UFM Members</option> -->
-                     -->
-                    <option value="REFUND OF FEE">Refund of Fee</option>
-<!--                     <option value="RETOTALLING">Retotalling</option> -->
-                </select>
-            </div>
 
-            <div class="filter-box">
-                <label for="statusFilter">Status Filter</label>
+            <button id="searchBtn">Search</button>
+
+             <div class="filter-box">
+                <label for="statusFilter">Filter by Status</label>
                 <select id="statusFilter">
-                    <option value="all">All Statuses</option>
+                    <option value="all">all Statuses</option>
                     <option value="despatched through gpo">Despatched Through GPO</option>
                     <option value="ready but not signed yet">Ready But Not Signed</option>
                     <option value="despatched to lakki camp office">Despatched to Lakki</option>
@@ -249,8 +248,6 @@
                     <option value="processing">Processing</option>
                 </select>
             </div>
-
-            <button id="searchBtn">Search</button>
         </div>
 
         <!-- Results -->
