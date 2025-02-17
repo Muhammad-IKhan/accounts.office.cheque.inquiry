@@ -1,8 +1,8 @@
 [
-  "testSigningBoth.xml",
-  "testSigningChair.xml",
+  "SigningBoth.xml",
+  "SigningChair.xml",
   "readyChecks.xml",
-  "testGpoBannuReg.xml",
+  "GpoBannuReg.xml",
   "azizUllahLakkiCamp.xml"
 
 ]
