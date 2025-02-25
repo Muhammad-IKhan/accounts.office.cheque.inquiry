@@ -1,7 +1,7 @@
 //scripts/service-worker.js
 const CACHE_NAME = 'sie-app-v1-cache';
 const ASSETS_TO_CACHE  = [
-  // '/',
+   '/',
   // '/index.html',
   // '/styles/styles.css',
   // '/scripts/main.js',
