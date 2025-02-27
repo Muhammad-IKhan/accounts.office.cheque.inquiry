@@ -41,8 +41,8 @@ class XMLTableHandler {
             minPages: 1,  // Minimum number of pages to display in pagination
             searchTermMinLength: 3, // Minimum length of the search term before triggering a search
             dataFilesJsonPath: '/accounts.office.cheque.inquiry/public/data/files.json', // Path to the files.json
-            dataFilesBasePath: '/accounts.office.cheque.inquiry/public/data/' // Base path for XML data files,
-            itemsPerPage: 10
+            dataFilesBasePath: '/accounts.office.cheque.inquiry/public/data/', // Base path for XML data files
+            itemsPerPage: 10 //Number of items to display per page.
         };
         console.log(`⚙️ Configuration: maxPages = ${this.config.maxPages}, minPages = ${this.config.minPages}, searchTermMinLength = ${this.config.searchTermMinLength}, dataFilesJsonPath = ${this.config.dataFilesJsonPath}, dataFilesBasePath = ${this.config.dataFilesBasePath}`);
         console.groupEnd();
@@ -84,7 +84,9 @@ class XMLTableHandler {
             'pagination': 'pagination',
             'searchBtn': 'searchBtn',
             'rowsPerPage': 'rowsPerPageSelect',
-            'paginationContainer': 'paginationContainer'
+            'paginationContainer': 'paginationContainer',
+            'prevPage': 'prevPage',
+            'nextPage': 'nextPage'
         };
 
         for (const [id, prop] of Object.entries(requiredElements)) {
@@ -101,6 +103,7 @@ class XMLTableHandler {
 
         // Additional DOM elements
         this.scrollToTopBtn = document.getElementById('scrollToTop');
+        this.viewModeSelect = document.getElementById('viewMode');
 
         console.log('🔍 After finding, this.pagination:', this.pagination);
         console.groupEnd();
@@ -125,6 +128,7 @@ class XMLTableHandler {
             visibleRowsCount: 0,
             sortColumn: null,
             sortDirection: 'asc',
+            allRows: [],
             filteredRows: []
         };
         console.table(this.state); // Display state as a table in console
@@ -188,6 +192,29 @@ class XMLTableHandler {
             });
         });
 
+        // View mode selection
+        this.viewModeSelect.addEventListener('change', () => {
+            const selectedViewMode = this.viewModeSelect.value;
+            console.log(`👁️‍🗨️ View mode changed to: ${selectedViewMode}`);
+            // Implement view mode logic here (e.g., add/remove CSS classes)
+        });
+
+        //Pagination control
+        this.prevPage.addEventListener('click', () => {
+            if (this.state.currentPage > 1) {
+                this.state.currentPage--;
+                this.updatePagination();
+            }
+        });
+
+        this.nextPage.addEventListener('click', () => {
+            const totalPages = Math.ceil(this.state.filteredRows.length / this.state.rowsPerPage);
+            if (this.state.currentPage < totalPages) {
+                this.state.currentPage++;
+                this.updatePagination();
+            }
+        });
+
         console.log('✅ All event listeners initialized');
         console.groupEnd(); // End the console group
     }
@@ -246,7 +273,7 @@ class XMLTableHandler {
      * Update pagination based on current page and rows per page
      * Handles visibility of rows and rendering pagination controls
      */
-    updatePagination() {
+     updatePagination() {
         if (!this.state.paginationEnabled) {
             console.log('⏩ Pagination is disabled, skipping update');
             return;
@@ -277,6 +304,10 @@ class XMLTableHandler {
 
         // Re-render pagination controls
         this.renderPaginationControls(totalPages);
+
+         // Update prev/next buttons disabled state
+         this.prevPage.disabled = this.state.currentPage === 1;
+         this.nextPage.disabled = this.state.currentPage === totalPages;
     }
 
     /**
@@ -293,6 +324,7 @@ class XMLTableHandler {
         }
 
         controls.innerHTML = '';
+
         if (totalPages <= 1) {
             this.paginationContainer.style.display = 'none';// Hide pagination if only one page
             console.log('🔢 Hiding pagination controls (single page)');
@@ -357,14 +389,15 @@ class XMLTableHandler {
      */
     async fetchXMLData() {
         console.group('📥 Fetching XML data...'); // Start a console group
-        try {
-            // Show loading
-            this.tableContainer.style.display = 'none';
-            this.emptyState.style.display = 'none';
-            this.noResults.style.display = 'none';
-            this.paginationContainer.style.display = 'none';
-            this.loadingIndicator.style.display = 'block';
 
+        // Show loading
+        this.tableContainer.style.display = 'none';
+        this.emptyState.style.display = 'none';
+        this.noResults.style.display = 'none';
+        this.paginationContainer.style.display = 'none';
+        this.loadingIndicator.style.display = 'block';
+
+        try {
             const filesResponse = await fetch(this.config.dataFilesJsonPath);
             if (!filesResponse.ok) throw new Error(`HTTP error! Status: ${filesResponse.status} - ${this.config.dataFilesJsonPath}`);
             const xmlFiles = await filesResponse.json();
@@ -386,10 +419,10 @@ class XMLTableHandler {
             this.state.xmlData = combinedXML;
 
             const result = this.parseXMLToTable(combinedXML);
-            this.initializePagination(); // Initialize pagination after parsing data
 
              // Hide loading
             this.loadingIndicator.style.display = 'none';
+            this.initializePagination();
 
             return result;
         } catch (error) {
@@ -399,15 +432,13 @@ class XMLTableHandler {
                 console.log('📋 Using cached XML data from local storage');
                 this.state.xmlData = storedXML;
                 const result = this.parseXMLToTable(storedXML);
-                this.initializePagination(); // Initialize pagination after parsing data
 
-                // Hide loading
+                 // Hide loading
                 this.loadingIndicator.style.display = 'none';
+                this.initializePagination();
                 return result;
             }
-             // Hide loading
             this.loadingIndicator.style.display = 'none';
-
             // Show empty state or no results
             this.tableContainer.style.display = 'none';
             this.emptyState.style.display = 'none';
@@ -426,7 +457,7 @@ class XMLTableHandler {
      * @returns {boolean} - True if parsing was successful
      */
     parseXMLToTable(xmlString) {
-    console.group('🔄 Parsing XML data to table...'); // Start a console group
+        console.group('🔄 Parsing XML data to table...'); // Start a console group
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlString || this.state.xmlData, "text/xml");
 
@@ -440,24 +471,15 @@ class XMLTableHandler {
         console.log(`📊 Found ${entries.length} entries to display`);
         this.tableBody.innerHTML = '';
 
-        const rows = []; // Store rows before appending
-
-        Array.from(entries).forEach((element, index) => {
-            const row = this.createTableRow(element);
-            rows.push(row); // Add to the array
-            if (index === 0 || index === entries.length - 1 || index % 100 === 0) {
-                console.log(`📝 Processed ${index + 1}/${entries.length} rows`);
-            }
-        });
-
-        // After creating all rows, set the filtered rows
-        this.state.filteredRows = rows;
+        // Store rows in state.allRows, and initially set filteredRows to allRows
+        this.state.allRows = Array.from(entries).map(element => this.createTableRow(element));
+        this.state.filteredRows = [...this.state.allRows];
 
         this.state.visibleRowsCount = entries.length;
         console.log('✅ XML parsing complete');
         console.groupEnd(); // End the console group
 
-        // Check for results and show/hide elements accordingly
+         // After initial load, show the table if there are any results
         if (entries.length > 0) {
             this.tableContainer.style.display = 'block';
             this.emptyState.style.display = 'none';
@@ -471,6 +493,7 @@ class XMLTableHandler {
         }
 
         this.updatePagination();
+
         return true;
     }
 
@@ -565,7 +588,7 @@ class XMLTableHandler {
     applyFilters() {
         console.group('🔍 Applying filters...');
 
-        // Show loading indicator
+         // Show loading indicator
         this.loadingIndicator.style.display = 'block';
         this.tableContainer.style.display = 'none';
         this.emptyState.style.display = 'none';
@@ -590,8 +613,7 @@ class XMLTableHandler {
             }
 
             // Filter rows based on search term and filters
-            const allRows = Array.from(this.tableBody.querySelectorAll('tr'));
-            const filteredRows = allRows.filter(row => {
+            this.state.filteredRows = this.state.allRows.filter(row => {
                 const narValue = row.getAttribute('data-nar');
                 const status = row.querySelector('td[data-field="DD"]').textContent.toLowerCase();
                 const cells = Array.from(row.getElementsByTagName('td'));
@@ -611,35 +633,26 @@ class XMLTableHandler {
                 return matchesCategory && matchesStatus && matchesSearch;
             });
 
-            // Store filtered rows in state
-            this.state.filteredRows = filteredRows;
-            console.log(`🔍 Filter found ${filteredRows.length} matching rows`);
+            console.log(`🔍 Filter found ${this.state.filteredRows.length} matching rows`);
 
             // Update search results message
-            let message = `Found ${filteredRows.length} results`;
+            let message = `Found ${this.state.filteredRows.length} results`;
             if (searchTerm) message += ` for "${searchTerm}"`;
             if (narCategory !== 'all') message += ` in category "${this.narFilter.options[this.narFilter.selectedIndex].text}"`;
             if (statusFilter !== 'all') message += ` with status "${statusFilter}"`;
 
             console.log(`📊 Search results: ${message}`);
             if (this.resultContainer) {
-                this.resultContainer.textContent = filteredRows.length > 0 ? message : 'No results found.';
+                this.resultContainer.textContent = this.state.filteredRows.length > 0 ? message : 'No results found.';
                 this.resultContainer.style.display = 'block';
             }
 
             // Handle result display
-            if (filteredRows.length > 0) {
+            if (this.state.filteredRows.length > 0) {
                 this.tableContainer.style.display = 'block';
                 this.emptyState.style.display = 'none';
                 this.noResults.style.display = 'none';
                 this.paginationContainer.style.display = 'flex';
-
-                 // After setting the filtered rows, re-render the table
-                this.tableBody.innerHTML = ''; // Clear existing content
-                const fragment = document.createDocumentFragment(); // Use a fragment for efficiency
-                this.state.filteredRows.forEach(row => fragment.appendChild(row)); // Append rows to the fragment
-                this.tableBody.appendChild(fragment);
-                this.updatePagination();
             } else {
                 this.tableContainer.style.display = 'none';
                 this.emptyState.style.display = 'none';
@@ -647,9 +660,15 @@ class XMLTableHandler {
                 this.paginationContainer.style.display = 'none';
             }
 
+             // Clear the table body and append the current page's rows
+            this.tableBody.innerHTML = ''; // Clear existing content
+            this.state.filteredRows.slice(0, this.config.itemsPerPage).forEach(row => {
+                this.tableBody.appendChild(row);
+            });
+
             this.updatePagination(); // Update pagination after filtering
 
-            // Hide loading indicator
+             // Hide loading indicator
             this.loadingIndicator.style.display = 'none';
             console.groupEnd();
         }, 500);
@@ -667,7 +686,7 @@ class XMLTableHandler {
             this.statusFilter.value = 'all';
             this.state.lastSearchTerm = '';
             this.state.currentPage = 1; // Reset to the first page
-            this.state.filteredRows = []; // Clear filtered rows
+            this.state.filteredRows = [...this.state.allRows]; // Reset filteredRows to allRows
 
             this.tableContainer.style.display = 'none';
             this.emptyState.style.display = 'block';
@@ -675,9 +694,13 @@ class XMLTableHandler {
             this.resultContainer.style.display = 'none';
             this.paginationContainer.style.display = 'none';
 
-            this.tableBody.querySelectorAll('tr').forEach(row => row.style.display = '');
+            this.tableBody.innerHTML = ''; // Clear existing content
+            this.updatePagination();// Update pagination after sorting
+             // Display the first page of reset rows
+             this.state.filteredRows.slice(0, this.config.itemsPerPage).forEach(row => {
+                this.tableBody.appendChild(row);
+            });
 
-            this.updatePagination(); // Update pagination after reset
         } finally {
             console.groupEnd();
         }
@@ -693,6 +716,7 @@ class XMLTableHandler {
             ${message}
         `;
         this.resultContainer.style.display = 'block';
+
         this.tableContainer.style.display = 'none';
         this.emptyState.style.display = 'none';
         this.noResults.style.display = 'none';
@@ -715,7 +739,7 @@ class XMLTableHandler {
 
         console.log(`🔃 Sorting by ${column} (${type}) in ${direction} order`);
 
-        const rows = this.state.filteredRows;
+        const rows = [...this.state.filteredRows];
 
         rows.sort((a, b) => {
             const aValue = this.getCellValue(a, column, type);
@@ -777,9 +801,16 @@ class XMLTableHandler {
      * @param {Array<HTMLTableRowElement>} rows - Sorted rows
      */
     reorderRows(rows) {
+
+        this.state.filteredRows = rows; // update rows
+
         this.tableBody.innerHTML = '';
-        rows.forEach(row => this.tableBody.appendChild(row));
-        this.updatePagination(); // update pagination after sort
+
+        // Display the first page of sorted rows
+        this.state.filteredRows.slice(0, this.config.itemsPerPage).forEach(row => {
+            this.tableBody.appendChild(row);
+        });
+        this.updatePagination();// Update pagination after sorting
         console.log(`🔄 Reordered ${rows.length} rows in table`);
     }
 }
