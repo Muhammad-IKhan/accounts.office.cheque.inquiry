@@ -656,27 +656,8 @@
                     document.body.classList.toggle('dark-mode');
                 });
             }
-
-            // This would integrate with the original JS
-            // Example of showing/hiding elements based on search
-            const searchBtn = document.getElementById('searchBtn');
-            if (searchBtn) {
-                searchBtn.addEventListener('click', () => {
-                    document.getElementById('loading').style.display = 'block';
-                    document.getElementById('emptyState').style.display = 'none';
-                    
-                    // Simulate search delay
-                    setTimeout(() => {
-                        document.getElementById('loading').style.display = 'none';
-                        document.getElementById('tableContainer').style.display = 'block';
-                        document.getElementById('paginationContainer').style.display = 'flex';
-                        
-                        // After results are loaded, call this to set up mobile table
-                        initMobileTable();
-                    }, 1000);
-                });
-            }
         });
     </script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>
