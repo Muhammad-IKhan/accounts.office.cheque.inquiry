@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheque Inquiry System</title>
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary-color: #3b82f6; /* Updated blue */
+            --primary-hover: #2563eb; /* Darker blue for hover */
+            --secondary-color: #f9fafb; /* Light background */
+            --border-color: #e5e7eb; /* Light border */
+            --success-color: #10b981; /* Green */
+            --danger-color: #ef4444; /* Red */
+            --warning-color: #f59e0b; /* Yellow */
+            --info-color: #06b6d4; /* Cyan */
+            --text-color: #1f2937; /* Dark text */
+            --text-light: #6b7280; /* Light text */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 0.5rem; /* Border radius */
+            --transition: 0.2s ease-in-out;
+            --container-padding: clamp(1rem, 5vw, 2rem);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: #f3f4f6;
+            padding: clamp(0.5rem, 3vw, 1.5rem);
+        }
+
+        /* Container with responsive padding */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: var(--container-padding);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Modern header */
+        .header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: clamp(1.25rem, 4vw, 1.75rem);
+            font-weight: 700;
+        }
+
+        .header span {
+            font-size: clamp(0.875rem, 3vw, 1rem);
+            color: var(--text-light);
+        }
+
+        /* Controls with better responsive layout */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box, .filter-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        input, select {
+            padding: 0.625rem 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            width: 100%;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        button {
+            padding: 0.625rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color var(--transition), transform var(--transition);
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Interface selection with better styling */
+        .interface-selector {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mobile-first table styles */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            position: relative;
+            cursor: pointer;
+            white-space: nowrap;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th:hover {
+            background-color: #f1f5f9;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Responsive table for mobile */
+        @media (max-width: 768px) {
+            table {
+                display: block;
+            }
+            
+            thead, tbody, th, td, tr {
+                display: block;
+            }
+            
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr {
+                border: 1px solid var(--border-color);
+                margin-bottom: 0.5rem;
+                border-radius: var(--radius);
+            }
+            
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-color);
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+                min-height: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            td:last-child {
+                border-bottom: none;
+            }
+            
+            td:before {
+                position: absolute;
+                left: 0.75rem;
+                width: 45%;
+                padding-right: 0.75rem;
+                white-space: nowrap;
+                content: attr(data-label);
+                text-align: left;
+                font-weight: 600;
+                color: var(--text-color);
+            }
+        }
+
+        /* Status colors with better contrast */
+        .status-orange { color: #ea580c; font-weight: 500; }
+        .status-green { color: var(--success-color); font-weight: 500; }
+        .status-red { color: var(--danger-color); font-weight: 500; }
+        .status-blue { color: var(--primary-color); font-weight: 500; }
+        .status-purple { color: #8b5cf6; font-weight: 500; }
+        .status-dark-red { color: #b91c1c; font-weight: 500; }
+        .status-yellow { color: var(--warning-color); font-weight: 500; }
+        .status-cyan { color: var(--info-color); font-weight: 500; }
+        .status-gray { color: #64748b; font-weight: 500; }
+
+        /* Empty state with more engaging design */
+        .empty-state {
+            text-align: center;
+            padding: clamp(1.5rem, 10vw, 3rem);
+            background-color: var(--secondary-color);
+            border-radius: var(--radius);
+            color: var(--text-light);
+            border: 1px dashed var(--border-color);
+        }
+
+        .empty-state h3 {
+            margin: 0;
+            font-size: clamp(1.125rem, 4vw, 1.5rem);
+            color: var(--text-color);
+        }
+
+        .empty-state p {
+            margin: 0.625rem 0 0;
+            font-size: 0.875rem;
+        }
+
+        /* Result container */
+        .result-container {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--radius);
+            display: none;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+        }
+
+        .alert-danger {
+            background-color: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+        }
+
+        /* Modern pagination */
+        .pagination-controls {
+            display: flex;
+            gap: 0.375rem;
+            margin-top: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 0.375rem 0.75rem;
+            border: 1px solid var(--border-color);
+            background: white;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            font-size: 0.875rem;
+        }
+
+        .page-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: var(--secondary-color);
+            border-color: var(--primary-color);
+        }
+
+        .page-btn:disabled {
+            background: #f1f5f9;
+            cursor: not-allowed;
+            color: #94a3b8;
+        }
+
+        .page-ellipsis {
+            padding: 0.375rem;
+            color: var(--text-light);
+        }
+
+        /* Sort icon */
+        .sort-icon {
+            display: inline-block;
+            margin-left: 0.375rem;
+            font-size: 0.75rem;
+        }
+
+        /* Adding dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #60a5fa; 
+                --primary-hover: #3b82f6;
+                --secondary-color: #1e293b; 
+                --border-color: #334155; 
+                --text-color: #f1f5f9; 
+                --text-light: #94a3b8; 
+            }
+            
+            body {
+                background-color: #0f172a;
+            }
+            
+            .container {
+                background-color: #1e293b;
+            }
+            
+            th {
+                background-color: #0f172a;
+            }
+            
+            th:hover {
+                background-color: #1e293b;
+            }
+            
+            tr:hover {
+                background-color: #1e293b;
+            }
+            
+            .empty-state {
+                background-color: #0f172a;
+                border: 1px dashed var(--border-color);
+            }
+            
+            .page-btn {
+                background: #1e293b;
+            }
+            
+            .page-btn:hover:not(:disabled) {
+                background: #334155;
+            }
+            
+            .page-btn:disabled {
+                background: #0f172a;
+            }
+            
+            .result-container {
+                background-color: #0f172a;
+            }
+            
+            .alert-danger {
+                background-color: #7f1d1d;
+                border: 1px solid #991b1b;
+                color: #fecaca;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-flex">
+                <h1>Cheque Inquiry System</h1>
+                <span>Board of Intermediate & Secondary Education Bannu</span>
+            </div>
+        </div>
+        
+        <!-- Interface Selection -->
+        <div class="interface-selector">
+            <label for="rowsPerPage">Interface Selection</label>
+            <select id="rowsPerPage">
+                <option value="5">Mobile</option>
+                <option value="10" selected>Desktop</option>
+                <option value="25">Office</option>
+            </select>
+        </div>
+        
+        <!-- Controls -->
+        <div class="controls">
+            <div class="filter-box">
+                <label for="narCategory">Bill Category</label>
+                <select id="narCategory">
+                    <option value="all" selected>Search in All</option>
+                    <option value="TA/DA TO SUPERVISORY STAFF SSC EXAM:">Supervisory Staff SSC</option>
+                    <option value="TA/DA TO PRACTICAL EXMR: SSC">Practical Staff SSC</option>
+                    <option value="TA/DA TO INSEPCTORS SSC">Inspections Staff SSC</option>
+                    <option value="REMUNERATION RES: INSPECTORS">Resedent Inspectors</option>
+                    <option value="LABORATORY CHARGES">Laboratory Charges</option>
+                    <option value="SECRECY">Secrecy Bills</option>
+                    <option value="TA/DA TO SUPERVISORY STAFF HSSC EXAM:">Supervisory Staff HSSC</option>
+                    <option value="TA/DA TO PRACTICAL EXMR: HSSC">Practical Staff HSSC</option>
+                    <option value="TA/DA TO INSEPCTORS HSSC">Inspections Staf HSSC</option>
+                    <option value="TA/DA GENERAL">TA/DA General</option>
+                    <option value="EXPIRED CHECK RENEWED">Check Renewal</option>
+                    <option value="REFUND OF FEE">Refund Fee</option>
+                    <option value="SCHOLARSHIP">SCHOLARSHIPS</option>
+                    <option value="SPORTS">SPORTS</option>
+                    <option value="HONORARIA">Honoraria & Others</option>
+                </select>
+            </div>
+
+            <div class="search-box">
+                <label for="search">Search by Name or School</label>
+                <input type="text" id="search" placeholder="Enter name or school...">
+            </div>
+
+            <div class="filter-box">
+                <label for="statusFilter">Filter by Status</label>
+                <select id="statusFilter">
+                    <option value="all">All Statuses</option>
+                    <option value="ready but not signed yet">Not Signed Yet</option>
+                    <option value="Cheque Ready">Cheque Ready</option>
+                    <option value="sent to chairman">Sent to Chairman</option>
+                    <option value="despatched through gpo">Despatched (GPO Bannu)</option>
+                    <option value="despatched to lakki camp office">Despatched to Lakki</option>     
+                    <option value="received by">Received</option>
+                    <option value="processing">Processing</option>
+                </select>
+            </div>
+
+            <button id="searchBtn">Search</button>
+        </div>
+        
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state">
+            <h3>Welcome to Office for Live Inquiry</h3>
+            <p>Use the search and filters above to find cheque information.</p>
+        </div>
+
+        <!-- Table -->
+        <div id="tableContainer" class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th data-column="NARRATION">NAME AND ADDRESS <span class="sort-icon"></span></th>
+                        <th data-column="AMOUNT">Amount <span class="sort-icon"></span></th>
+                        <th data-column="CHEQ_NO">Cheque No <span class="sort-icon"></span></th>
+                        <th data-column="NAR">IN C/O <span class="sort-icon"></span></th>
+                        <th data-column="DD">Status <span class="sort-icon"></span></th>
+                    </tr>
+                </thead>
+                <tbody id="checksTable"></tbody>
+            </table>
+        </div>
+
+        <!-- Results -->
+        <div id="result" class="result-container">
+            <span id="resultContainer"></span>
+        </div>
+
+        <!-- Pagination -->
+        <div id="paginationContainer" class="pagination-controls">
+            <span id="pagination" class="pagination-controls"></span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // This is where your index.js script would go
+        // Since we don't have the actual JavaScript code, we'll add this placeholder
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add data-label attributes to table cells for mobile view
+            const addDataLabels = () => {
+                const table = document.querySelector('table');
+                if (!table) return;
+                
+                const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent.trim());
+                const rows = table.querySelectorAll('tbody tr');
+                
+                rows.forEach(row => {
+                    Array.from(row.querySelectorAll('td')).forEach((td, i) => {
+                        td.setAttribute('data-label', headers[i]);
+                    });
+                });
+            };
+            
+            // Call this function whenever the table data is updated
+            addDataLabels();
+            
+            // Dark mode toggle could be added here if needed
+        });
+    </script>
+</body>
+</html>
