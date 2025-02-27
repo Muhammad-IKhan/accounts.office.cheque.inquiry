@@ -626,17 +626,7 @@
         // This is a placeholder for the JavaScript
         // The original scripts/index.js would be used here
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize table cells for mobile
-            function initMobileTable() {
-                const tableRows = document.querySelectorAll('#checksTable tr');
-                tableRows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
-                    cells.forEach((cell, index) => {
-                        const headerText = document.querySelector('th[data-column]:nth-child(' + (index + 1) + ')').textContent;
-                        cell.setAttribute('data-label', headerText);
-                    });
-                });
-            }
+
 
             // Scroll to top button functionality
             const scrollToTopBtn = document.getElementById('scrollToTop');
