@@ -200,20 +200,28 @@ class XMLTableHandler {
         });
 
         //Pagination control
-        this.prevPage.addEventListener('click', () => {
-            if (this.state.currentPage > 1) {
-                this.state.currentPage--;
-                this.updatePagination();
-            }
-        });
+        if (this.prevPage) {
+            this.prevPage.addEventListener('click', () => {
+                if (this.state.currentPage > 1) {
+                    this.state.currentPage--;
+                    this.updatePagination();
+                }
+            });
+        } else {
+            console.warn('⚠️ prevPage element not found, cannot attach event listener');
+        }
 
-        this.nextPage.addEventListener('click', () => {
-            const totalPages = Math.ceil(this.state.filteredRows.length / this.state.rowsPerPage);
-            if (this.state.currentPage < totalPages) {
-                this.state.currentPage++;
-                this.updatePagination();
-            }
-        });
+        if (this.nextPage) {
+            this.nextPage.addEventListener('click', () => {
+                const totalPages = Math.ceil(this.state.filteredRows.length / this.state.rowsPerPage);
+                if (this.state.currentPage < totalPages) {
+                    this.state.currentPage++;
+                    this.updatePagination();
+                }
+            });
+        } else {
+            console.warn('⚠️ nextPage element not found, cannot attach event listener');
+        }
 
         console.log('✅ All event listeners initialized');
         console.groupEnd(); // End the console group
