@@ -13453,5 +13453,1135 @@
 			<CHEQ_DATE>01-JAN-25</CHEQ_DATE>
 			<NAR>REMUNERATION RES: INSPECTORS</NAR>
 		</G_PVN>
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+        <G_PVN>
+		      <BNO>27</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>24</PVN>
+          <NARRATION> HIDAYAT ULLAH TT GHS MULTANI LANDIDAK BANNU</NARRATION>
+          <AMOUNT>31050</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499321</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>
+		      <BNO>27</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>25</PVN>
+          <NARRATION> ABDUR RAHMAN SAT GHSS MAMASHKHEL BANNU</NARRATION>
+          <AMOUNT>22526</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499322</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+
+        <G_PVN>
+		      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>1</PVN>
+          <NARRATION> NAIB KHAN QARI GHS MULTANI LANDIDAK BANNU</NARRATION>
+          <AMOUNT>23267</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499323</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>
+		      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>2</PVN>
+          <NARRATION> HAMAYOON KHAN AT GHS MANDAN BANNU</NARRATION>
+          <AMOUNT>23267</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499324</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>3</PVN>
+          <NARRATION> ABDUR RAHMAN QARI GHSS DOMEL BANNU</NARRATION>
+          <AMOUNT>22526</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499325</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>4</PVN>
+          <NARRATION> INAM ULLAH ET WFGS GHORIWALA BANNU</NARRATION>
+          <AMOUNT>22470</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499326</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>5</PVN>
+          <NARRATION> AKBAR KHAN SST GHS JANI KHEL BANNU</NARRATION>
+          <AMOUNT>153159</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499327</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>6</PVN>
+          <NARRATION> SHAKEEL NAWAZ SCT GHSS DOMEL BANNU</NARRATION>
+          <AMOUNT>115630</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499328</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>7</PVN>
+          <NARRATION> FIDA UR RAHMAN SST GHS MUHAMMAD KHEL BANNU</NARRATION>
+          <AMOUNT>118127</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499329</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>8</PVN>
+          <NARRATION> MUHAMMAD FAWAD ANWAR SST GHS DABAK SAID KHEL BANNU</NARRATION>
+          <AMOUNT>115630</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499330</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>9</PVN>
+          <NARRATION> RAHAM DIL SST GHS SARWAR JAN BAKA KHEL BANNU</NARRATION>
+          <AMOUNT>115630</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499331</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>10</PVN>
+          <NARRATION> SIFAT ULLAH CT GMS TARKHOBA KHURD DOMEL BANNU</NARRATION>
+          <AMOUNT>90758</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499332</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>11</PVN>
+          <NARRATION> HIDAYAT ULLAH TT GHS MULTANI LANDIDAK BANNU</NARRATION>
+          <AMOUNT>42531</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499333</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>12</PVN>
+          <NARRATION> ABDUR RAHMAN SAT GHSS MAMASHKHEL BANNU</NARRATION>
+          <AMOUNT>30934</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499334</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>13</PVN>
+          <NARRATION> NAIB KHAN QARI GHS MULTANI LANDIDAK BANNU</NARRATION>
+          <AMOUNT>34468</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499335</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>14</PVN>
+          <NARRATION> HAMAYOON KHAN AT GHS MANDAN BANNU</NARRATION>
+          <AMOUNT>34468</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499336</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>15</PVN>
+          <NARRATION> ABDUR RAHMAN QARI GHSS DOMEL BANNU</NARRATION>
+          <AMOUNT>31800</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499337</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>16</PVN>
+          <NARRATION> INAM ULLAH ET WFGS GHORIWALA BANNU</NARRATION>
+          <AMOUNT>30987</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499338</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>17</PVN>
+          <NARRATION> IFTIKHAR ALI SHAH S.QARI GHS SIKANDAR BHARAT BANNU</NARRATION>
+          <AMOUNT>113635</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499339</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>18</PVN>
+          <NARRATION> KHOOBAZ AHMAD TT GHS SIKANDAR BHARAT BANNU</NARRATION>
+          <AMOUNT>75941</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499340</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>19</PVN>
+          <NARRATION> MASHOOD ALAM QARI GHS MAMOKI DARDARIZ BANNU</NARRATION>
+          <AMOUNT>75941</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499341</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>20</PVN>
+          <NARRATION> FARHAT ULLAH SHAH QARI GHS DEGAN TAJI KALA BANNU</NARRATION>
+          <AMOUNT>75941</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499342</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>21</PVN>
+          <NARRATION> ABDUL GHAFOOR SHAH TT GHS MANDAN BANNU</NARRATION>
+          <AMOUNT>29372</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499343</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>22</PVN>
+          <NARRATION> ZAHID ULLAH KHAN PST GPS DABAK SAID KHEL BANNU</NARRATION>
+          <AMOUNT>66259</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499344</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>23</PVN>
+          <NARRATION> WALI ULLAH KHAN SS GHSS SHAHBAZ AZMAT KHEL BANNU</NARRATION>
+          <AMOUNT>24760</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499345</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>24</PVN>
+          <NARRATION> MUHAMMAD YOUSAF KHAN SS GHSS SHAHBAZ AZMAT KHEL BANNU</NARRATION>
+          <AMOUNT>22160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499346</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>28</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>25</PVN>
+          <NARRATION> TAJ MUHAMMAD SSS GHSS TAJAZAI LAKKI</NARRATION>
+          <AMOUNT>22160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499347</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+
+
+
+
+
+
+
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>1</PVN>
+          <NARRATION> TAJ MUHAMMAD SSS GHSS TAJAZAI LAKKI</NARRATION>
+          <AMOUNT>25960</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499348</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>2</PVN>
+          <NARRATION> HAKIM ULLAH PRINCIPAL GHSS EIDAK NWTD</NARRATION>
+          <AMOUNT>8160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499349</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>3</PVN>
+          <NARRATION> SAIN GUL PRINCIPAL GHSS KHADRI MUHAMAMD KHEL BANNU</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499350</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>4</PVN>
+          <NARRATION> DR. AMINA BIBI A/P GGDC LAKKI MARWAT</NARRATION>
+          <AMOUNT>11560</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499351</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>5</PVN>
+          <NARRATION> KAUSAR HAYAT CT GGHSS TAJAZAI LAKKI MARWAT</NARRATION>
+          <AMOUNT>1770</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499352</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>6</PVN>
+          <NARRATION> ZAHIR ULLAH KHAN SS GHSS AMANDI UMER KHAN BANNU</NARRATION>
+          <AMOUNT>6860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499353</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>7</PVN>
+          <NARRATION> FAISAL ZAMAN SS GHSS GHULAM JAN BAKA KHEL BANNU</NARRATION>
+          <AMOUNT>5000</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499354</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>8</PVN>
+          <NARRATION> MUHAMMAD WAJID SS GHSS LALOZAI BANNU</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499355</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>9</PVN>
+          <NARRATION> RAHAM ZAMAN SS GHSS NARMI KHEL BAKA KHEL BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499356</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>10</PVN>
+          <NARRATION> AZMAT ULLAH KHAN L/OFFICER DEO OFFICE BANNU</NARRATION>
+          <AMOUNT>6860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499357</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>11</PVN>
+          <NARRATION> GUL QIAS KHAN SS GHSS PAINDA KHEL BANNU</NARRATION>
+          <AMOUNT>4400</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499358</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>12</PVN>
+          <NARRATION> ASIF ULLAH SS GHSS PAINDA KHEL BANNU</NARRATION>
+          <AMOUNT>10360</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499359</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>13</PVN>
+          <NARRATION> JAVED IQBAL SS GHSS AKBAR ZAMAN NARMI KHEL BAKA KHEL BANNU</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499360</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>14</PVN>
+          <NARRATION> MUHAMMAD IMRAN SHAH SS GHSS KHADRI MUHAMAMD KHEL BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499361</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>15</PVN>
+          <NARRATION> JAHANGIR KHAN SS GHSS MAMASH KHEL BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499362</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>16</PVN>
+          <NARRATION> YOUSAF KHAN SSS GHSS EIDAK NWTD</NARRATION>
+          <AMOUNT>7160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499363</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>17</PVN>
+          <NARRATION> DR. NIAZ MUHAMMAD SS GHSS WANDA AMIR LAKKI</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499364</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>18</PVN>
+          <NARRATION> ABID ULLAH SHAH PRINCIPAL GHSS ISMAIL KHEL BANNU</NARRATION>
+          <AMOUNT>7800</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499365</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>19</PVN>
+          <NARRATION> SYED FAROOQ SHAH SSS GHSS ISMAIL KHEL BANNU</NARRATION>
+          <AMOUNT>7460</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499366</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>20</PVN>
+          <NARRATION> MUHAMMAD SOHAIL KHAN LECTURER GDC KAKKI BANNU</NARRATION>
+          <AMOUNT>7760</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499367</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>21</PVN>
+          <NARRATION> HAFIZ ULLAH A/P GDC KAKKI BANNU</NARRATION>
+          <AMOUNT>7760</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499368</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>22</PVN>
+          <NARRATION> ABDULLAH KHAN EX-PL GHSS HASSU KHEL BANNU</NARRATION>
+          <AMOUNT>14960</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499369</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>23</PVN>
+          <NARRATION> SHER AMAN ULLAH LECTURER GDC NO. 2 BANNU</NARRATION>
+          <AMOUNT>6500</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499370</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>24</PVN>
+          <NARRATION> MUHAMMAD FAROOQ KHAN SS GHSS SHAHBAZ AZMAT KHEL BANNU</NARRATION>
+          <AMOUNT>6860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499371</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>29</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>25</PVN>
+          <NARRATION> NASIR ALI LECTURER GDC KAKKI BANNU</NARRATION>
+          <AMOUNT>2560</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499372</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+
+
+
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>1</PVN>
+          <NARRATION> FARID ULLAH A/P GDC KAKKI BANNU</NARRATION>
+          <AMOUNT>7760</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499373</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>2</PVN>
+          <NARRATION> SYED NAIMAT ULLAH SHAH SS GHSS KHADRI MUHAMAMD KHEL BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499374</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>3</PVN>
+          <NARRATION> MUHAMMAD NAQEEB KHAN SS GHSS KHADRI MUHAMAMD KHEL BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499375</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>4</PVN>
+          <NARRATION> AMIR ULLAH KHAN SS GHSS GHULAM JAN BAKA KHEL BANNU</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499376</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>5</PVN>
+          <NARRATION> SIRAJ UD DIN LECTURER GPGC BANNU</NARRATION>
+          <AMOUNT>7460</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499377</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>6</PVN>
+          <NARRATION> RAHIM ULLAH LECTURER GDC NO. 2 BANNU</NARRATION>
+          <AMOUNT>4560</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499378</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>7</PVN>
+          <NARRATION> ABDUL QAYYUM SSS GHSS TAJAZAI LAKKI</NARRATION>
+          <AMOUNT>7460</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499379</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>8</PVN>
+          <NARRATION> SHAFI ULLAH KHAN SIPE GHSS KOT KASHMIR LAKKI</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499380</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>9</PVN>
+          <NARRATION> RUKHSANA SHAHEEN SS GGHSS SHAHBAZ AZMAT KHEL BANNU</NARRATION>
+          <AMOUNT>4560</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499381</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>10</PVN>
+          <NARRATION> FARID ZAMAN CIPE GHSS ISMAIL KHEL BANNU</NARRATION>
+          <AMOUNT>2560</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499382</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>11</PVN>
+          <NARRATION> LATIF ULLAH KHAN A/P GPGC LAKKI</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499383</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>12</PVN>
+          <NARRATION> MUHAMMAD SHAMOON A/P GPGC LAKKI</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499384</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>13</PVN>
+          <NARRATION> SHAHEED ULLAH KHAN A/P GCMS NO 1 TOWNSHIP BANNU</NARRATION>
+          <AMOUNT>7160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499385</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>14</PVN>
+          <NARRATION> AMIR SOHAIL LECTURER GDC NO. 1 NAURANG LAKKI</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499386</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>15</PVN>
+          <NARRATION> SAIF UR REHMAN A/P GDC TAJORI LAKKI</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499387</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>16</PVN>
+          <NARRATION> ARIF ULLAH A/P GDC TAJORI LAKKI</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499388</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>17</PVN>
+          <NARRATION> HAJ MUHAMMAD PRINCIPAL GHS RAZMAK CAMP NWTD</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499389</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>18</PVN>
+          <NARRATION> AZAM KHAN SS GHSS MAMASH KHEL BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499390</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>19</PVN>
+          <NARRATION> IRFAN ULLAH LECTURER GDC MAMASH KHEL BANNU</NARRATION>
+          <AMOUNT>6840</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499391</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>20</PVN>
+          <NARRATION> MUHAMMAD ALI EX-HM GHS TARKHOBA KHURD NWTD</NARRATION>
+          <AMOUNT>7760</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499392</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>21</PVN>
+          <NARRATION> NAZIR ULLAH IPE GGHSS AJMAL BARLASHTI DAUD SHAH BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499393</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>22</PVN>
+          <NARRATION> MOSAM KHAN SS GGHSS AJMAL BARLASHTI DAUD SHAH BANNU</NARRATION>
+          <AMOUNT>4560</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499394</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>23</PVN>
+          <NARRATION> ALLA UD DIN SS GHSS MAMASH KHEL BANNU</NARRATION>
+          <AMOUNT>4560</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499395</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>24</PVN>
+          <NARRATION> NAEEM KHAN DPE GHSS SHAHBAZ AZMAT KHEL BANNU</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499396</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>30</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>25</PVN>
+          <NARRATION> MUHEEB UR REHMAN SS GHSS SHAHOOR NWTD</NARRATION>
+          <AMOUNT>7760</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499397</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+      
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>1</PVN>
+          <NARRATION> RAFI ULLAH PRINCIPAL GDC TAJORI LAKKI</NARRATION>
+          <AMOUNT>8960</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499398</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>2</PVN>
+          <NARRATION> HIKMAT ULLAH SSS GHSS COMP BANNU</NARRATION>
+          <AMOUNT>7160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499399</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>3</PVN>
+          <NARRATION> NAHEED SARFARAZ SST GGHSS ZANGI KHEL LAKKI</NARRATION>
+          <AMOUNT>7200</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499400</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>4</PVN>
+          <NARRATION> GHULAM QADAR KHAN SS GHSS DARAKA AZIZ KHAN BANNU</NARRATION>
+          <AMOUNT>5160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499401</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>5</PVN>
+          <NARRATION> SATTAR KHAN SS GHSS GHULAM JAN BAKA KHEL BANNU</NARRATION>
+          <AMOUNT>4860</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499402</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1708</HEAD>
+          <PVN>6</PVN>
+          <NARRATION> MUHAMMAD FAISAL HAYAT LECTURER GDC MAMASH KHEL BANNU</NARRATION>
+          <AMOUNT>7160</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499403</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> TA/DA TO INSEPCTORS HSSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>2205</HEAD>
+          <PVN>7</PVN>
+          <NARRATION> AZIZ ULLAH KHAN API INCHARGE CAMP OFFICE LAKKI</NARRATION>
+          <AMOUNT>20000</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499404</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> HONORARIA</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1809</HEAD>
+          <PVN>8</PVN>
+          <NARRATION> NIAZ KHAN PRINCIPAL GHS KACHKOT ASAD KHAN BANNU</NARRATION>
+          <AMOUNT>2880</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499405</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> REMUNERATION TO UFM MEMEBERS</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>9</PVN>
+          <NARRATION> RAZI ULLAH CT GHS SAAD ULLAH SDW BANNU</NARRATION>
+          <AMOUNT>28126</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499406</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>10</PVN>
+          <NARRATION> MUHAMMAD IMAM UL HAQ SST GHS GHAZI MARJAN SDW BANNU</NARRATION>
+          <AMOUNT>446</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499407</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>11</PVN>
+          <NARRATION> INAYAT UR REHMAN SST GHS NO.2 BANNU</NARRATION>
+          <AMOUNT>3973</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499408</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1716</HEAD>
+          <PVN>12</PVN>
+          <NARRATION> RAFIQ ULLAH SST GHSS NADIR BODIN KHEL BANNU</NARRATION>
+          <AMOUNT>42870</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499409</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> MARKING SSC</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1713</HEAD>
+          <PVN>13</PVN>
+          <NARRATION> IQTEDAR KHAN S/O MURTAZA ALI KHAN</NARRATION>
+          <AMOUNT>1140</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499410</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> REFUND OF FEE</NAR>
+        </G_PVN>
+        <G_PVN>      <BNO>31</BNO>
+
+          <HEAD>1713</HEAD>
+          <PVN>14</PVN>
+          <NARRATION> HAYAT ULLAH S/O NOOR SAHIB KHAN</NARRATION>
+          <AMOUNT>1900</AMOUNT>
+          <ENT_DAT>01-FEB-25</ENT_DAT>
+          <CHEQ_NO>4499411</CHEQ_NO>
+          <CHEQ_DATE>27-FEB-25</CHEQ_DATE>
+          <DD> </DD>
+          <NAR> REFUND OF FEE</NAR>
+        </G_PVN>
+
+
+
+
+		
 	</LIST_G_PVN>
 </CHEQUE_LIST_DATEWISE>
+
+
+      
