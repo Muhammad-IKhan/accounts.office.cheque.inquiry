@@ -296,10 +296,10 @@ tr:hover {
 .status-indicator, .status-badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
+  padding: 0.75rem 0.25rem;
   border-radius: 20px;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 650;
 }
 
 /* Status colors */
@@ -563,7 +563,7 @@ tr:hover {
   }
 
   table {
-    min-width: 600px;
+    min-width: 300px;
   }
 
   .controls-grid {
