@@ -808,7 +808,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-/ Register service worker for offline capabilities
+// Register service worker for offline capabilities
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         console.log('🔄 Registering Service Worker...');
