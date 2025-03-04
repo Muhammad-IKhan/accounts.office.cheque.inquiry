@@ -531,7 +531,7 @@ class XMLTableHandler {
             'yet': '📝⏳',
              'sent to': '📤🖋️',
 
-            'cheque ready': '💵✅',
+            'ready': '💵✅',
 
             'despatched': '🚚',
             'despatched through gpo': '📦📮',
