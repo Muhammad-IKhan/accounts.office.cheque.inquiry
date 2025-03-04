@@ -528,8 +528,8 @@ class XMLTableHandler {
     getStatusColor(status) {
 
         const statusIcons = {
-            'yet': '📝⏳',
-             'sent to': '📤🖋️',
+            'NOTREADY': '📝⏳', 
+             'NOTREADY SENT TO': '📤🖋️',
 
             'ready': '💵✅',
 
