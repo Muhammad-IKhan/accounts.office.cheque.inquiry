@@ -547,9 +547,9 @@ class XMLTableHandler {
         };
      
         const statusMap = {
-            'ready but not signed yet': 'status-indicator status-green',
-             'ready but sent to chairman sb for sign': 'status-indicator status-blue',
-            'cheque ready': 'status-indicator status-green',
+            'yet': 'status-indicator status-green',
+             'sent to': 'status-indicator status-blue',
+            'ready': 'status-indicator status-green',
             'despatched through gpo': 'status-indicator status-orange',
             'despatched to lakki camp office': 'status-indicator status-red',
             'received byself': 'status-indicator status-purple',
