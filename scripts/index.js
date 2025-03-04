@@ -528,18 +528,22 @@ class XMLTableHandler {
     getStatusColor(status) {
 
         const statusIcons = {
-            'despatched': '🚚',
-            'cheque ready': '💵✅',
-            'expired': '⏳',
-            'received by:': '📬',
-            'sent to': '📤',
-            'received byself': '👤✅',
-            'received by: in c/o': '👥✅',
-            'cancelled': '❌',
             'ready but not signed yet': '📝⏳',
-            'ready but sent to chairman sb for sign': '🖋️👨‍💼',
+             'ready but sent to chairman sb for sign': '🖋️👨‍💼',
+            // 'sent to': '📤',
+            'cheque ready': '💵✅',
+
+            
             'despatched through gpo': '📦📮',
             'despatched to lakki camp office': '📦📍',
+            'despatched': '🚚',
+            
+            'received by:': '📬',
+            'received byself': '👤✅',
+            'received by: in c/o': '👥✅',
+            
+             'expired': '⏳',
+            'cancelled': '❌',  
             'on hold': '⏸️',
         };
      
