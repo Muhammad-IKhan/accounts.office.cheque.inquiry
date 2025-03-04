@@ -528,9 +528,10 @@ class XMLTableHandler {
     getStatusColor(status) {
 
         const statusIcons = {
-            'ready but not signed yet': '📝⏳',
-             'ready but sent to chairman sb for sign': '🖋️👨‍💼',
-            // 'sent to': '📤',
+            'yet': '📝⏳',
+            // 'ready but sent to chairman sb for sign': '🖋️👨‍💼',
+             'sent to': '📤🖋️👨‍💼',
+
             'cheque ready': '💵✅',
 
             
