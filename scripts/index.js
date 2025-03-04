@@ -556,6 +556,8 @@ class XMLTableHandler {
             'received by:': 'status-indicator status-cyan',
             'on hold': 'status-indicator status-yellow',
             'cancelled': 'status-indicator status-dark-red',
+                'In Work': 'status-indicator status-blue'  // Add this line
+
         };
 
         const lowerStatus = status.toLowerCase();
