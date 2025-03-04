@@ -528,12 +528,12 @@ class XMLTableHandler {
     getStatusColor(status) {
 
         const statusIcons = {
-            'Not Signed Yet ': '📝⏳', 
-             'Not Signed Yet Sent To': '📤🖋️',
+            'In Work: Not Signed Yet': '📝⏳', 
+             'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
 
             'ready': '💵✅',
 
-            'despatched through gpo': '📮🚚📦',
+            'despatched through gpo': '📮🚚',
             'despatched to lakki camp office': '🚚📦',
             
             'received by:': '📬',
@@ -546,8 +546,8 @@ class XMLTableHandler {
         };
      
         const statusMap = {
-            'Not Signed Yet ': 'status-indicator status-green',
-             'Not Signed Yet Sent To': 'status-indicator status-blue',
+            'In Work: Not Signed Yet': 'status-indicator status-green',
+             'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': 'status-indicator status-blue',
             'ready': 'status-indicator status-green',
             'despatched through gpo': 'status-indicator status-orange',
             'despatched to lakki camp office': 'status-indicator status-red',
