@@ -525,53 +525,54 @@ class XMLTableHandler {
      * @param {string} status - Status text
      * @returns {object} - Object containing CSS class name and icon
      */
-    getStatusColor(status) {
+    function getStatusColor(status) {
+    const statusIcons = {
+        'In Work: Not Signed Yet': '📝⏳', 
+        'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
+        'ready': '💵✅',
+        'despatched through gpo': '📮🚚',
+        'despatched to lakki camp office': '🚚📦',
+        'received by:': '📬',
+        'received byself': '👤✅',
+        'received by: in c/o': '👥✅',
+        'expired': '⏳',
+        'cancelled': '❌',  
+        'on hold': '⏸️',
+    };
 
-        const statusIcons = {
-            'In Work: Not Signed Yet': '📝⏳', 
-             'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
+    const statusMap = {
+        'In Work: Not Signed Yet': 'status-indicator status-green',
+        'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': 'status-indicator status-blue',
+        'ready': 'status-indicator status-green',
+        'despatched through gpo': 'status-indicator status-orange',
+        'despatched to lakki camp office': 'status-indicator status-red',
+        'received byself': 'status-indicator status-purple',
+        'received by: in c/o': 'status-indicator status-dark-red',
+        'received by:': 'status-indicator status-cyan',
+        'on hold': 'status-indicator status-yellow',
+        'cancelled': 'status-indicator status-dark-red',
+    };
 
-            'ready': '💵✅',
+    // Normalize the status and keys for case-insensitive matching
+    const lowerStatus = status.toLowerCase();
+    const normalizedStatusIcons = Object.fromEntries(
+        Object.entries(statusIcons).map(([key, value]) => [key.toLowerCase(), value])
+    );
+    const normalizedStatusMap = Object.fromEntries(
+        Object.entries(statusMap).map(([key, value]) => [key.toLowerCase(), value])
+    );
 
-            'despatched through gpo': '📮🚚',
-            'despatched to lakki camp office': '🚚📦',
-            
-            'received by:': '📬',
-            'received byself': '👤✅',
-            'received by: in c/o': '👥✅',
-            
-             'expired': '⏳',
-            'cancelled': '❌',  
-            'on hold': '⏸️',
-        };
-     
-        const statusMap = {
-            'In Work: Not Signed Yet': 'status-indicator status-green',
-             'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': 'status-indicator status-blue',
-            'ready': 'status-indicator status-green',
-            'despatched through gpo': 'status-indicator status-orange',
-            'despatched to lakki camp office': 'status-indicator status-red',
-            'received byself': 'status-indicator status-purple',
-            'received by: in c/o': 'status-indicator status-dark-red',
-            'received by:': 'status-indicator status-cyan',
-            'on hold': 'status-indicator status-yellow',
-            'cancelled': 'status-indicator status-dark-red',
-                'In Work': 'status-indicator status-blue'  // Add this line
+    // Find the matching key in the normalized maps
+    const statusKey = Object.keys(normalizedStatusIcons).find(key => lowerStatus === key);
+    const colorClass = normalizedStatusMap[statusKey] || 'status-indicator status-gray';
+    const icon = normalizedStatusIcons[statusKey] || 'ℹ️';
 
-        };
-
-        const lowerStatus = status.toLowerCase();
-        const colorClass = Object.entries(statusMap).find(([key]) => lowerStatus.includes(key))?.[1] || 'status-indicator status-gray';
-        
-        // Extract the status key without the full text for icon lookup
-        const statusKey = Object.keys(statusIcons).find(key => lowerStatus.includes(key));
-        
-        // Return object with both class and icon
-        return {
-            class: colorClass, 
-            icon: statusIcons[statusKey] || 'ℹ️' 
-        };
-    }
+    // Return object with both class and icon
+    return {
+        class: colorClass, 
+        icon: icon
+    };
+}
 
     /**
      * Perform search using input value
