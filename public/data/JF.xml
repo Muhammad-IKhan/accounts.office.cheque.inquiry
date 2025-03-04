@@ -1,34 +1,7 @@
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <CHEQUE_LIST_DATEWISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<LIST_G_PVN>
-		
-		
-		<G_PVN>
-			<BNO>1</BNO>
-			<HEAD>1709</HEAD>
-			<PVN>5</PVN>
-			<NARRATION>aaa</NARRATION>
-			<AMOUNT>7520</AMOUNT>
-			<ENT_DAT>01-JAN-25</ENT_DAT>
-			<CHEQ_NO>4497999</CHEQ_NO>
-			<CHEQ_DATE>01-JAN-25</CHEQ_DATE>
-			<NAR>REMUNERATION RES: INSPECTORS</NAR>
-			<dd>Not Signed Yet</dd>
-		</G_PVN>
-		<G_PVN>
-			<BNO>1</BNO>
-			<HEAD>1709</HEAD>
-			<PVN>5</PVN>
-			<NARRATION>bbb</NARRATION>
-			<AMOUNT>7520</AMOUNT>
-			<ENT_DAT>01-JAN-25</ENT_DAT>
-			<CHEQ_NO>4497999</CHEQ_NO>
-			<CHEQ_DATE>01-JAN-25</CHEQ_DATE>
-			<NAR>REMUNERATION RES: INSPECTORS</NAR>
-			<dd>Not Signed Yet</dd>
-		</G_PVN>
-		
+	<LIST_G_PVN>		
 		<G_PVN>
 			<BNO>1</BNO>
 			<HEAD>1709</HEAD>
