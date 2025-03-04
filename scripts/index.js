@@ -547,7 +547,7 @@ class XMLTableHandler {
         };
      
         const statusMap = {
-            'Not Signed Yet': 'status-indicator status-green',
+            'Not Signed Yet ': 'status-indicator status-green',
              'Not Signed Yet Sent To': 'status-indicator status-blue',
             'ready': 'status-indicator status-green',
             'despatched through gpo': 'status-indicator status-orange',
