@@ -526,27 +526,34 @@ class XMLTableHandler {
      * @returns {object} - Object containing CSS class name and icon
      */
     getStatusColor(status) {
+
         const statusIcons = {
             'despatched': '🚚',
-            'ready': '✅',
+            'cheque ready': '💵✅',
             'expired': '⏳',
             'received by:': '📬',
-            'sent to': '⏳',
-            'received byself': '✅',
-            'received by: in c/o': '✅',
-            'cancelled': '❌'
+            'sent to': '📤',
+            'received byself': '👤✅',
+            'received by: in c/o': '👥✅',
+            'cancelled': '❌',
+            'ready but not signed yet': '📝⏳',
+            'ready but sent to chairman sb for sign': '🖋️👨‍💼',
+            'despatched through gpo': '📦📮',
+            'despatched to lakki camp office': '📦📍',
+            'on hold': '⏸️',
         };
+     
         const statusMap = {
-            'despatched through gpo': 'status-indicator status-orange',
             'ready but not signed yet': 'status-indicator status-green',
+             'ready but sent to chairman sb for sign': 'status-indicator status-blue',
             'cheque ready': 'status-indicator status-green',
+            'despatched through gpo': 'status-indicator status-orange',
             'despatched to lakki camp office': 'status-indicator status-red',
-            'sent to chairman': 'status-indicator status-blue',
             'received byself': 'status-indicator status-purple',
-            'cancelled': 'status-indicator status-dark-red',
             'received by: in c/o': 'status-indicator status-dark-red',
+            'received by:': 'status-indicator status-cyan',
             'on hold': 'status-indicator status-yellow',
-            'received by:': 'status-indicator status-cyan'
+            'cancelled': 'status-indicator status-dark-red',
         };
 
         const lowerStatus = status.toLowerCase();
