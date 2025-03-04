@@ -171,9 +171,12 @@
         <select id="statusFilter">
           <option value="all">All Statuses</option>
           <option value="processing">Processing</option>
-          <option value="ready but not signed yet">Not Signed Yet</option>
+          <option id="combinedOption"></option>
+          <script>
+            document.getElementById('combinedOption').value = (isNotSignedYet = true) ? "ready but not signed yet" : "sent to chairman", 
+            document.getElementById('combinedOption').text = isNotSignedYet ? "Not Signed Yet" : "Sent to Chairman";
+          </script>
           <option value="Cheque Ready">Cheque Ready</option>
-          <option value="sent to chairman">Sent to Chairman</option>
           <option value="despatched"> Despatched</option>
         </select>
       </div>
