@@ -571,62 +571,124 @@ class XMLTableHandler {
      */
 
     // in work okay
-       getStatusColor(status) {
-        const statusIcons = {
-            'In Work: Not Signed Yet': '📝⏳', 
-             'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
-            'ready': '💵✅',
-            'despatched through gpo': '📮🚚',
-            'despatched to lakki camp office': '🚚📦',
+    //    getStatusColor(status) {
+    //     const statusIcons = {
+    //         'In Work: Not Signed Yet': '📝⏳', 
+    //          'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
+    //         'ready': '💵✅',
+    //         'despatched through gpo': '📮🚚',
+    //         'despatched to lakki camp office': '🚚📦',
             
-            'received by:': '📬',
-            'received byself': '👤✅',
-            'received by: in c/o': '👥✅',
+    //         'received by:': '📬',
+    //         'received byself': '👤✅',
+    //         'received by: in c/o': '👥✅',
             
-             'expired': '⏳',
-            'cancelled': '❌',  
-            'on hold': '⏸️',
-        };
+    //          'expired': '⏳',
+    //         'cancelled': '❌',  
+    //         'on hold': '⏸️',
+    //     };
      
-        const statusMap = {
-            'In Work: Not Signed Yet': 'status-indicator status-green',
-             'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': 'status-indicator status-blue',
-            'ready': 'status-indicator status-green',
-            'despatched through gpo': 'status-indicator status-orange',
-            'despatched to lakki camp office': 'status-indicator status-red',
-            'received byself': 'status-indicator status-purple',
-            'received by: in c/o': 'status-indicator status-dark-red',
-            'received by:': 'status-indicator status-cyan',
-            'on hold': 'status-indicator status-yellow',
-            'cancelled': 'status-indicator status-dark-red',
+    //     const statusMap = {
+    //         'In Work: Not Signed Yet': 'status-indicator status-green',
+    //          'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': 'status-indicator status-blue',
+    //         'ready': 'status-indicator status-green',
+    //         'despatched through gpo': 'status-indicator status-orange',
+    //         'despatched to lakki camp office': 'status-indicator status-red',
+    //         'received byself': 'status-indicator status-purple',
+    //         'received by: in c/o': 'status-indicator status-dark-red',
+    //         'received by:': 'status-indicator status-cyan',
+    //         'on hold': 'status-indicator status-yellow',
+    //         'cancelled': 'status-indicator status-dark-red',
 
-        };
-           // Normalize the input status to lowercase
-            const lowerStatus = status.toLowerCase();
+    //     };
+    //        // Normalize the input status to lowercase
+    //         const lowerStatus = status.toLowerCase();
         
-            // Create a lookup table with lowercase keys for case-insensitive matching
-            const lowercaseStatusIcons = Object.fromEntries(
-                Object.entries(statusIcons).map(([key, value]) => [key.toLowerCase(), { originalKey: key, icon: value }])
-            );
-            const lowercaseStatusMap = Object.fromEntries(
-                Object.entries(statusMap).map(([key, value]) => [key.toLowerCase(), { originalKey: key, class: value }])
-            );
+    //         // Create a lookup table with lowercase keys for case-insensitive matching
+    //         const lowercaseStatusIcons = Object.fromEntries(
+    //             Object.entries(statusIcons).map(([key, value]) => [key.toLowerCase(), { originalKey: key, icon: value }])
+    //         );
+    //         const lowercaseStatusMap = Object.fromEntries(
+    //             Object.entries(statusMap).map(([key, value]) => [key.toLowerCase(), { originalKey: key, class: value }])
+    //         );
         
-            // Find the matching key in the lowercase lookup tables
-            const iconMatch = lowercaseStatusIcons[lowerStatus];
-            const classMatch = lowercaseStatusMap[lowerStatus];
+    //         // Find the matching key in the lowercase lookup tables
+    //         const iconMatch = lowercaseStatusIcons[lowerStatus];
+    //         const classMatch = lowercaseStatusMap[lowerStatus];
         
-            // Use the original keys to get the icon and class
-            const icon = iconMatch ? statusIcons[iconMatch.originalKey] : 'ℹ️';
-            const colorClass = classMatch ? statusMap[classMatch.originalKey] : 'status-indicator status-gray';
+    //         // Use the original keys to get the icon and class
+    //         const icon = iconMatch ? statusIcons[iconMatch.originalKey] : 'ℹ️';
+    //         const colorClass = classMatch ? statusMap[classMatch.originalKey] : 'status-indicator status-gray';
         
-            // Return object with both class and icon
-            return {
-                class: colorClass, 
-                icon: icon
-            };
-    }
+    //         // Return object with both class and icon
+    //         return {
+    //             class: colorClass, 
+    //             icon: icon
+    //         };
+    // }
 
+    function getStatusColor(status) {
+    const statusIcons = {
+        'In Work': '🔧',
+        'In Work: Not Signed Yet': '📝⏳', 
+        'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
+        'ready': '💵✅',
+        'despatched': '🚚',
+        'despatched through gpo': '📮🚚',
+        'despatched to lakki camp office': '🚚📦',
+        'received by:': '📬',
+        'received byself': '👤✅',
+        'received by: in c/o': '👥✅',
+        'expired': '⏳',
+        'cancelled': '❌',  
+        'on hold': '⏸️',
+    };
+ 
+    const statusMap = {
+        'In Work': 'status-indicator status-blue',
+        'In Work: Not Signed Yet': 'status-indicator status-green',
+        'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': 'status-indicator status-blue',
+        'ready': 'status-indicator status-green',
+        'despatched': 'status-indicator status-orange',
+        'despatched through gpo': 'status-indicator status-orange',
+        'despatched to lakki camp office': 'status-indicator status-red',
+        'received byself': 'status-indicator status-purple',
+        'received by: in c/o': 'status-indicator status-dark-red',
+        'received by:': 'status-indicator status-cyan',
+        'on hold': 'status-indicator status-yellow',
+        'cancelled': 'status-indicator status-dark-red',
+    };
+
+    // Normalize the input status by trimming and converting to lowercase
+    const normalizedStatus = status.trim().toLowerCase();
+
+    // Function to find the best match
+    const findBestMatch = (statusObj) => {
+        // First, try exact match (case-insensitive)
+        const exactMatch = Object.keys(statusObj).find(
+            key => key.toLowerCase() === normalizedStatus
+        );
+        
+        if (exactMatch) return exactMatch;
+
+        // Then try partial match
+        const partialMatch = Object.keys(statusObj).find(
+            key => normalizedStatus.includes(key.toLowerCase())
+        );
+        
+        return partialMatch;
+    };
+
+    // Find matching status
+    const matchedIconStatus = findBestMatch(statusIcons);
+    const matchedClassStatus = findBestMatch(statusMap);
+
+    // Return object with class and icon
+    return {
+        class: matchedClassStatus ? statusMap[matchedClassStatus] : 'status-indicator status-gray',
+        icon: matchedIconStatus ? statusIcons[matchedIconStatus] : 'ℹ️'
+    };
+}
     
       
     
