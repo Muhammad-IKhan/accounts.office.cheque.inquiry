@@ -151,10 +151,10 @@
                 Amount <span class="sort-icon"></span>
               </th>
               <th data-column="CHEQ_NO">
-                Cheque No <span class="sort-icon"></span>
+                Cheque #<span class="sort-icon"></span>
               </th>
-              <th data-column="NAR">IN C/O <span class="sort-icon"></span></th>
-              <th data-column="DD">Status <span class="sort-icon"></span></th>
+              <th data-column="NAR">In R/O <span class="sort-icon"></span></th>
+              <th data-column="DD">Status<span class="sort-icon"></span></th>
             </tr>
           </thead>
           <tbody id="checksTable"></tbody>
@@ -170,17 +170,11 @@
         <label for="statusFilter">Filter by Status</label>
         <select id="statusFilter">
           <option value="all">All Statuses</option>
+          <option value="processing">Processing</option>
           <option value="ready but not signed yet">Not Signed Yet</option>
           <option value="Cheque Ready">Cheque Ready</option>
           <option value="sent to chairman">Sent to Chairman</option>
-          <option value="despatched through gpo">
-            Despatched Through GPO Bannu
-          </option>
-          <option value="despatched to lakki camp office">
-            Despatched to Lakki
-          </option>
-          <option value="received by">Received by</option>
-          <option value="processing">Processing</option>
+          <option value="despatched"> Despatched</option>
         </select>
       </div>
 
