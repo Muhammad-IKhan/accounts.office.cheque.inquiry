@@ -533,9 +533,8 @@ class XMLTableHandler {
 
             'ready': '💵✅',
 
-            'despatched': '🚚',
-            'despatched through gpo': '📦📮',
-            'despatched to lakki camp office': '📦📍',
+            'despatched through gpo': '📮🚚📦',
+            'despatched to lakki camp office': '🚚📦',
             
             'received by:': '📬',
             'received byself': '👤✅',
