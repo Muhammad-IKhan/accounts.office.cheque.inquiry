@@ -568,7 +568,7 @@ class XMLTableHandler {
     //     };
     // }
 
-    function getStatusColor(status) {
+      function getStatusColor(status) {
     const statusIcons = {
         'In Work: Not Signed Yet': '📝⏳', 
         'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
