@@ -171,23 +171,8 @@
         <select id="statusFilter">
           <option value="all">All Statuses</option>
           <option value="processing">Processing</option>
-          <option id="combinedOption"></option>
-         <script>
-          // Define the condition
-          const isNotSignedYet = true; // Change this to false to test the other condition
-        
-          // Get the combined option element
-          const combinedOption = document.getElementById('combinedOption');
-        
-          // Set the value and text based on the condition
-          if (isNotSignedYet) {
-            combinedOption.value = "ready but not signed yet";
-            combinedOption.text = "Not Signed Yet";
-          } else {
-            combinedOption.value = "sent to chairman";
-            combinedOption.text = "Sent to Chairman";
-          }
-        </script>
+          <option id="not signed">Not Ready</option>
+         
           <option value="Cheque Ready">Cheque Ready</option>
           <option value="despatched"> Despatched</option>
         </select>
