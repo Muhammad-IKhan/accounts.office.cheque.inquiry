@@ -627,8 +627,13 @@ class XMLTableHandler {
     //         };
     // }
 
-    function getStatusColor(status) {
-    const statusIcons = {
+
+
+
+
+     // in work okay
+       getStatusColor(status) {
+        const statusIcons = {
         'In Work': '🔧',
         'In Work: Not Signed Yet': '📝⏳', 
         'In Work: Not Signed Yet Sent To Chairman Sb. for Sign': '📤🖋️',
@@ -659,7 +664,7 @@ class XMLTableHandler {
         'cancelled': 'status-indicator status-dark-red',
     };
 
-    // Normalize the input status by trimming and converting to lowercase
+          // Normalize the input status by trimming and converting to lowercase
     const normalizedStatus = status.trim().toLowerCase();
 
     // Function to find the best match
@@ -687,9 +692,10 @@ class XMLTableHandler {
     return {
         class: matchedClassStatus ? statusMap[matchedClassStatus] : 'status-indicator status-gray',
         icon: matchedIconStatus ? statusIcons[matchedIconStatus] : 'ℹ️'
-    };
-}
-    
+            };
+    }
+
+
       
     
       
