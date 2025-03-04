@@ -555,19 +555,24 @@ class XMLTableHandler {
             'cancelled': 'status-indicator status-dark-red',
 
         };
-           // Normalize the status and keys for case-insensitive matching
+           // Normalize the input status to lowercase
             const lowerStatus = status.toLowerCase();
-            const normalizedStatusIcons = Object.fromEntries(
-                Object.entries(statusIcons).map(([key, value]) => [key.toLowerCase(), value])
+        
+            // Create a lookup table with lowercase keys for case-insensitive matching
+            const lowercaseStatusIcons = Object.fromEntries(
+                Object.entries(statusIcons).map(([key, value]) => [key.toLowerCase(), { originalKey: key, icon: value }])
             );
-            const normalizedStatusMap = Object.fromEntries(
-                Object.entries(statusMap).map(([key, value]) => [key.toLowerCase(), value])
+            const lowercaseStatusMap = Object.fromEntries(
+                Object.entries(statusMap).map(([key, value]) => [key.toLowerCase(), { originalKey: key, class: value }])
             );
         
-            // Find the matching key in the normalized maps
-            const statusKey = Object.keys(normalizedStatusIcons).find(key => lowerStatus === key);
-            const colorClass = normalizedStatusMap[statusKey] || 'status-indicator status-gray';
-            const icon = normalizedStatusIcons[statusKey] || 'ℹ️';
+            // Find the matching key in the lowercase lookup tables
+            const iconMatch = lowercaseStatusIcons[lowerStatus];
+            const classMatch = lowercaseStatusMap[lowerStatus];
+        
+            // Use the original keys to get the icon and class
+            const icon = iconMatch ? statusIcons[iconMatch.originalKey] : 'ℹ️';
+            const colorClass = classMatch ? statusMap[classMatch.originalKey] : 'status-indicator status-gray';
         
             // Return object with both class and icon
             return {
