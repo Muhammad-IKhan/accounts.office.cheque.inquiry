@@ -529,15 +529,13 @@ class XMLTableHandler {
 
         const statusIcons = {
             'yet': '📝⏳',
-            // 'ready but sent to chairman sb for sign': '🖋️👨‍💼',
-             'sent to': '📤🖋️👨‍💼',
+             'sent to': '📤🖋️',
 
             'cheque ready': '💵✅',
 
-            
+            'despatched': '🚚',
             'despatched through gpo': '📦📮',
             'despatched to lakki camp office': '📦📍',
-            'despatched': '🚚',
             
             'received by:': '📬',
             'received byself': '👤✅',
