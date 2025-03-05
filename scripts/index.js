@@ -50,9 +50,8 @@ class XMLTableHandler {
         console.group('📊 Defining table columns...'); // Start a console group
         this.columns = {
             NARRATION: {label: 'Payee', index: 0, type: 'string', required: true, title: 'Payee', searchable: true },
-            AMOUNT: {label: 'Amount', index: 1, type: 'number', required: true, title: 'Amount', searchable: false },
-            CHEQ_NO: {label: 'Cheque No', index: 2, type: 'number', required: true, title: 'Cheque No', searchable: false },
-            DD: {label: 'Status', index: 3, type: 'string', required: true, title: 'Status', searchable: false }
+            CHEQ_NO: {label: 'Cheque No', index: 1, type: 'number', required: true, title: 'Cheque No', searchable: false },
+            DD: {label: 'Status', index: 2, type: 'string', required: true, title: 'Status', searchable: false }
         };
         console.table(this.columns); // Display columns as a table in console
         console.groupEnd(); // End the console group
