@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <CHEQUE_LIST_DATEWISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<LIST_G_PVN>
+	<LIST_G_PVN> 
 		<G_PVN>
 			<BNO>1</BNO>
 			<HEAD>1707</HEAD>
