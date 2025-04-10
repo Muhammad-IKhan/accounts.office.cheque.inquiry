@@ -1,130 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Meta tags to prevent caching -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>Cheque Inquiry System</title>
-    <link type="text/css" rel="stylesheet" href="styles/main.css" />
-    <style></style>
-    <script>
-      // Function to force refresh the page cache
-      function forceRefresh() {
-        // Current timestamp to make URL unique and bypass cache
-        const timestamp = new Date().getTime();
-        // Refresh the page with a cache-busting parameter
-        window.location.href = window.location.pathname + '?refresh=' + timestamp;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Cheque Inquiry System</title>
+  <link type="text/css" rel="stylesheet" href="styles/main.css" />
+  <script>
+    function forceRefresh() {
+      const timestamp = new Date().getTime();
+      window.location.href = window.location.pathname + '?refresh=' + timestamp;
+    }
 
-      // Auto refresh cache when page loads
-      window.addEventListener('load', function() {
-        // Check if this is already a refreshed page (to avoid refresh loops)
-        if (!window.location.href.includes('?refresh=')) {
-          forceRefresh();
-        }
-        
-        // Update last refresh time
-        updateRefreshTime();
+    function updateDateTime() {
+      const now = new Date();
+      document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', { 
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
       });
+      document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', minute: '2-digit', second: '2-digit' 
+      });
+    }
+    
+    function updateRefreshTime() {
+      document.getElementById('lastRefresh').textContent = 'Last refresh: ' + 
+        new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
 
-      // Set up hourly refresh
-      setInterval(function() {
+    window.addEventListener('load', function() {
+      if (!window.location.href.includes('?refresh=')) {
         forceRefresh();
-      }, 3600000); // 3600000 ms = 1 hour
-      
-      // Update datetime display
-      function updateDateTime() {
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('en-US', { 
-          weekday: 'long', 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
-        });
-        const timeStr = now.toLocaleTimeString('en-US', { 
-          hour: '2-digit', 
-          minute: '2-digit', 
-          second: '2-digit' 
-        });
-        document.getElementById('currentDate').textContent = dateStr;
-        document.getElementById('currentTime').textContent = timeStr;
       }
-      
-      // Update last refresh time
-      function updateRefreshTime() {
-        const now = new Date();
-        const refreshStr = now.toLocaleTimeString('en-US', { 
-          hour: '2-digit', 
-          minute: '2-digit', 
-          second: '2-digit' 
-        });
-        document.getElementById('lastRefresh').textContent = `Last refresh: ${refreshStr}`;
-      }
-      
-      // Update datetime every second
-      setInterval(updateDateTime, 1000);
-      updateDateTime(); // Initial call
-    </script>
-  </head>
-  <body>
-    <div class="background-image">
-      <div class="container">
-        <!-- Rows Per Page Selector -->
-      <span>
-        <label for="rowsPerPage">Interface Selection</label>
-        <select id="rowsPerPage">
-          <option value="5">Mobile</option>
-          <option value="10" selected>Desktop</option>
-          <option value="25">Office</option>
-        </select>
-      </span>
-      
-      <!-- Header -->
-      <div class="header">
-        <div class="theme-toggle" id="themeToggle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </div>
-        <h1>Cheque Inquiry System</h1>
-        <span>Board of Intermediate & Secondary Education Bannu</span>
-        
-        <!-- Dynamic Date and Time Display -->
-        <div class="datetime-display">
-          <span id="currentDate"></span>
-          <span id="currentTime"></span>
-          <span id="lastRefresh"></span>
-        </div>
-      </div>
-      
-      <!-- Last Update Notice -->
-      <div class="last-update-notice">
-        <h4>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-          </svg>
-          Last Data Update
-        </h4>
-        <p>The database was last updated manually on April 10, 2025 at 10:30 AM. Next scheduled update is today at 5:00 PM.</p>
-      </div>
+      updateDateTime();
+      updateRefreshTime();
+    });
 
+    setInterval(updateDateTime, 1000);
+    setInterval(forceRefresh, 3600000);
+  </script>
+</head>
+<body>
+  <div class="background-image"></div>
+  <div class="container">
+    <span>
+      <label for="rowsPerPage">Interface Selection</label>
+      <select id="rowsPerPage">
+        <option value="5">Mobile</option>
+        <option value="10" selected>Desktop</option>
+        <option value="25">Office</option>
+      </select>
+    </span>
+    
+    <div class="header">
+      <div class="theme-toggle" id="themeToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </div>
+      <h1>Cheque Inquiry System</h1>
+      <span>Board of Intermediate & Secondary Education Bannu</span>
+      <div class="datetime-display">
+        <span id="currentDate"></span>
+        <span id="currentTime"></span>
+        <span id="lastRefresh"></span>
+      </div>
+    </div>
+    
+    <div class="last-update-notice">
+      <h4>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        Last Data Update
+      </h4>
+      <p>The database was last updated manually on April 10, 2025 at 10:30 AM. Next scheduled update is today at 5:00 PM.</p>
+    </div>
+
+    <div class="controls">
       <!-- Controls -->
-      <div class="controls">
         <div class="filter-box">
           <label for="narCategory">Bill Category</label>
           <select id="narCategory">
