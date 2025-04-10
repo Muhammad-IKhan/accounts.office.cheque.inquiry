@@ -7,9 +7,9 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>Data Management Dashboard</title>
-    <link rel="stylesheet" href="styles/main.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Cheque Inquiry System</title>
+    <link type="text/css" rel="stylesheet" href="styles.css" />
+    <style></style>
     <script>
       // Function to force refresh the page cache
       function forceRefresh() {
@@ -26,236 +26,271 @@
           forceRefresh();
         }
         
-        // Update the date and time display
-        updateDateTime();
-        // Set interval to update time every minute
-        setInterval(updateDateTime, 60000);
-        
-        // Store last refresh time
-        const refreshTime = new Date();
-        document.getElementById('lastRefreshTime').textContent = formatTime(refreshTime);
-        
-        // Theme toggler
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-          document.body.classList.toggle('dark-mode');
-          updateThemeIcon();
-        });
-        
-        // Check system preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.body.classList.add('dark-mode');
-          updateThemeIcon();
-        }
-        
-        function updateThemeIcon() {
-          const isDark = document.body.classList.contains('dark-mode');
-          themeToggle.innerHTML = isDark ? 
-            '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>' : 
-            '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-        }
-        
-        updateThemeIcon();
+        // Update last refresh time
+        updateRefreshTime();
       });
-      
-      // Function to update date and time
-      function updateDateTime() {
-        const now = new Date();
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        
-        document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', dateOptions);
-        document.getElementById('currentTime').textContent = formatTime(now);
-      }
-      
-      // Format time as HH:MM AM/PM
-      function formatTime(date) {
-        return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-      }
 
       // Set up hourly refresh
       setInterval(function() {
         forceRefresh();
       }, 3600000); // 3600000 ms = 1 hour
+      
+      // Update datetime display
+      function updateDateTime() {
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('en-US', { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        });
+        const timeStr = now.toLocaleTimeString('en-US', { 
+          hour: '2-digit', 
+          minute: '2-digit', 
+          second: '2-digit' 
+        });
+        document.getElementById('currentDate').textContent = dateStr;
+        document.getElementById('currentTime').textContent = timeStr;
+      }
+      
+      // Update last refresh time
+      function updateRefreshTime() {
+        const now = new Date();
+        const refreshStr = now.toLocaleTimeString('en-US', { 
+          hour: '2-digit', 
+          minute: '2-digit', 
+          second: '2-digit' 
+        });
+        document.getElementById('lastRefresh').textContent = `Last refresh: ${refreshStr}`;
+      }
+      
+      // Update datetime every second
+      setInterval(updateDateTime, 1000);
+      updateDateTime(); // Initial call
     </script>
   </head>
   <body>
-    <div class="container animate-fade-in">
+    <!-- Background image with overlay -->
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+      <!-- Rows Per Page Selector -->
+      <span>
+        <label for="rowsPerPage">Interface Selection</label>
+        <select id="rowsPerPage">
+          <option value="5">Mobile</option>
+          <option value="10" selected>Desktop</option>
+          <option value="25">Office</option>
+        </select>
+      </span>
+      
       <!-- Header -->
       <div class="header">
-        <div class="header-content">
-          <h1>Enterprise Data Dashboard</h1>
-          <span>Integrated Management System</span>
-        </div>
-        
-        <div class="datetime-display">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span id="currentDate">Thursday, April 10, 2025</span>
-          </span>
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <span id="currentTime">10:30 AM</span>
-          </span>
-        </div>
-        
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="theme-toggle" id="themeToggle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
-        </button>
+        </div>
+        <h1>Cheque Inquiry System</h1>
+        <span>Board of Intermediate & Secondary Education Bannu</span>
+        
+        <!-- Dynamic Date and Time Display -->
+        <div class="datetime-display">
+          <span id="currentDate"></span>
+          <span id="currentTime"></span>
+          <span id="lastRefresh"></span>
+        </div>
       </div>
       
-      <!-- Last update notice -->
-      <div class="last-update-notice animate-slide-up">
+      <!-- Last Update Notice -->
+      <div class="last-update-notice">
         <h4>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-            <path d="M12 6v6l4 2"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
           </svg>
           Last Data Update
         </h4>
-        <p>Database was manually refreshed at <span id="lastRefreshTime">10:30 AM</span>. Please note that all transaction reports are subject to verification by the finance department before being finalized.</p>
+        <p>The database was last updated manually on April 10, 2025 at 10:30 AM. Next scheduled update is today at 5:00 PM.</p>
       </div>
 
-      <!-- Controls area -->
-      <div class="controls-grid">
-        <div class="input-group">
-          <label for="search">Search Records</label>
-          <input type="text" id="search" placeholder="Enter keywords..." />
-        </div>
-        
-        <div class="input-group">
-          <label for="category">Category</label>
-          <select id="category">
-            <option value="">All Categories</option>
-            <option value="finance">Finance</option>
-            <option value="operations">Operations</option>
-            <option value="marketing">Marketing</option>
+      <!-- Controls -->
+      <div class="controls">
+        <div class="filter-box">
+          <label for="narCategory">Bill Category</label>
+          <select id="narCategory">
+            <option value="all" selected>Search in All</option>
+            <option value="TA/DA TO SUPERVISORY STAFF SSC EXAM:">
+              Supervisory Staff SSC
+            </option>
+            <option value="TA/DA TO PRACTICAL EXMR: SSC">
+              Practical Staff SSC
+            </option>
+            <option value="TA/DA TO INSEPCTORS SSC">
+              Inspections Staff SSC
+            </option>
+            <option value="REMUNERATION RES: INSPECTORS">
+              Resedent Inspectors
+            </option>
+            <option value="LABORATORY CHARGES">Laboratory Charges</option>
+            <option value="SECRECY">Secrecy Bills</option>
+            <option value="TA/DA TO SUPERVISORY STAFF HSSC EXAM:">
+              Supervisory Staff HSSC
+            </option>
+            <option value="TA/DA TO PRACTICAL EXMR: HSSC">
+              Practical Staff HSSC
+            </option>
+            <option value="TA/DA TO INSEPCTORS HSSC">
+              Inspections Staf HSSC
+            </option>
+            <option value="TA/DA GENERAL">TA/DA General</option>
+            <option value="EXPIRED CHECK RENEWED">Check Renewal</option>
+            <option value="REFUND OF FEE">Refund Fee</option>
+            <option value="SCHOLARSHIP">SCHOLARSHIPS</option>
+            <option value="SPORTS">SPORTS</option>
+            <option value="HONORARIA">Honoraria & Others</option>
           </select>
         </div>
-        
-        <div class="input-group">
-          <label for="status">Status</label>
-          <select id="status">
-            <option value="">All Statuses</option>
-            <option value="active">Active</option>
-            <option value="pending">Pending</option>
-            <option value="completed">Completed</option>
-          </select>
+
+        <div class="search-box">
+          <label for="search">Search by Name or School</label>
+          <input
+            type="text"
+            id="search"
+            placeholder="Enter your name or school name..."
+          />
         </div>
-        
-        <div class="input-group">
-          <button type="button" class="btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            Search
-          </button>
-        </div>
+
+        <button id="searchBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          Search
+        </button>
       </div>
 
-      <!-- Loading spinner -->
-      <div class="loading">
+      <!-- Loading indicator -->
+      <div id="loading" class="loading">
         <div class="loading-spinner"></div>
-        <p>Fetching data...</p>
+        <p>Searching...</p>
       </div>
 
-      <!-- Table container -->
-      <div class="table-container">
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+          </svg>
+        </div>
+        <h3>Welcome to Office for Live Inquiry, Updation and Information</h3>
+        <p>Use the search and filters above to find your cheque information.</p>
+      </div>
+
+      <!-- No Results State -->
+      <div id="noResults" class="no-results">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="margin-bottom: 16px; color: var(--text-secondary)"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <h3>No Results Found</h3>
+        <p>Try adjusting your search criteria or filters.</p>
+      </div>
+
+      <!-- Table -->
+      <div id="tableContainer" class="table-container">
         <table>
           <thead>
             <tr>
-              <th>ID <span class="sort-icon">↓</span></th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Amount</th>
-              <th>Actions</th>
+              <th data-column="NARRATION">
+                NAME AND ADDRESS<span class="sort-icon"></span>
+              </th>
+              <th data-column="CHEQ_NO">
+                Cheque #<span class="sort-icon"></span>
+              </th>
+              <th data-column="DD">Status<span class="sort-icon"></span></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td data-label="ID">1001</td>
-              <td data-label="Name">Project Alpha</td>
-              <td data-label="Category">Finance</td>
-              <td data-label="Date">2025-04-08</td>
-              <td data-label="Status"><span class="status-badge status-green">Completed</span></td>
-              <td data-label="Amount">$5,249.00</td>
-              <td data-label="Actions">
-                <button type="button" class="btn-primary">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="ID">1002</td>
-              <td data-label="Name">Campaign Beta</td>
-              <td data-label="Category">Marketing</td>
-              <td data-label="Date">2025-04-09</td>
-              <td data-label="Status"><span class="status-badge status-yellow">Pending</span></td>
-              <td data-label="Amount">$3,850.75</td>
-              <td data-label="Actions">
-                <button type="button" class="btn-primary">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="ID">1003</td>
-              <td data-label="Name">System Upgrade</td>
-              <td data-label="Category">Operations</td>
-              <td data-label="Date">2025-04-10</td>
-              <td data-label="Status"><span class="status-badge status-blue">Active</span></td>
-              <td data-label="Amount">$12,400.00</td>
-              <td data-label="Actions">
-                <button type="button" class="btn-primary">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="ID">1004</td>
-              <td data-label="Name">Client Onboarding</td>
-              <td data-label="Category">Finance</td>
-              <td data-label="Date">2025-04-07</td>
-              <td data-label="Status"><span class="status-badge status-red">Error</span></td>
-              <td data-label="Amount">$0.00</td>
-              <td data-label="Actions">
-                <button type="button" class="btn-primary">View</button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody id="checksTable"></tbody>
         </table>
       </div>
 
-      <!-- Empty state -->
-      <div class="empty-state">
-        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-          <polyline points="13 2 13 9 20 9"></polyline>
-        </svg>
-        <h3>No Data Available</h3>
-        <p>There are no records matching your search criteria. Try adjusting your filters or add new records.</p>
+      <!-- Results -->
+      <div id="result" class="result-container">
+        <span id="resultContainer"></span>
+      </div>
+
+      <div class="filter-box">
+        <label for="statusFilter">Filter by Status</label>
+        <select id="statusFilter">
+          <option value="all">All Statuses</option>
+          <option value="processing">Processing</option>
+          <option value="In Work: Not Signed Yet">In Work</option>          
+          <option value="Cheque Ready">Cheque Ready</option>
+          <option value="despatched"> Despatched</option>
+        </select>
       </div>
 
       <!-- Pagination -->
-      <div class="pagination-controls">
-        <button class="page-btn" disabled>&lt;&lt;</button>
-        <button class="page-btn" disabled>&lt;</button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <span class="page-ellipsis">...</span>
-        <button class="page-btn">10</button>
-        <button class="page-btn">&gt;</button>
-        <button class="page-btn">&gt;&gt;</button>
+      <div id="paginationContainer" class="pagination-controls">
+        <span id="pagination" class="pagination-controls"></span>
       </div>
+      <div id="pagination" class="pagination"></div>
+    </div>
 
-      <!-- Mobile FAB -->
-      <div class="fab-container">
-        <div class="fab">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-        </div>
+    <!-- Floating Action Button for Mobile -->
+    <div class="fab-container">
+      <div class="fab" id="scrollToTop">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
       </div>
     </div>
+    <!-- Scripts -->
+    <script src="scripts/index.js"></script>
   </body>
 </html>
