@@ -927,9 +927,9 @@ th:hover .sort-icon {
   width: 100%;
   height: 100%;
   background: url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover no-repeat;
-  z-index: -1;
+  z-index: 99;
   opacity: 0.3;
-  filter: grayscale(30%) blur(2px);
+  filter: grayscale(30%) blur(.05px);
 }
 
 /* Container adjustments */
@@ -1115,7 +1115,7 @@ th:hover .sort-icon {
   right: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
   z-index: -1; /* Behind content but above background */
 }
 
