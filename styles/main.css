@@ -915,3 +915,39 @@ th:hover .sort-icon {
   background: rgba(30, 41, 59, 0.85);
 }
 
+
+
+
+
+/* Background image */
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover no-repeat;
+  z-index: -1;
+  opacity: 0.3;
+  filter: grayscale(30%) blur(2px);
+}
+
+/* Container adjustments */
+.container {
+  position: relative; /* Creates new stacking context */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* Keep all your existing container styles */
+}
+
+.dark-mode .container {
+  background: rgba(30, 41, 59, 0.85);
+}
+
+/* Ensure interactive elements are above everything */
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
