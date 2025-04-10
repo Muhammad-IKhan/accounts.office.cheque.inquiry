@@ -951,3 +951,144 @@ th:hover .sort-icon {
   z-index: 1;
 }
 
+
+
+:root {
+  --primary-color: #4361ee;
+  --primary-hover: #3a56d4;
+  --primary-gradient: linear-gradient(135deg, #4361ee, #3a56d4);
+  --secondary-color: #f8f9fa;
+  --border-color: #e2e8f0;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --card-background: rgba(255, 255, 255, 0.9);
+  --card-backdrop-filter: blur(8px);
+  --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 24px rgba(15, 23, 42, 0.12);
+  --card-shadow: var(--shadow-md);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --border-radius: var(--radius-lg);
+  --input-radius: var(--radius-md);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-gradient: linear-gradient(135deg, #6366f1, #4f46e5);
+  --secondary-color: #1e293b;
+  --border-color: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --card-background: rgba(30, 41, 59, 0.9);
+  --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover no-repeat;
+  z-index: -1;
+  opacity: 0.2;
+  filter: grayscale(20%) blur(1px);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--card-background);
+  backdrop-filter: var(--card-backdrop-filter);
+  -webkit-backdrop-filter: var(--card-backdrop-filter);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+  padding: 1.5rem;
+  background: var(--primary-gradient);
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+/* Date Time Display */
+.datetime-display {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Last Update Notice */
+.last-update-notice {
+  margin: 1rem 1.5rem;
+  padding: 1.25rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--info-color);
+  font-size: 0.875rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Ensure all interactive elements work */
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .container {
+    margin: 32px auto;
+  }
+  .header {
+    flex-direction: row;
+    text-align: left;
+    padding: 2rem;
+  }
+  .datetime-display {
+    position: absolute;
+    right: 1.5rem;
+    bottom: -24px;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    border-radius: 0;
+  }
+  .background-image {
+    opacity: 0.15;
+  }
+}
+
