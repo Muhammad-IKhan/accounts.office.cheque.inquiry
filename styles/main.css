@@ -1135,3 +1135,185 @@ th:hover .sort-icon {
   position: relative;
   z-index: 1;
 }
+
+
+
+
+
+/* Enhanced readability and mobile responsiveness */
+:root {
+  /* Enhanced contrast colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-on-primary: #ffffff;
+  
+  /* Improved status colors with better contrast */
+  --status-processing: #f97316;
+  --status-ready: #10b981;
+  --status-dispatched: #3b82f6;
+  --status-error: #dc2626;
+  
+  /* Larger touch targets for mobile */
+  --touch-target-min: 44px;
+}
+
+/* Base typography improvements */
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+/* Enhanced contrast for dark mode */
+.dark-mode {
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-on-primary: #f8fafc;
+}
+
+/* Improved container readability */
+.container {
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
+    url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover fixed;
+}
+
+.dark-mode .container {
+  background: 
+    linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)),
+    url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover fixed;
+}
+
+/* Enhanced header contrast */
+.header {
+  color: var(--text-on-primary);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Improved form controls */
+input, select, button {
+  min-height: var(--touch-target-min);
+  font-size: 1rem;
+}
+
+/* Better mobile table display */
+@media (max-width: 767px) {
+  td {
+    padding-left: 45%;
+    font-size: 0.95rem;
+  }
+  
+  td:before {
+    font-size: 0.9rem;
+    top: 1rem;
+    left: 1rem;
+  }
+  
+  /* Larger touch targets for pagination */
+  .page-btn {
+    padding: 0.75rem 1.25rem;
+    min-width: var(--touch-target-min);
+    min-height: var(--touch-target-min);
+  }
+}
+
+/* Enhanced status badges */
+.status-indicator {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator:before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Improved empty states */
+.empty-state, .no-results {
+  padding: 3rem 1.5rem;
+}
+
+.empty-state h3, .no-results h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state p, .no-results p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Better FAB visibility */
+.fab {
+  width: 56px;
+  height: 56px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced loading indicator */
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border-width: 4px;
+}
+
+.loading p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Improved filter controls */
+.filter-box {
+  margin-bottom: 1rem;
+}
+
+.filter-box label {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* Better datetime display */
+.datetime-display {
+  font-weight: 500;
+}
+
+/* Enhanced mobile controls */
+@media (max-width: 767px) {
+  .controls {
+    padding: 1rem;
+  }
+  
+  .search-box input {
+    font-size: 1rem;
+  }
+  
+  button#searchBtn {
+    font-size: 1.1rem;
+  }
+}
+
+/* Print-specific improvements */
+@media print {
+  .container {
+    background: white !important;
+  }
+  
+  td, th {
+    font-size: 12pt !important;
+    padding: 8pt !important;
+  }
+  
+  .status-indicator {
+    padding: 2pt 4pt !important;
+  }
+}
