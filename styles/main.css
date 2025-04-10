@@ -82,7 +82,7 @@ body {
 }
 
 /* Container with glass morphism */
-.container {
+/* .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -94,7 +94,9 @@ body {
   backdrop-filter: var(--card-backdrop-filter);
   -webkit-backdrop-filter: var(--card-backdrop-filter);
   border: 1px solid rgba(255, 255, 255, 0.15);
-}
+} */
+
+
 
 /* Modern header styles */
 .header {
@@ -888,4 +890,26 @@ th:hover .sort-icon {
   tr, td, th {
     page-break-inside: avoid;
   }
+}
+
+
+.container {
+  position: relative;
+  isolation: isolate; /* Creates new stacking context */
+}
+
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: -1; /* Places it behind content */
+}
+
+.dark-mode .content-overlay {
+  background-color: rgba(30, 41, 59, 0.9);
 }
