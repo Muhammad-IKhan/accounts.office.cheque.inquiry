@@ -1092,3 +1092,45 @@ th:hover .sort-icon {
   }
 }
 
+
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+    url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover fixed;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  isolation: isolate; /* Creates new stacking context */
+}
+
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: -1; /* Behind content but above background */
+}
+
+.dark-mode .container {
+  background: 
+    linear-gradient(rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.92)),
+    url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover fixed;
+}
+
+.dark-mode .content-overlay {
+  background: rgba(30, 41, 59, 0.7);
+}
+
+/* Ensure all interactive elements are above overlay */
+.container > *:not(.content-overlay) {
+  position: relative;
+  z-index: 1;
+}
