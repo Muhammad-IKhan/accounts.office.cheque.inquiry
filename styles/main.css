@@ -1036,7 +1036,7 @@ th:hover .sort-icon {
 
 /* Date Time Display */
 .datetime-display {
-  background: rgba(255, 255, 255, 0.15);
+  background: #4337f1;
   border-radius: var(--radius-lg);
   padding: 0.75rem 1.25rem;
   font-size: 0.85rem;
@@ -1164,12 +1164,6 @@ body {
   color: var(--text-primary);
 }
 
-/* Enhanced contrast for dark mode */
-.dark-mode {
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-on-primary: #f8fafc;
-}
 
 /* Improved container readability */
 .container {
@@ -1183,6 +1177,13 @@ body {
     linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)),
     url('https://biseb.edu.pk/images/banners/bise_2.jpg') center/cover fixed;
 }
+/* Enhanced contrast for dark mode */
+.dark-mode {
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-on-primary: #f8fafc;
+}
+
 
 /* Enhanced header contrast */
 .header {
