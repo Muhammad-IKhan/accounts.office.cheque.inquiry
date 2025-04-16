@@ -10,38 +10,28 @@
   <link type="text/css" rel="stylesheet" href="styles/main.css" />
   <link type="text/css" rel="stylesheet" href="styles/main2.css" />
   <link type="text/css" rel="stylesheet" href="styles/main3.css" />
-  <script>
-    function forceRefresh() {
-      const timestamp = new Date().getTime();
-      window.location.href = window.location.pathname + '?refresh=' + timestamp;
-    }
-
-    function updateDateTime() {
-      const now = new Date();
-      document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', { 
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
-      });
-      document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', { 
-        hour: '2-digit', minute: '2-digit', second: '2-digit' 
-      });
-    }
-    
-    function updateRefreshTime() {
-      document.getElementById('lastRefresh').textContent = 'Last refresh: ' + 
-        new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    }
-
-    window.addEventListener('load', function() {
-      if (!window.location.href.includes('?refresh=')) {
-        forceRefresh();
-      }
-      updateDateTime();
-      updateRefreshTime();
-    });
-
-    setInterval(updateDateTime, 1000);
-    setInterval(forceRefresh, 3600000);
-  </script>
+      <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        #emptyState:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+    </style>
 </head>
 <body>
   <div class="background-image"></div>
@@ -167,6 +157,78 @@
         <h3>Welcome to Office for Live Inquiry, Updation and Information</h3>
         <p>Use the search and filters above to find your cheque information.</p>
       </div>
+
+    <!-- Modern Empty State with Animation -->
+    <div id="emptyState" style="background-color: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); padding: 40px; max-width: 500px; width: 100%; text-align: center; animation: fadeIn 0.5s ease-out; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        
+        <!-- Animated Icon -->
+        <div style="margin-bottom: 24px; display: inline-flex; padding: 20px; background-color: #f1f5f9; border-radius: 50%; animation: pulse 2s infinite ease-in-out;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation: rotate 30s linear infinite;">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+        </div>
+        
+        <!-- Title with Gradient Text -->
+        <h2 style="font-weight: 600; font-size: 24px; color: #0f172a; margin: 0 0 12px 0; background: linear-gradient(90deg, #1e293b, #334155); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Welcome to Office for Live Inquiry</h2>
+        
+        <!-- Subtitle -->
+        <h3 style="font-weight: 500; font-size: 18px; color: #475569; margin: 0 0 24px 0;">Updation and Information System</h3>
+        
+        <!-- Description with improved typography -->
+        <p style="color: #64748b; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">Use the search and filters above to find your cheque information or check the status of your processing requests.</p>
+        
+        <!-- Action Buttons -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+            <button style="padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Search Records
+            </button>
+            <button style="padding: 12px 20px; background-color: #f8fafc; color: #334155; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg>
+                Create New Request
+            </button>
+        </div>
+        
+        <!-- Quick Links -->
+        <div style="margin-top: 32px; border-top: 1px solid #e2e8f0; padding-top: 24px;">
+            <p style="color: #64748b; font-size: 14px; margin-bottom: 12px;">Quick Links</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+                <a href="#" style="color: #2563eb; font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Recent Transactions
+                </a>
+                <a href="#" style="color: #2563eb; font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    Documentation
+                </a>
+                <a href="#" style="color: #2563eb; font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    Help Center
+                </a>
+            </div>
+        </div>
+    </div>
+
+
 
       <!-- No Results State -->
       <div id="noResults" class="no-results">
@@ -340,5 +402,37 @@
     </div>
     <!-- Scripts -->
     <script src="scripts/index.js"></script>
+   <script>
+    function forceRefresh() {
+      const timestamp = new Date().getTime();
+      window.location.href = window.location.pathname + '?refresh=' + timestamp;
+    }
+
+    function updateDateTime() {
+      const now = new Date();
+      document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', { 
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+      });
+      document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', minute: '2-digit', second: '2-digit' 
+      });
+    }
+    
+    function updateRefreshTime() {
+      document.getElementById('lastRefresh').textContent = 'Last refresh: ' + 
+        new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+
+    window.addEventListener('load', function() {
+      if (!window.location.href.includes('?refresh=')) {
+        forceRefresh();
+      }
+      updateDateTime();
+      updateRefreshTime();
+    });
+
+    setInterval(updateDateTime, 1000);
+    setInterval(forceRefresh, 3600000);
+  </script>
   </body>
 </html>
