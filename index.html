@@ -32,6 +32,43 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
     </style>
+
+  <style>
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            70% { transform: scale(1.3); opacity: 0; }
+            100% { transform: scale(0.8); opacity: 0; }
+        }
+        
+        @media (max-width: 640px) {
+            #emptyState {
+                border-radius: 12px;
+            }
+            
+            #emptyState h2 {
+                font-size: 20px;
+            }
+            
+            #emptyState p {
+                font-size: 15px;
+            }
+            
+            .illustration-area {
+                padding: 30px 15px 15px;
+            }
+            
+            .content-area {
+                padding: 0 20px 30px;
+            }
+        }
+    </style>
+
+  
 </head>
 <body>
   <div class="background-image"></div>
@@ -157,6 +194,80 @@
         <h3>Welcome to Office for Live Inquiry, Updation and Information</h3>
         <p>Use the search and filters above to find your cheque information.</p>
       </div> -->
+
+    <!-- Modern Empty State with Illustration -->
+    <div id="emptyState" style="background-color: white; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); width: 100%; max-width: 560px; overflow: hidden; display: flex; flex-direction: column; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+        
+        <!-- Top Wave Pattern -->
+        <div style="height: 6px; background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef); width: 100%;"></div>
+        
+        <!-- Illustration Area -->
+        <div style="display: flex; justify-content: center; padding: 40px 20px 20px;">
+            <div style="width: 180px; height: 180px; position: relative;">
+                <!-- SVG Illustration -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%; color: #6366f1;">
+                    <circle cx="12" cy="12" r="10" stroke="#e0e7ff" stroke-width="0.5" fill="#e0e7ff"></circle>
+                    <circle cx="12" cy="12" r="6" stroke="#818cf8" stroke-width="0.5" fill="#818cf8" opacity="0.6"></circle>
+                    <circle cx="12" cy="12" r="2" stroke="#4f46e5" stroke-width="1" fill="#4f46e5"></circle>
+                    <path d="M2 12h4" stroke="#6366f1" stroke-width="1"></path>
+                    <path d="M18 12h4" stroke="#6366f1" stroke-width="1"></path>
+                    <path d="M12 2v4" stroke="#6366f1" stroke-width="1"></path>
+                    <path d="M12 18v4" stroke="#6366f1" stroke-width="1"></path>
+                    <path d="M4.93 4.93l2.83 2.83" stroke="#6366f1" stroke-width="1"></path>
+                    <path d="M16.24 16.24l2.83 2.83" stroke="#6366f1" stroke-width="1"></path>
+                    <path d="M16.24 7.76l2.83-2.83" stroke="#6366f1" stroke-width="1"></path>
+                    <path d="M4.93 19.07l2.83-2.83" stroke="#6366f1" stroke-width="1"></path>
+                </svg>
+                
+                <!-- Pulse Animation Overlay -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0) 70%); animation: pulse 2s infinite;"></div>
+            </div>
+        </div>
+        
+        <!-- Content Area -->
+        <div style="padding: 0 32px 40px; text-align: center;">
+            <h2 style="font-weight: 700; font-size: 24px; color: #111827; margin: 0 0 8px 0;">No Data Available</h2>
+            <h3 style="font-weight: 500; font-size: 16px; color: #6366f1; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">Office for Live Inquiry System</h3>
+            
+            <p style="color: #6b7280; font-size: 16px; line-height: 1.6; margin-bottom: 32px; max-width: 420px; margin-left: auto; margin-right: auto;">Start by using our search function or applying filters to find your cheque information. Your recent activities will appear here.</p>
+            
+            <!-- Search Box -->
+            <div style="display: flex; margin-bottom: 24px; position: relative; max-width: 420px; margin-left: auto; margin-right: auto;">
+                <input type="text" placeholder="Search by reference number or name..." style="padding: 12px 16px 12px 44px; border: 1px solid #e5e7eb; border-radius: 8px; width: 100%; font-size: 15px; transition: all 0.2s ease; outline: none; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%);">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 12px; max-width: 420px; margin-left: auto; margin-right: auto; flex-wrap: wrap; justify-content: center;">
+                <button style="flex: 1; min-width: 140px; padding: 12px 20px; background-color: #4f46e5; color: white; border: none; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);">
+                    Start New Search
+                </button>
+                <button style="flex: 1; min-width: 140px; padding: 12px 20px; background-color: transparent; color: #4f46e5; border: 1px solid #4f46e5; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease;">
+                    View Tutorial
+                </button>
+            </div>
+            
+            <!-- Help Text -->
+            <div style="margin-top: 32px;">
+                <p style="color: #9ca3af; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Need help? <a href="#" style="color: #4f46e5; text-decoration: none;">Contact support</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
 
     <!-- Modern Empty State with Animation -->
     <div id="emptyState" style="background-color: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); padding: 40px; max-width: 500px; width: 100%; text-align: center; animation: fadeIn 0.5s ease-out; transition: transform 0.3s ease, box-shadow 0.3s ease;">
