@@ -1278,6 +1278,11 @@ input, select, button {
   margin-bottom: 1rem;
 }
 
+.fbs2 {
+  display: flex;
+  /* display: none; */
+}
+
 .filter-box label {
   font-weight: 600;
   margin-bottom: 0.75rem;
