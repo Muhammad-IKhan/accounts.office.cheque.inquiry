@@ -83,27 +83,15 @@
         <option value="25">Office</option>
       </select>
     </span> 
-    
-    <div class="header">
-      <div class="theme-toggle" id="themeToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </div>
+  
 
-<!--       <button style="flex: 1; min-width: 140px; padding: 12px 20px; background-color: transparent; color: #4f46e5; border: 1px solid #4f46e5; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease;"> -->
-        <button style="padding: 12px 20px; background:white; color: goldenrod; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;">
-                    View Tutorial
-       </button>
-      
+    <div class="last-update-notice header">
       <div class="datetime-display">
         <span id="currentDate"></span>
         <span id="currentTime"></span>
         <span id="lastRefresh"></span>
       </div>
-    </div>
-    
-    <div class="last-update-notice">
+
       <h4>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
@@ -113,15 +101,37 @@
         Last Data Update
       </h4>
       <p>The database was last updated manually on April 18, 2025 at 11:30 AM. Next scheduled update is today at 6:00 PM.</p>
-               <button style="padding: 12px 20px;background:white; background-color: yellow; color: green; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;">
+      
+      
+
+    <!-- <button style="flex: 1; min-width: 140px; padding: 12px 20px; background-color: transparent; color: #4f46e5; border: 1px solid #4f46e5; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease;"> -->
+      <a href="https://youtu.be/nAV1XJGEi40?si=JQmwxDqexhALo1Yi" target="_blank" style="text-decoration: none;">
+        <button style="padding: 12px 20px; background:white; color: goldenrod; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;">
+          View Tutorial
+        </button>
+      </a>
+        
+        <a href="mailto:mik.biseb.office@gmail.com?subject=Feedback%20Submission&body=Dear%20Office%2C%0D%0A%0D%0AI%20would%20like%20to%20submit%20the%20following%20feedback%3A%0D%0A%0D%0A%5BPlease%20enter%20your%20feedback%20here%5D%0D%0A%0D%0ARegards%2C%0D%0A%5BYour%20Name%5D" style="text-decoration: none;">
+          <button style="padding: 12px 20px; background:white; background-color: yellow; color: green; border: 1px solid #cbd5e1; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
                 <line x1="12" y1="18" x2="12" y2="12"></line>
                 <line x1="9" y1="15" x2="15" y2="15"></line>
             </svg>
-            Create feedback
-        </button>
+            Submit Feedback
+          </button>
+        </a>
+        
+
+      
+      
+
+      <div class="theme-toggle" id="themeToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </div>
     </div>
 
     <!-- Empty State -->
@@ -222,9 +232,8 @@
         <div class="loading-spinner"></div>
         <p>Searching...</p>
       </div>
-      <!-- Top Wave Pattern -->
-      <div style="height: 6px; background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef); width: 100%;"></div>
-      <div style="height: 6px; background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef); width: 100%;"></div>
+      <!-- gap line -->
+      <div style="margin-top: 32px; border-top: 20px solid #e2e8f0; padding-top: 24px;"></div>
         
       
   
@@ -292,7 +301,7 @@
     <div style="display: flex; flex-direction: column; gap: 20px;">
         <!-- Last Update Notice Stats Cards -->
         <h2 style="font-size: 18px; font-weight: 600; margin: 10px 0; color: #343a40;">Today's Statistics </h2> 
-<!--       (April 16, 2025) -->
+        <!-- (April 16, 2025) -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px;">
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
                 <h3 style="margin: 0; font-size: 16px; color: #495057;">Checks ready in Office</h3>
@@ -366,9 +375,7 @@
                 </a>
             </div>
         </div>
-
-      
-    </div>
+      </div>
     </div>
 
   
