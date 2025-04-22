@@ -1279,8 +1279,7 @@ input, select, button {
 }
 
 .fbs2 {
-  display: flex;
-  /* display: none; */
+ display: none; 
 }
 
 .filter-box label {
