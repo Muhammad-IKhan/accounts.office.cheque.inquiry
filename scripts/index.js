@@ -35,7 +35,7 @@ class XMLTableHandler {
             maxPages: 3, // Maximum number of page links to display in pagination
             minPages: 1,  // Minimum number of pages to display in pagination
             searchTermMinLength: 3, // Minimum length of the search term before triggering a search
-            dataFilesJsonPath: '/accounts.office.cheque.inquiry/public/data/files.json', // Path to the files.json
+           dataFilesJsonPath: '/accounts.office.cheque.inquiry/public/data/files.json', // Path to the files.json
             dataFilesBasePath: '/accounts.office.cheque.inquiry/public/data/' // Base path for XML data files
         };
         console.log(`⚙️ Configuration: maxPages = ${this.config.maxPages}, minPages = ${this.config.minPages}, searchTermMinLength = ${this.config.searchTermMinLength}, dataFilesJsonPath = ${this.config.dataFilesJsonPath}, dataFilesBasePath = ${this.config.dataFilesBasePath}`);
@@ -71,8 +71,10 @@ class XMLTableHandler {
             'tableContainer': 'tableContainer',
             'emptyState': 'emptyState',
             'result': 'resultContainer',
+            'filter2': 'filter2',
             'noResults': 'noResults',
             'pagination': 'pagination',
+            'filter2': 'filter2',
             'searchBtn': 'searchBtn',
             'rowsPerPage': 'rowsPerPageSelect',
             'scrollToTop': 'scrollToTop',
@@ -648,6 +650,12 @@ class XMLTableHandler {
     this.tableContainer.style.display = 'block';
     this.emptyState.style.display = 'none';
     this.resultContainer.style.display = 'block';
+    this.filter2.style.display = 'flex'; // Unhide the div
+
+
+
+
+
 
     // Filter rows based on search term and filters
     const allRows = Array.from(this.tableBody.querySelectorAll('tr'));
@@ -677,7 +685,7 @@ class XMLTableHandler {
 
     // Update search results message
     let message = `Found ${filteredRows.length} results`;
-    if (searchTerm) message += ` for "${searchTerm}"`;
+    if (searchTerm) message += ` for "${searchTerm}" if the list is lengthy you could Select the filters below`;
     if (narCategory !== 'all') message += ` in category "${this.narFilter.options[this.narFilter.selectedIndex].text}"`;
     if (statusFilter !== 'all') message += ` with status "${statusFilter}"`;
 
