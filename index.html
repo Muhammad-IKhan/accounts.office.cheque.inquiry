@@ -100,7 +100,7 @@
       <div class="content-overlay"></div>
 
 
-      <div style="display: none;">
+      <div style="display: flex;">
       <div style="text-align: center; max-width: 600px; margin: 20px; padding: 40px 30px; background-color: white; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
         
         <!-- Gear Icon Animation -->
@@ -535,6 +535,28 @@
     <!-- Scripts -->
     <script src="scripts/index.js"></script>
     <script src="scripts/filter.js"></script>
+
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+<script>
+  // Your Firebase configuration
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "your-project.firebaseapp.com",
+    databaseURL: "https://your-project-default-rtdb.firebaseio.com",
+    projectId: "your-project",
+    storageBucket: "your-project.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_ID",
+    appId: "YOUR_APP_ID"
+  };
+  
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+  
    <script>
     function forceRefresh() {
       const timestamp = new Date().getTime();
