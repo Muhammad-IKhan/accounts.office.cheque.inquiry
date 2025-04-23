@@ -8,22 +8,22 @@ function updatePageWithFirebaseData() {
     if (!data) return;
     
     // Update last data update information
-    document.getElementById('last-update-date').textContent = data.lastUpdate.date;
-    document.getElementById('last-update-time').textContent = data.lastUpdate.time;
-    document.getElementById('next-update-time').textContent = data.lastUpdate.nextScheduled;
+    document.getElementById('last-update-date').textContent = checkData.lastUpdate.date;
+    document.getElementById('last-update-time').textContent = checkData.lastUpdate.time;
+    document.getElementById('next-update-time').textContent = checkData.lastUpdate.nextScheduled;
     
     // Update check status counts
-    document.getElementById('ready-in-office').textContent = data.checkStatus.readyInOffice;
-    document.getElementById('in-process').textContent = data.checkStatus.inProcess;
-    document.getElementById('sent-to-chairman').textContent = data.checkStatus.sentToChairman;
-    document.getElementById('sent-to-secretary').textContent = data.checkStatus.sentToSecretary;
-    document.getElementById('received-today').textContent = data.checkStatus.receivedToday;
-    document.getElementById('dispatched-weekend').textContent = data.checkStatus.dispatchedWeekend;
-    document.getElementById('returned-to-office').textContent = data.checkStatus.returnedToOffice;
+    document.getElementById('ready-in-office').textContent = checkData.checkStatus.readyInOffice;
+    document.getElementById('in-process').textContent = checkData.checkStatus.inProcess;
+    document.getElementById('sent-to-chairman').textContent = checkData.checkStatus.sentToChairman;
+    document.getElementById('sent-to-secretary').textContent = checkData.checkStatus.sentToSecretary;
+    document.getElementById('received-today').textContent = checkData.checkStatus.receivedToday;
+    document.getElementById('dispatched-weekend').textContent = checkData.checkStatus.dispatchedWeekend;
+    document.getElementById('returned-to-office').textContent = checkData.checkStatus.returnedToOffice;
   });
 }
 
-// Load data when page loads
+// Load checkData when page loads
 document.addEventListener('DOMContentLoaded', updatePageWithFirebaseData);
 
 // Refresh data when it changes (real-time updates)
