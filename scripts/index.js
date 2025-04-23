@@ -35,8 +35,8 @@ class XMLTableHandler {
             maxPages: 3, // Maximum number of page links to display in pagination
             minPages: 1,  // Minimum number of pages to display in pagination
             searchTermMinLength: 3, // Minimum length of the search term before triggering a search
-            dataFilesJsonPath: 'public/data/files.json', // Path to the files.json
-            dataFilesBasePath: '/public/data/' // Base path for XML data files
+            dataFilesJsonPath: '/accounts.office.cheque.inquiry/public/data/files.json', // Path to the files.json
+             dataFilesBasePath: '/accounts.office.cheque.inquiry/public/data/' // Base path for XML data files
         };
         console.log(`⚙️ Configuration: maxPages = ${this.config.maxPages}, minPages = ${this.config.minPages}, searchTermMinLength = ${this.config.searchTermMinLength}, dataFilesJsonPath = ${this.config.dataFilesJsonPath}, dataFilesBasePath = ${this.config.dataFilesBasePath}`);
         console.groupEnd();
