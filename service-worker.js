@@ -1,7 +1,9 @@
 //scripts/service-worker.js
 const CACHE_NAME = 'sie-app-v1-cache';
 const ASSETS_TO_CACHE  = [
-   '/',
+   '/accounts.office.cheque.inquiry/public/data/',
+   '/accounts.office.cheque.inquiry/public/data/files.json',
+  // '/',
   // '/index.html',
   // '/styles/styles.css',
   // '/scripts/main.js',
@@ -24,7 +26,6 @@ const ASSETS_TO_CACHE  = [
   // '/accounts.office.cheque.inquiry/scripts/errorHandling.js',
   // '/accounts.office.cheque.inquiry/scripts/utilities.js',
   // '/accounts.office.cheque.inquiry/public/data/data.xml',
-  '/accounts.office.cheque.inquiry/public/data/files.json',
   // '/accounts.office.cheque.inquiry/scripts/xmlHandling.js'
 ];
 
