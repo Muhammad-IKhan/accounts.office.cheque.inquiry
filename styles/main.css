@@ -219,14 +219,14 @@ body {
   right: 1.5rem;
   top: 1.5rem;
   cursor: pointer;
-  color: white;
+  color: rgb(22, 18, 18);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(175, 145, 145, 0.2);
   border: none;
   transition: var(--transition);
   backdrop-filter: blur(4px);
@@ -714,14 +714,13 @@ th:hover .sort-icon {
   }
 
   .theme-toggle {
-    position: static;
     transform: none;
   }
   
   .datetime-display {
     position: absolute;
-    right: 1.5rem;
-    bottom: -24px;
+    right: -0.10rem;
+    bottom: 193px;
     z-index: 10;
     box-shadow: var(--shadow-md);
     flex-direction: row;
@@ -805,8 +804,9 @@ th:hover .sort-icon {
   }
   
   .pagination-controls {
-    flex-wrap: wrap;
-  }
+  gap: 5px;
+  margin-bottom: 5px;
+  margin-top: -20px;  }
   
   .datetime-display {
     font-size: 0.75rem;
@@ -1071,14 +1071,15 @@ th:hover .sort-icon {
     margin: 32px auto;
   }
   .header {
-    flex-direction: row;
+    font-family: monospace;
+    flex-direction: row-reverse;
     text-align: left;
     padding: 2rem;
   }
   .datetime-display {
     position: absolute;
-    right: 1.5rem;
-    bottom: -24px;
+    right: -0.10rem;
+    bottom: 193px;
     flex-direction: row;
     gap: 1.5rem;
   }
@@ -1278,8 +1279,16 @@ input, select, button {
   margin-bottom: 1rem;
 }
 
-.fbs2 {
- display: none; 
+.fbs2, filter-box {
+  display: none;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 300px;
 }
 
 .filter-box label {
@@ -1321,5 +1330,11 @@ input, select, button {
   
   .status-indicator {
     padding: 2pt 4pt !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .stats-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
   }
 }
