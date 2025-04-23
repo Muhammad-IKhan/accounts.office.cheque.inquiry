@@ -203,8 +203,13 @@
         </svg>
         Last Data Update
       </h4>
-      <p>The database was last updated manually on April 23, 2025 at 9:55 AM. Next scheduled update is today at 6:00 PM.</p>
+      <!--  class="update-info" -->
+      <p>The database was last updated manually on <span id="last-update-date"></span> at <span id="last-update-time"></span>. Next scheduled update is today at <span id="next-update-time"></span>.</p>
     </div>
+
+
+      
+  
       
     <div>
     <!-- <button style="flex: 1; min-width: 140px; padding: 12px 20px; background-color: transparent; color: #4f46e5; border: 1px solid #4f46e5; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease;"> -->
@@ -427,42 +432,43 @@
         
 
 
-
-      <div style="display: flex; flex-direction: column;">
+        <!--class="check-status" -->
+       <div style="display: flex; flex-direction: column;"> 
         <!-- Last Update Notice Stats Cards -->
         <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)); gap: 10px; margin-top: 20px;">
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
-                <h3 style="margin: 0; font-size: 16px; color: #495057;">Checks ready in Office</h3>
+                <h3 style="margin: 0; font-size: 16px; color: #495057;">Checks ready in Office: <span id="ready-in-office"></span></h3>
                 <div style="font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; color: #212529;">146</div>
                 <!--<div style="font-size: 14px; color: #fa5252;">↓ 7% from yesterday</div>-->
             </div>
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
-                <h3 style="margin: 0; font-size: 16px; color: #495057;">In Process</h3>
+                <h3 style="margin: 0; font-size: 16px; color: #495057;">In Process: <span id="in-process"></span></h3>
                 <div style="font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; color: #212529;">41</div>
                 <!--<div style="font-size: 14px; color: #40c057;">↑ 5% from yesterday</div>-->
             </div>
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
-                <h3 style="margin: 0; font-size: 16px; color: #495057;">Sent to Chairman Sb for sign</h3>
+                <h3 style="margin: 0; font-size: 16px; color: #495057;">Sent to Chairman Sb for sign: <span id="sent-to-chairman"></span></h3>
                 <div style="font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; color: #212529;">3</div>
                 <!--<div style="font-size: 14px; color: #40c057;">↑ 15% from yesterday</div>-->
             </div>
+          
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
-                <h3 style="margin: 0; font-size: 16px; color: #495057;">Sent to Secretary Sb. for sign</h3>
+                <h3 style="margin: 0; font-size: 16px; color: #495057;">Sent to Secretary Sb. for sign: <span id="sent-to-secretary"></span></h3>
                 <div style="font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; color: #212529;">38</div>
                 <!--<div style="font-size: 14px; color: #40c057;">↑ 15% from yesterday</div>-->
             </div>
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
-                <h3 style="margin: 0; font-size: 16px; color: #495057;">Received / Delivered today</h3>
+                <h3 style="margin: 0; font-size: 16px; color: #495057;">Received / Delivered today: <span id="received-today"></span></h3>
                 <div style="font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; color: #212529;">12</div>
                 <!--<div style="font-size: 14px; color: #40c057;">↑ 12% from yesterday</div>-->
             </div>
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
-                <h3 style="margin: 0; font-size: 16px; color: #495057;">Cheques Dispatched Previous Weekend</h3>
+                <h3 style="margin: 0; font-size: 16px; color: #495057;">Cheques Dispatched Previous Weekend: <span id="dispatched-weekend"></span></h3>
                 <div style="font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; color: #212529;">0</div>
                 <!--<div style="font-size: 14px; color: #40c057;">↑ 12% from yesterday</div>-->
             </div>
             <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center;">
-                <h3 style="margin: 0; font-size: 16px; color: #495057;">Returned to Office</h3>
+                <h3 style="margin: 0; font-size: 16px; color: #495057;">Returned to Office: <span id="returned-to-office"></h3>
                 <div style="font-size: 32px; font-weight: bold; margin: 15px 0 5px 0; color: #212529;">4</div>
                 <!--<div style="font-size: 14px; color: #40c057;">↑ 12% from yesterday</div>-->
             </div>
@@ -533,27 +539,6 @@
       </div>
     </div>
 
-
-
-<!--   ---------------------------------testing------------------------------------------------->
-  <div class="update-info">
-  <h3>Last Data Update</h3>
-  <p>The database was last updated manually on <span id="last-update-date"></span> at <span id="last-update-time"></span>. 
-  Next scheduled update is today at <span id="next-update-time"></span>.</p>
-</div>
-
-<div class="check-status">
-  <h3>Checks Status</h3>
-  <ul>
-    <li>Ready in Office: <span id="ready-in-office"></span></li>
-    <li>In Process: <span id="in-process"></span></li>
-    <li>Sent to Chairman Sb for sign: <span id="sent-to-chairman"></span></li>
-    <li>Sent to Secretary Sb. for sign: <span id="sent-to-secretary"></span></li>
-    <li>Received / Delivered today: <span id="received-today"></span></li>
-    <li>Cheques Dispatched Previous Weekend: <span id="dispatched-weekend"></span></li>
-    <li>Returned to Office: <span id="returned-to-office"></span></li>
-  </ul>
-</div>
   
     <!-- Scripts --> 
     <script src="scripts/index.js"></script>
