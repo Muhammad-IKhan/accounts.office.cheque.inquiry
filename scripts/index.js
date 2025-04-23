@@ -35,8 +35,8 @@ class XMLTableHandler {
             maxPages: 3, // Maximum number of page links to display in pagination
             minPages: 1,  // Minimum number of pages to display in pagination
             searchTermMinLength: 3, // Minimum length of the search term before triggering a search
-           dataFilesJsonPath: '/accounts.office.cheque.inquiry/public/data/files.json', // Path to the files.json
-            dataFilesBasePath: '/accounts.office.cheque.inquiry/public/data/' // Base path for XML data files
+            dataFilesJsonPath: 'public/data/files.json', // Path to the files.json
+            dataFilesBasePath: '/public/data/' // Base path for XML data files
         };
         console.log(`⚙️ Configuration: maxPages = ${this.config.maxPages}, minPages = ${this.config.minPages}, searchTermMinLength = ${this.config.searchTermMinLength}, dataFilesJsonPath = ${this.config.dataFilesJsonPath}, dataFilesBasePath = ${this.config.dataFilesBasePath}`);
         console.groupEnd();
@@ -71,7 +71,6 @@ class XMLTableHandler {
             'tableContainer': 'tableContainer',
             'emptyState': 'emptyState',
             'result': 'resultContainer',
-            'filter2': 'filter2',
             'noResults': 'noResults',
             'pagination': 'pagination',
             'filter2': 'filter2',
@@ -333,7 +332,7 @@ class XMLTableHandler {
 
     // Page numbers (1 to 5 or fewer)
     const startPage = Math.max(1, this.state.currentPage - 2);
-    const endPage = Math.min(totalPages, startPage + 4);
+    const endPage = Math.min(totalPages, startPage + 2);
 
     for (let i = startPage; i <= endPage; i++) {
         this.createPaginationButton(i, () => {
