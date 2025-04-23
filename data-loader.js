@@ -30,3 +30,33 @@ document.addEventListener('DOMContentLoaded', updatePageWithFirebaseData);
 dbRef.on('value', (snapshot) => {
   updatePageWithFirebaseData();
 });
+
+
+
+
+// Add this to your data-loader.js
+dbRef.once('value').then((snapshot) => {
+  const data = snapshot.val();
+  console.log("Firebase data received:", data);  // Check if data exists
+  if (!data) {
+    console.error("No data found in Firebase!");
+    return;
+  }
+  
+  // Try to update one element and log any errors
+  try {
+    const readyInOfficeElement = document.getElementById('ready-in-office');
+    console.log("Element found:", readyInOfficeElement);  // Check if element exists
+    if (readyInOfficeElement) {
+      readyInOfficeElement.textContent = data.checkStatus.readyInOffice;
+    } else {
+      console.error("Element with ID 'ready-in-office' not found!");
+    }
+  } catch (error) {
+    console.error("Error updating element:", error);
+  }
+  
+  // Rest of your update code...
+}).catch(error => {
+  console.error("Error fetching data:", error);
+});
