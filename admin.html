@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Cheque Inquiry System</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+  
+  <script>
+    // Firebase config (same as in index.html)
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "your-project.firebaseapp.com",
+      databaseURL: "https://your-project-default-rtdb.firebaseio.com",
+      projectId: "your-project",
+      storageBucket: "your-project.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_ID",
+      appId: "YOUR_APP_ID"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    .container { padding: 20px; }
+    .login-container, .data-form { background: #f5f5f5; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; }
+    input { width: 100%; padding: 8px; box-sizing: border-box; }
+    button { background: #4CAF50; color: white; border: none; padding: 10px 15px; cursor: pointer; }
+    .hidden { display: none; }
+    .message { padding: 10px; margin: 10px 0; border-radius: 4px; }
+    .success { background-color: #d4edda; color: #155724; }
+    .error { background-color: #f8d7da; color: #721c24; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Dashboard - Cheque Inquiry System</h1>
+    
+    <!-- Login Form -->
+    <div id="login-section" class="login-container">
+      <h2>Admin Login</h2>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter admin email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+      </div>
+      <button id="login-btn">Login</button>
+      <div id="login-message"></div>
+    </div>
+    
+    <!-- Data Update Form -->
+    <div id="data-section" class="data-form hidden">
+      <h2>Update Check Status Data</h2>
+      <div id="update-message"></div>
+      
+      <div class="form-group">
+        <h3>Last Update Information</h3>
+        <div class="form-group">
+          <label for="last-update-date">Date:</label>
+          <input type="text" id="last-update-date-input">
+        </div>
+        <div class="form-group">
+          <label for="last-update-time">Time:</label>
+          <input type="text" id="last-update-time-input">
+        </div>
+        <div class="form-group">
+          <label for="next-update">Next Scheduled Update:</label>
+          <input type="text" id="next-update-input">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <h3>Check Status</h3>
+        <div class="form-group">
+          <label for="ready-office">Ready in Office:</label>
+          <input type="number" id="ready-office-input">
+        </div>
+        <div class="form-group">
+          <label for="in-process">In Process:</label>
+          <input type="number" id="in-process-input">
+        </div>
+        <div class="form-group">
+          <label for="chairman">Sent to Chairman Sb for sign:</label>
+          <input type="number" id="chairman-input">
+        </div>
+        <div class="form-group">
+          <label for="secretary">Sent to Secretary Sb. for sign:</label>
+          <input type="number" id="secretary-input">
+        </div>
+        <div class="form-group">
+          <label for="received">Received / Delivered today:</label>
+          <input type="number" id="received-input">
+        </div>
+        <div class="form-group">
+          <label for="dispatched">Cheques Dispatched Previous Weekend:</label>
+          <input type="number" id="dispatched-input">
+        </div>
+        <div class="form-group">
+          <label for="returned">Returned to Office:</label>
+          <input type="number" id="returned-input">
+        </div>
+      </div>
+      
+      <button id="update-btn">Update Data</button>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </div>
+  
+  <script>
+    // DOM Elements
+    const loginSection = document.getElementById('login-section');
+    const dataSection = document.getElementById('data-section');
+    const loginMessage = document.getElementById('login-message');
+    const updateMessage = document.getElementById('update-message');
+    
+    // Firebase references
+    const auth = firebase.auth();
+    const dbRef = firebase.database().ref('checkData');
+    
+    // Check auth state on page load
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in, show data form
+        loginSection.classList.add('hidden');
+        dataSection.classList.remove('hidden');
+        loadCurrentData();
+      } else {
+        // No user is signed in, show login form
+        loginSection.classList.remove('hidden');
+        dataSection.classList.add('hidden');
+      }
+    });
+    
+    // Login functionality
+    document.getElementById('login-btn').addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      auth.signInWithEmailAndPassword(email, password)
+        .catch(error => {
+          loginMessage.className = 'message error';
+          loginMessage.textContent = `Error: ${error.message}`;
+        });
+    });
+    
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      auth.signOut();
+    });
+    
+    // Load current data
+    function loadCurrentData() {
+      dbRef.once('value')
+        .then(snapshot => {
+          const data = snapshot.val() || {
+            lastUpdate: { date: '', time: '', nextScheduled: '' },
+            checkStatus: { 
+              readyInOffice: 0, inProcess: 0, sentToChairman: 0, 
+              sentToSecretary: 0, receivedToday: 0, dispatchedWeekend: 0, 
+              returnedToOffice: 0 
+            }
+          };
+          
+          // Populate form
+          document.getElementById('last-update-date-input').value = data.lastUpdate.date;
+          document.getElementById('last-update-time-input').value = data.lastUpdate.time;
+          document.getElementById('next-update-input').value = data.lastUpdate.nextScheduled;
+          
+          document.getElementById('ready-office-input').value = data.checkStatus.readyInOffice;
+          document.getElementById('in-process-input').value = data.checkStatus.inProcess;
+          document.getElementById('chairman-input').value = data.checkStatus.sentToChairman;
+          document.getElementById('secretary-input').value = data.checkStatus.sentToSecretary;
+          document.getElementById('received-input').value = data.checkStatus.receivedToday;
+          document.getElementById('dispatched-input').value = data.checkStatus.dispatchedWeekend;
+          document.getElementById('returned-input').value = data.checkStatus.returnedToOffice;
+        });
+    }
+    
+    // Update data functionality
+    document.getElementById('update-btn').addEventListener('click', () => {
+      const newData = {
+        lastUpdate: {
+          date: document.getElementById('last-update-date-input').value,
+          time: document.getElementById('last-update-time-input').value,
+          nextScheduled: document.getElementById('next-update-input').value
+        },
+        checkStatus: {
+          readyInOffice: Number(document.getElementById('ready-office-input').value),
+          inProcess: Number(document.getElementById('in-process-input').value),
+          sentToChairman: Number(document.getElementById('chairman-input').value),
+          sentToSecretary: Number(document.getElementById('secretary-input').value),
+          receivedToday: Number(document.getElementById('received-input').value),
+          dispatchedWeekend: Number(document.getElementById('dispatched-input').value),
+          returnedToOffice: Number(document.getElementById('returned-input').value)
+        }
+      };
+      
+      // Update data in Firebase
+      dbRef.set(newData)
+        .then(() => {
+          updateMessage.className = 'message success';
+          updateMessage.textContent = 'Data updated successfully!';
+          setTimeout(() => {
+            updateMessage.textContent = '';
+          }, 3000);
+        })
+        .catch(error => {
+          updateMessage.className = 'message error';
+          updateMessage.textContent = `Error: ${error.message}`;
+        });
+    });
+  </script>
+</body>
+</html>
